@@ -9,6 +9,6 @@ EditorBuildSettings:
     path: Assets/Scenes/MainScreen.unity
     guid: c850ee8c3b14cc8459e7e186857cf567
   - enabled: 1
-    path: Assets/Scenes/CharacterScreen.unity
+    path: Assets/Scenes/CharacterEditScreen.unity
     guid: abb89d66e5ddc7148aefbcace7ffe5e9
   m_configObjects: {}
