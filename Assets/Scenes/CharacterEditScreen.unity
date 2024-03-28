@@ -5682,6 +5682,7 @@ GameObject:
   - component: {fileID: 331893129}
   - component: {fileID: 331893128}
   - component: {fileID: 331893130}
+  - component: {fileID: 331893131}
   m_Layer: 5
   m_Name: Dropdown
   m_TagString: Untagged
@@ -5763,18 +5764,6 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1602065867}
-          m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
-          m_MethodName: SetTrigger
-          m_Mode: 5
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: Close
-            m_BoolArgument: 0
-          m_CallState: 2
         - m_Target: {fileID: 424139162}
           m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_MethodName: SetActive
@@ -5799,18 +5788,32 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 222211728}
-          m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
-          m_MethodName: SetTrigger
-          m_Mode: 5
+        - m_Target: {fileID: 331893131}
+          m_TargetAssemblyTypeName: ChangeMenuOpener, Assembly-CSharp
+          m_MethodName: ShowBasicData
+          m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
-            m_StringArgument: Open
+            m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!114 &331893131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 331893126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3219fcc433a39948842f0f2417c1bbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_BasicData: {fileID: 222211728}
+  m_AscensionData: {fileID: 1602065867}
 --- !u!1 &333295537
 GameObject:
   m_ObjectHideFlags: 0
@@ -6465,6 +6468,7 @@ GameObject:
   - component: {fileID: 420670860}
   - component: {fileID: 420670859}
   - component: {fileID: 420670861}
+  - component: {fileID: 420670862}
   m_Layer: 5
   m_Name: Dropdown
   m_TagString: Untagged
@@ -6546,30 +6550,6 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1602065867}
-          m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
-          m_MethodName: SetTrigger
-          m_Mode: 5
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: Open
-            m_BoolArgument: 0
-          m_CallState: 2
-        - m_Target: {fileID: 222211728}
-          m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
-          m_MethodName: SetTrigger
-          m_Mode: 5
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: Close
-            m_BoolArgument: 0
-          m_CallState: 2
         - m_Target: {fileID: 927720897}
           m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_MethodName: SetActive
@@ -6630,6 +6610,32 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+        - m_Target: {fileID: 420670862}
+          m_TargetAssemblyTypeName: ChangeMenuOpener, Assembly-CSharp
+          m_MethodName: ShowAscensionData
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!114 &420670862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 420670857}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3219fcc433a39948842f0f2417c1bbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_BasicData: {fileID: 222211728}
+  m_AscensionData: {fileID: 1602065867}
 --- !u!1 &424139162
 GameObject:
   m_ObjectHideFlags: 0
@@ -8742,6 +8748,7 @@ GameObject:
   - component: {fileID: 566367291}
   - component: {fileID: 566367290}
   - component: {fileID: 566367292}
+  - component: {fileID: 566367293}
   m_Layer: 5
   m_Name: Dropdown
   m_TagString: Untagged
@@ -8823,18 +8830,6 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1602065867}
-          m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
-          m_MethodName: SetTrigger
-          m_Mode: 5
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: Close
-            m_BoolArgument: 0
-          m_CallState: 2
         - m_Target: {fileID: 424139162}
           m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_MethodName: SetActive
@@ -8859,18 +8854,32 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 1
           m_CallState: 2
-        - m_Target: {fileID: 222211728}
-          m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
-          m_MethodName: SetTrigger
-          m_Mode: 5
+        - m_Target: {fileID: 566367293}
+          m_TargetAssemblyTypeName: ChangeMenuOpener, Assembly-CSharp
+          m_MethodName: ShowBasicData
+          m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
-            m_StringArgument: Open
-            m_BoolArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
           m_CallState: 2
+--- !u!114 &566367293
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 566367288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3219fcc433a39948842f0f2417c1bbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_BasicData: {fileID: 222211728}
+  m_AscensionData: {fileID: 1602065867}
 --- !u!1 &570082318
 GameObject:
   m_ObjectHideFlags: 0
@@ -9125,7 +9134,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 100, y: -6116.801}
+  m_AnchoredPosition: {x: 100, y: -25474.594}
   m_SizeDelta: {x: 1720, y: 2370}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &583356803
@@ -14148,6 +14157,7 @@ GameObject:
   - component: {fileID: 805893286}
   - component: {fileID: 805893285}
   - component: {fileID: 805893287}
+  - component: {fileID: 805893288}
   m_Layer: 5
   m_Name: Dropdown
   m_TagString: Untagged
@@ -14229,30 +14239,6 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1602065867}
-          m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
-          m_MethodName: SetTrigger
-          m_Mode: 5
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: Open
-            m_BoolArgument: 0
-          m_CallState: 2
-        - m_Target: {fileID: 222211728}
-          m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
-          m_MethodName: SetTrigger
-          m_Mode: 5
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: Close
-            m_BoolArgument: 0
-          m_CallState: 2
         - m_Target: {fileID: 927720897}
           m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_MethodName: SetActive
@@ -14313,6 +14299,32 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+        - m_Target: {fileID: 805893288}
+          m_TargetAssemblyTypeName: ChangeMenuOpener, Assembly-CSharp
+          m_MethodName: ShowAscensionData
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!114 &805893288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 805893283}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3219fcc433a39948842f0f2417c1bbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_BasicData: {fileID: 222211728}
+  m_AscensionData: {fileID: 1602065867}
 --- !u!1001 &806144062
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19028,6 +19040,7 @@ GameObject:
   - component: {fileID: 1156703420}
   - component: {fileID: 1156703419}
   - component: {fileID: 1156703421}
+  - component: {fileID: 1156703422}
   m_Layer: 5
   m_Name: Dropdown
   m_TagString: Untagged
@@ -19109,30 +19122,6 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1602065867}
-          m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
-          m_MethodName: SetTrigger
-          m_Mode: 5
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: Open
-            m_BoolArgument: 0
-          m_CallState: 2
-        - m_Target: {fileID: 222211728}
-          m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
-          m_MethodName: SetTrigger
-          m_Mode: 5
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: Close
-            m_BoolArgument: 0
-          m_CallState: 2
         - m_Target: {fileID: 927720897}
           m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_MethodName: SetActive
@@ -19193,6 +19182,32 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+        - m_Target: {fileID: 1156703422}
+          m_TargetAssemblyTypeName: ChangeMenuOpener, Assembly-CSharp
+          m_MethodName: ShowAscensionData
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!114 &1156703422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1156703417}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3219fcc433a39948842f0f2417c1bbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_BasicData: {fileID: 222211728}
+  m_AscensionData: {fileID: 1602065867}
 --- !u!1001 &1161893397
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -26846,6 +26861,7 @@ GameObject:
   - component: {fileID: 1670203284}
   - component: {fileID: 1670203283}
   - component: {fileID: 1670203285}
+  - component: {fileID: 1670203286}
   m_Layer: 5
   m_Name: Dropdown
   m_TagString: Untagged
@@ -26927,30 +26943,6 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1602065867}
-          m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
-          m_MethodName: SetTrigger
-          m_Mode: 5
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: Open
-            m_BoolArgument: 0
-          m_CallState: 2
-        - m_Target: {fileID: 222211728}
-          m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
-          m_MethodName: SetTrigger
-          m_Mode: 5
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: Close
-            m_BoolArgument: 0
-          m_CallState: 2
         - m_Target: {fileID: 927720897}
           m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_MethodName: SetActive
@@ -27011,6 +27003,32 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+        - m_Target: {fileID: 1670203286}
+          m_TargetAssemblyTypeName: ChangeMenuOpener, Assembly-CSharp
+          m_MethodName: ShowAscensionData
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!114 &1670203286
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1670203281}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3219fcc433a39948842f0f2417c1bbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_BasicData: {fileID: 222211728}
+  m_AscensionData: {fileID: 1602065867}
 --- !u!1 &1676410153
 GameObject:
   m_ObjectHideFlags: 0
