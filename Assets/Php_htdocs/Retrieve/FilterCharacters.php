@@ -1,26 +1,22 @@
 <?php
-require('connect.php');
-include('distinctValues.php');
-
-
-
+require('../Connect.php');
 
 $FIELD_Rarities = $_POST["FIELD_Rarities"];
 $FIELD_Visions = $_POST["FIELD_Visions"];
 $FIELD_Weapons = $_POST["FIELD_Weapons"];
 $FIELD_Regions = $_POST["FIELD_Regions"];
 $FIELD_Models = $_POST["FIELD_Models"];
+$FIELD_CharacterName = $_POST["FIELD_CharacterName"];
 
-echo $FIELD_Regions;
-$testquery=('SELECT * FROM view_character_queries WHERE 
+$sqlQuery=('SELECT * FROM view_character_queries WHERE 
                 vision IN ('.$FIELD_Visions.') AND 
                 weapon_type IN ('.$FIELD_Weapons.') AND 
                 region IN ('.$FIELD_Regions.') AND
-                model IN ('.$FIELD_Models.')' ); 
+                model IN ('.$FIELD_Models.') AND
+                (CASE WHEN ("'.$FIELD_CharacterName.'") != "" THEN character_name LIKE ("'.$FIELD_CharacterName.'") ELSE TRUE END)
+            ');
 
-
-
-$queriedResults = mysqli_query($CONNECTION, $testquery); 
+$queriedResults = mysqli_query($CONNECTION, $sqlQuery) or die("[1] Query filter Failed"); 
 
 if(mysqli_num_rows($queriedResults) > 0){
     //FOUND SOMETHING
