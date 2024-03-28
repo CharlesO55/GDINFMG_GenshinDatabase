@@ -9,6 +9,7 @@ $FIELD_Models = $_POST["FIELD_Models"];
 $FIELD_CharacterName = $_POST["FIELD_CharacterName"];
 
 $sqlQuery=('SELECT * FROM view_character_queries WHERE 
+                rarity IN ('.$FIELD_Rarities.') AND
                 vision IN ('.$FIELD_Visions.') AND 
                 weapon_type IN ('.$FIELD_Weapons.') AND 
                 region IN ('.$FIELD_Regions.') AND
