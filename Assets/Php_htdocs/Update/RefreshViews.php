@@ -27,10 +27,10 @@ $sql6 = "CREATE OR REPLACE VIEW view_ascension_reqs AS
 	SELECT character_name, ascension, ascension_specialty, ascension_material, ascension_boss FROM table_masterlist";
     
 /***********************************
-* #7 CREATING SPECIAL REQS VIEW    *
+* #7 CREATING SPECIAL STATS VIEW   *
 ************************************/
-$sql7 = "CREATE OR REPLACE VIEW view_special_reqs AS
-	SELECT character_name, special_0, special_1, special_2, special_3, special_4, special_5, special_6 FROM table_masterlist";
+$sql7 = "CREATE OR REPLACE VIEW view_special_stats AS
+	SELECT character_name, ascension, special_0, special_1, special_2, special_3, special_4, special_5, special_6 FROM table_masterlist";
     
 /***********************************
 * #8 CREATING TALENTS REQS VIEW    *
@@ -50,7 +50,7 @@ $sql9 = "CREATE OR REPLACE VIEW view_character_release AS
 * #10 CREATING CHARACTER DATA VIEW *
 ************************************/
 $sql10 = "CREATE OR REPLACE VIEW view_character_general AS
-	SELECT character_name, rarity, vision, weapon_type, region, model, arkhe, constellation, birthday, special_dish, affiliation 
+	SELECT character_name, rarity, vision, weapon_type, region, model, arkhe, constellation, birthday, special_dish, affiliation, character_description
     FROM table_masterlist";
 
 mysqli_query($CONNECTION, $sql3) or die("[3] Query view failed");

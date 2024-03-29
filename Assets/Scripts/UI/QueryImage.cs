@@ -16,6 +16,8 @@ public class QueryImage : ClickableImage
     {
         this.color = isClicked ? Color.white : Color.gray;
 
-        FilterCharacters.Instance.ModifyFilter(_queryToggle.key, _queryToggle.value, isClicked);
+
+        if(FilterCharacters.Instance != null)
+            FilterCharacters.Instance.ModifyFilter(_queryToggle.key, _queryToggle.value, isClicked);
     }
 }
