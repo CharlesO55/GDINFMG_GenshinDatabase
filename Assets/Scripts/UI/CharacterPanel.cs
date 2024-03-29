@@ -12,7 +12,8 @@ public class CharacterPanel : MonoBehaviour
 
     public void Initialize(string name, Sprite icon, int rarity = 4)
     {
+        //Debug.Log($"{name} {rarity}");
         this._charName.text = name;
-        this._charRarity.color = (rarity == 5) ? Color.yellow : Color.blue;
+        this._charRarity.color = (rarity == 5) ? new Color32(208, 144, 64, 255) : new Color32(150, 65, 210, 255);
     }
 }

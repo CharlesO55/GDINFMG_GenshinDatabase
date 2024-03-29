@@ -8,7 +8,7 @@ $FIELD_Regions = $_POST["FIELD_Regions"];
 $FIELD_Models = $_POST["FIELD_Models"];
 $FIELD_CharacterName = $_POST["FIELD_CharacterName"];
 
-$sqlQuery=('SELECT * FROM view_character_queries WHERE 
+$sqlQuery=('SELECT character_name, rarity FROM view_character_queries WHERE 
                 rarity IN ('.$FIELD_Rarities.') AND
                 vision IN ('.$FIELD_Visions.') AND 
                 weapon_type IN ('.$FIELD_Weapons.') AND 
@@ -24,9 +24,10 @@ if(mysqli_num_rows($queriedResults) > 0){
     echo "SUCCESS~";
 
     while ($currRes = mysqli_fetch_assoc($queriedResults)){
-        $currChar = $currRes["character_name"];
-    
-        echo "@" . $currChar;
+        $charName = $currRes["character_name"];
+        $charRarity = $currRes["rarity"];
+
+        echo "@" . $charName . "|" . $charRarity;
     }
 }
 else{

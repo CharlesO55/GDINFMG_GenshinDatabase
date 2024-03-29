@@ -75,10 +75,11 @@ public class FilterCharacters : MonoBehaviour
         {
             if(res != "")
             {
+                string[] currChar = res.Split('|');
                 GameObject newCharPanel = Instantiate(this._characterPanelPrefab, this._characterPanelsContainer);
                 if (newCharPanel.TryGetComponent<CharacterPanel>(out CharacterPanel panel))
                 {
-                    panel.Initialize(res, null);
+                    panel.Initialize(currChar[0], null, int.Parse(currChar[1]));
                 }
             }
         }
