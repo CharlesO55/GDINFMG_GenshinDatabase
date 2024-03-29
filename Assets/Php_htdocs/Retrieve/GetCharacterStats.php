@@ -3,7 +3,7 @@ require("../Connect.php");
 
 $FIELD_character_name = $_POST["FIELD_character_name"];
 
-$sql1 = "SELECT * FROM `view_special_stats` WHERE character_name = '".$FIELD_character_name."';";
+$sql1 = "SELECT * FROM `view_character_stats` WHERE character_name = '".$FIELD_character_name."';";
 
 $query1 = mysqli_query($CONNECTION, $sql1) or die("[1] Character General Query failed");
 
