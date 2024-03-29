@@ -15,12 +15,20 @@ public class AddCharacter : MonoBehaviour, IPointerClickHandler
     {
         WWWForm form = new WWWForm();
 
-        string newCharName = "NewCharacter" + Random.Range(0, 1000000);
+        string newCharName = "_" + System.DateTime.Now.ToString("HH:mm:ss tt");
         form.AddField("FIELD_Name", newCharName);
 
         using (UnityWebRequest handler = UnityWebRequest.Post("http://localhost/Update/AddCharacter.php", form))
         {
             yield return handler.SendWebRequest();
+
+            if (handler.error != null)
+                Debug.LogError("Failed to insert new character" + handler.error);
+
+            Debug.Log(handler.downloadHandler.text);
+
+            if (FilterCharacters.Instance) 
+                FilterCharacters.Instance.UpdateQueryDisplay();
         }
     }
 }

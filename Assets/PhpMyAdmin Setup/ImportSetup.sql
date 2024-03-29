@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Mar 22, 2024 at 06:08 PM
+-- Generation Time: Mar 29, 2024 at 02:52 PM
 -- Server version: 5.7.24
 -- PHP Version: 8.0.1
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `test`
+-- Database: `genshin_db`
 --
 
 -- --------------------------------------------------------
@@ -29,8 +29,8 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `import_descriptions` (
   `wikia_links` varchar(24) DEFAULT NULL,
-  `character_name` varchar(18) NOT NULL,
-  `character_description` varchar(538) DEFAULT NULL
+  `character_name` varchar(30) NOT NULL,
+  `character_description` varchar(538) NOT NULL DEFAULT 'N/A'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -125,41 +125,41 @@ INSERT INTO `import_descriptions` (`wikia_links`, `character_name`, `character_d
 --
 
 CREATE TABLE `import_general` (
-  `character_name` varchar(26) NOT NULL,
-  `rarity` int(1) DEFAULT NULL,
-  `region` varchar(9) DEFAULT NULL,
-  `vision` varchar(7) DEFAULT NULL,
-  `arkhe` varchar(6) DEFAULT NULL,
-  `weapon_type` varchar(8) DEFAULT NULL,
-  `model` varchar(13) DEFAULT NULL,
-  `constellation` varchar(21) DEFAULT NULL,
-  `birthday` varchar(6) DEFAULT NULL,
-  `special_dish` varchar(48) DEFAULT NULL,
-  `affiliation` varchar(26) DEFAULT NULL,
-  `release_date` date DEFAULT NULL,
-  `limited` varchar(5) DEFAULT NULL,
-  `voice_en` varchar(30) DEFAULT NULL,
-  `voice_cn` varchar(13) DEFAULT NULL,
-  `voice_jp` varchar(19) DEFAULT NULL,
-  `voice_kr` varchar(15) DEFAULT NULL,
-  `ascension` varchar(18) DEFAULT NULL,
-  `ascension_specialty` varchar(21) DEFAULT NULL,
-  `ascension_material` varchar(25) DEFAULT NULL,
-  `ascension_boss` varchar(47) DEFAULT NULL,
-  `talent_material` varchar(25) DEFAULT NULL,
-  `talent_book_1-2` varchar(23) DEFAULT NULL,
-  `talent_book_2-3` varchar(19) DEFAULT NULL,
-  `talent_book_3-4` varchar(19) DEFAULT NULL,
-  `talent_book_4-5` varchar(19) DEFAULT NULL,
-  `talent_book_5-6` varchar(19) DEFAULT NULL,
-  `talent_book_6-7` varchar(26) DEFAULT NULL,
-  `talent_book_7-8` varchar(26) DEFAULT NULL,
-  `talent_book_8-9` varchar(26) DEFAULT NULL,
-  `talent_book_9-10` varchar(26) DEFAULT NULL,
-  `talent_weekly` varchar(28) DEFAULT NULL,
-  `hp_90_90` int(5) DEFAULT NULL,
-  `atk_90_90` int(3) DEFAULT NULL,
-  `def_90_90` int(3) DEFAULT NULL,
+  `character_name` varchar(30) NOT NULL,
+  `rarity` int(1) NOT NULL DEFAULT '4',
+  `region` varchar(10) NOT NULL DEFAULT 'N/A',
+  `vision` varchar(10) NOT NULL DEFAULT 'Anemo',
+  `arkhe` varchar(10) NOT NULL DEFAULT 'N/A',
+  `weapon_type` varchar(10) NOT NULL DEFAULT 'Sword',
+  `model` varchar(15) NOT NULL DEFAULT 'Medium Female',
+  `constellation` varchar(30) NOT NULL DEFAULT 'N/A',
+  `birthday` varchar(6) NOT NULL DEFAULT 'N/A',
+  `special_dish` varchar(48) NOT NULL DEFAULT 'N/A',
+  `affiliation` varchar(30) NOT NULL DEFAULT 'N/A',
+  `release_date` date NOT NULL DEFAULT '2001-01-01',
+  `limited` varchar(5) NOT NULL DEFAULT 'N/A',
+  `voice_en` varchar(30) NOT NULL DEFAULT 'N/A',
+  `voice_cn` varchar(30) NOT NULL DEFAULT 'N/A',
+  `voice_jp` varchar(30) NOT NULL DEFAULT 'N/A',
+  `voice_kr` varchar(30) NOT NULL DEFAULT 'N/A',
+  `ascension` varchar(30) NOT NULL DEFAULT 'N/A',
+  `ascension_specialty` varchar(30) NOT NULL DEFAULT 'N/A',
+  `ascension_material` varchar(30) NOT NULL DEFAULT 'N/A',
+  `ascension_boss` varchar(50) NOT NULL DEFAULT 'N/A',
+  `talent_material` varchar(30) NOT NULL DEFAULT 'N/A',
+  `talent_book_1-2` varchar(30) DEFAULT NULL,
+  `talent_book_2-3` varchar(30) DEFAULT NULL,
+  `talent_book_3-4` varchar(30) DEFAULT NULL,
+  `talent_book_4-5` varchar(30) DEFAULT NULL,
+  `talent_book_5-6` varchar(30) DEFAULT NULL,
+  `talent_book_6-7` varchar(30) DEFAULT NULL,
+  `talent_book_7-8` varchar(30) DEFAULT NULL,
+  `talent_book_8-9` varchar(30) DEFAULT NULL,
+  `talent_book_9-10` varchar(30) DEFAULT NULL,
+  `talent_weekly` varchar(30) NOT NULL DEFAULT 'N/A',
+  `hp_90_90` int(9) NOT NULL DEFAULT '0',
+  `atk_90_90` int(9) NOT NULL DEFAULT '0',
+  `def_90_90` int(9) NOT NULL DEFAULT '0',
   `hp_80_90` int(5) DEFAULT NULL,
   `atk_80_90` int(3) DEFAULT NULL,
   `def_80_90` int(3) DEFAULT NULL,
@@ -196,16 +196,16 @@ CREATE TABLE `import_general` (
   `hp_20_20` int(4) DEFAULT NULL,
   `atk_20_20` int(2) DEFAULT NULL,
   `def_20_20` int(3) DEFAULT NULL,
-  `hp_1_20` int(4) DEFAULT NULL,
-  `atk_1_20` int(2) DEFAULT NULL,
-  `def_1_20` int(2) DEFAULT NULL,
-  `special_0` varchar(5) DEFAULT NULL,
+  `hp_1_20` int(9) NOT NULL DEFAULT '0',
+  `atk_1_20` int(9) NOT NULL DEFAULT '0',
+  `def_1_20` int(9) NOT NULL DEFAULT '0',
+  `special_0` varchar(9) NOT NULL DEFAULT '0',
   `special_1` varchar(5) DEFAULT NULL,
   `special_2` varchar(5) DEFAULT NULL,
   `special_3` varchar(6) DEFAULT NULL,
   `special_4` varchar(6) DEFAULT NULL,
   `special_5` varchar(6) DEFAULT NULL,
-  `special_6` varchar(6) DEFAULT NULL
+  `special_6` varchar(9) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -311,14 +311,14 @@ INSERT INTO `import_general` (`character_name`, `rarity`, `region`, `vision`, `a
 
 CREATE TABLE `import_revenue` (
   `version` decimal(2,1) DEFAULT NULL,
-  `version_name` varchar(38) DEFAULT NULL,
+  `version_name` varchar(50) DEFAULT NULL,
   `start_date` date DEFAULT NULL,
   `end_date` date DEFAULT NULL,
-  `5_star_characters` varchar(18) DEFAULT NULL,
+  `5_star_characters` varchar(30) DEFAULT NULL,
   `rerun` int(1) DEFAULT NULL,
-  `revenue` int(8) DEFAULT NULL,
+  `revenue` int(9) DEFAULT NULL,
   `banner_days` int(2) DEFAULT NULL,
-  `avg_revenue` int(7) DEFAULT NULL
+  `avg_revenue` int(9) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -385,8 +385,8 @@ INSERT INTO `import_revenue` (`version`, `version_name`, `start_date`, `end_date
 
 CREATE TABLE `import_thoughts` (
   `id` int(3) NOT NULL,
-  `subject` varchar(18) DEFAULT NULL,
-  `speaker` varchar(11) DEFAULT NULL,
+  `subject` varchar(30) DEFAULT NULL,
+  `speaker` varchar(30) DEFAULT NULL,
   `thought` varchar(1368) DEFAULT NULL,
   `link` varchar(70) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -996,382 +996,6 @@ INSERT INTO `import_thoughts` (`id`, `subject`, `speaker`, `thought`, `link`) VA
 (594, 'Zhongli', 'Yanfei', 'Mr. Zhongli has so much in-depth knowledge on so many topics, he\'s like a walking library, you know what I mean? He\'s a total savant, though he never flaunts it. I could tell just by looking at him. People like him rarely shy away from taking on complex problems alone, so in my estimation he\'s certainly not a potential client.And yet, somehow, I can\'t help but think I know him from somewhere, it\'s hard to describe the feeling... I asked my father about it, and he just said something to the effect of he didn\'t know either, though he seemed a little evasive. It was so strange... Anyway, makes me wonder if my father is hiding something from me. Hmph, alright then – if he won\'t tell me what\'s going on, I\'ll just have to find out for myself...', 'https://game8.co/games/Genshin-Impact/archives/305858'),
 (595, 'Zhongli', 'Yun Jin', 'The customs of the opera are very particular, and are passed down from generation to generation. Sometimes I find that I only know the hows but not the whys behind what we do. But when speaking with Zhongli, it is abundantly evident that he knows the origins behind almost everything. Who wouldn\'t be delighted to have such a connoisseur in their audience?', 'https://game8.co/games/Genshin-Impact/archives/305858');
 
--- --------------------------------------------------------
-
---
--- Table structure for table `table_masterlist`
---
-
-CREATE TABLE `table_masterlist` (
-  `character_name` varchar(26) NOT NULL,
-  `rarity` int(1) DEFAULT NULL,
-  `region` varchar(9) DEFAULT NULL,
-  `vision` varchar(7) DEFAULT NULL,
-  `arkhe` varchar(6) DEFAULT NULL,
-  `weapon_type` varchar(8) DEFAULT NULL,
-  `model` varchar(13) DEFAULT NULL,
-  `constellation` varchar(21) DEFAULT NULL,
-  `birthday` varchar(6) DEFAULT NULL,
-  `special_dish` varchar(48) DEFAULT NULL,
-  `affiliation` varchar(26) DEFAULT NULL,
-  `release_date` date DEFAULT NULL,
-  `limited` varchar(5) DEFAULT NULL,
-  `voice_en` varchar(30) DEFAULT NULL,
-  `voice_cn` varchar(13) DEFAULT NULL,
-  `voice_jp` varchar(19) DEFAULT NULL,
-  `voice_kr` varchar(15) DEFAULT NULL,
-  `ascension` varchar(18) DEFAULT NULL,
-  `ascension_specialty` varchar(21) DEFAULT NULL,
-  `ascension_material` varchar(25) DEFAULT NULL,
-  `ascension_boss` varchar(47) DEFAULT NULL,
-  `talent_material` varchar(25) DEFAULT NULL,
-  `talent_book_1-2` varchar(23) DEFAULT NULL,
-  `talent_book_2-3` varchar(19) DEFAULT NULL,
-  `talent_book_3-4` varchar(19) DEFAULT NULL,
-  `talent_book_4-5` varchar(19) DEFAULT NULL,
-  `talent_book_5-6` varchar(19) DEFAULT NULL,
-  `talent_book_6-7` varchar(26) DEFAULT NULL,
-  `talent_book_7-8` varchar(26) DEFAULT NULL,
-  `talent_book_8-9` varchar(26) DEFAULT NULL,
-  `talent_book_9-10` varchar(26) DEFAULT NULL,
-  `talent_weekly` varchar(28) DEFAULT NULL,
-  `hp_90_90` int(5) DEFAULT NULL,
-  `atk_90_90` int(3) DEFAULT NULL,
-  `def_90_90` int(3) DEFAULT NULL,
-  `hp_1_20` int(4) DEFAULT NULL,
-  `atk_1_20` int(2) DEFAULT NULL,
-  `def_1_20` int(2) DEFAULT NULL,
-  `special_0` varchar(5) DEFAULT NULL,
-  `special_1` varchar(5) DEFAULT NULL,
-  `special_2` varchar(5) DEFAULT NULL,
-  `special_3` varchar(6) DEFAULT NULL,
-  `special_4` varchar(6) DEFAULT NULL,
-  `special_5` varchar(6) DEFAULT NULL,
-  `special_6` varchar(6) DEFAULT NULL,
-  `character_description` varchar(538) DEFAULT NULL,
-  `total_banner_runs` bigint(21) DEFAULT '0',
-  `last_banner_appearance` decimal(2,1) DEFAULT NULL,
-  `total_revenue` decimal(32,0) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `table_masterlist`
---
-
-INSERT INTO `table_masterlist` (`character_name`, `rarity`, `region`, `vision`, `arkhe`, `weapon_type`, `model`, `constellation`, `birthday`, `special_dish`, `affiliation`, `release_date`, `limited`, `voice_en`, `voice_cn`, `voice_jp`, `voice_kr`, `ascension`, `ascension_specialty`, `ascension_material`, `ascension_boss`, `talent_material`, `talent_book_1-2`, `talent_book_2-3`, `talent_book_3-4`, `talent_book_4-5`, `talent_book_5-6`, `talent_book_6-7`, `talent_book_7-8`, `talent_book_8-9`, `talent_book_9-10`, `talent_weekly`, `hp_90_90`, `atk_90_90`, `def_90_90`, `hp_1_20`, `atk_1_20`, `def_1_20`, `special_0`, `special_1`, `special_2`, `special_3`, `special_4`, `special_5`, `special_6`, `character_description`, `total_banner_runs`, `last_banner_appearance`, `total_revenue`) VALUES
-('Albedo', 5, 'Mondstadt', 'Geo', 'N/A', 'Sword', 'Medium Male', 'Princeps Cretaceus', '13-Sep', 'Woodland Dream', 'Knights of Favonius', '2020-12-23', 'TRUE', 'Khoi Dao', 'Mace', 'Kenji Nojima', 'Kim Myung-jun', 'Geo DMG Bonus', 'Cecilia', 'Divining Scroll', 'Basalt Pillar', 'Divining Scroll', 'Teachings of Ballad', 'Guide to Ballad', 'Guide to Ballad', 'Guide to Ballad', 'Guide to Ballad', 'Philosophies of Ballad', 'Philosophies of Ballad', 'Philosophies of Ballad', 'Philosophies of Ballad', 'Tusk of Monoceros Caeli', 13226, 251, 876, 1030, 20, 68, '0.00%', '0.00%', '7.20%', '14.40%', '14.40%', '21.60%', '28.80%', 'A synthetic human made by the alchemist Rhinedottir, the mysterious Albedo is the Chief Alchemist and Captain of the Investigation Team of the Knights of Favonius.\n', 3, '3.1', '44573853'),
-('Alhaitham', 5, 'Sumeru', 'Dendro', 'N/A', 'Sword', 'Tall Male', 'Vultur Volans', '11-Feb', 'Ideal Circumstance', 'Sumeru Akademiya', '2023-01-18', 'TRUE', 'Nazeeh Tarsha', 'Yang Chaoran', 'Umehara Yuuichirou', 'Jun Seung Hwa', 'Dendro DMG Bonus', 'Sand Grease Pupa', 'Faded Red Satin', 'Pseudo-Stamens', 'Faded Red Satin', 'Teachings of Ingenuity', 'Guide to Ingenuity', 'Guide to Ingenuity', 'Guide to Ingenuity', 'Guide to Ingenuity', 'Philosophies of Ingenuity', 'Philosophies of Ingenuity', 'Philosophies of Ingenuity', 'Philosophies of Ingenuity', 'Mirror of Mushin', 13348, 313, 781, 1039, 24, 60, '0.00%', '0.00%', '7.20%', '14.40%', '14.40%', '21.60%', '28.80%', 'Alhaitham is a member of the Haravatat of the Sumeru Akademiya and the Akademiya\'s Scribe, responsible for documenting their findings and drafting ordinances. Despite his brilliance, people within the Akademiya are perplexed by Alhaitham due to his unwillingness to aspire for higher office in spite of his egocentricity, and many have been at odds with him for his uncompromising view on rationality and the truth.\n', NULL, NULL, NULL),
-('Aloy', 5, 'N/A', 'Cryo', 'N/A', 'Bow', 'Medium Female', 'Nora Fortis', '04-Apr', 'Satiety Gel', 'Wandering Heroine', '2021-01-09', 'N/A', 'Giselle Fernandez', 'Mufei', 'Ayahi Takagaki', 'Jo Hyeon-jeong', 'Cryo DMG Bonus', 'Crystal Marrow', 'Spectral Husk', 'Crystalline Bloom', 'Spectral Husk', 'Teachings of Freedom', 'Guide to Freedom', 'Guide to Freedom', 'Guide to Freedom', 'Guide to Freedom', 'Philosophies of Freedom', 'Philosophies of Freedom', 'Philosophies of Freedom', 'Philosophies of Freedom', 'Molten Moment', 10899, 234, 676, 848, 18, 53, '0.00%', '0.00%', '7.20%', '14.40%', '14.40%', '21.60%', '28.80%', 'She is the heroine from Horizon Zero Dawn and is introduced as a collaboration and crossover character between Guerrilla Games and HoYoverse.\n', NULL, NULL, NULL),
-('Amber', 4, 'Mondstadt', 'Pyro', 'N/A', 'Bow', 'Medium Female', 'Lepus', '10-Aug', 'Outrider\'s Champion Steak!', 'Knights of Favonius', '2020-09-28', 'FALSE', 'Kelly Baskin', 'Shujin Cai', 'Manaka Iwami', 'Kim Yeon-woo', 'ATK', 'Small Lamp Grass', 'Firm Arrowhead', 'Everflame Seed', 'Firm Arrowhead', 'Teachings of Freedom', 'Guide to Freedom', 'Guide to Freedom', 'Guide to Freedom', 'Guide to Freedom', 'Philosophies of Freedom', 'Philosophies of Freedom', 'Philosophies of Freedom', 'Philosophies of Freedom', 'Dvalin\'s Sigh', 9461, 223, 601, 793, 19, 50, '0.00%', '0.00%', '6.00%', '12.00%', '12.00%', '18.00%', '24.00%', 'As the only remaining Outrider of the Knights of Favonius, she is always ready to help the citizens of Mondstadt - whether it be something simple or perhaps a more challenging task.\n', NULL, NULL, NULL),
-('Arataki Itto', 5, 'Inazuma', 'Geo', 'N/A', 'Claymore', 'Tall Male', 'Taurus Iracundus', '01-Jun', 'Way of the Strong', 'Arataki Gang', '2021-12-14', 'TRUE', 'Max Mittelman', 'Zhaokun Liu', 'Takanori Nishikawa', 'Song Joon-seok', 'CRIT Rate', 'Onikabuto', 'Slime Condensate', 'Riftborn Regalia', 'Slime Condensate', 'Teachings of Elegance', 'Guide to Elegance', 'Guide to Elegance', 'Guide to Elegance', 'Guide to Elegance', 'Philosophies of Elegance', 'Philosophies of Elegance', 'Philosophies of Elegance', 'Philosophies of Elegance', 'Ashen Heart', 12858, 227, 959, 1001, 18, 75, '0.00%', '0.00%', '4.80%', '9.60%', '9.60%', '14.40%', '19.20%', 'A loud and proud descendant of the crimson oni, Itto is also the leader and founder of the Arataki Gang. While not a villain, his reputation as a delinquent in Inazuma City leaves something to be desired.\n', 2, '2.7', '25990836'),
-('Baizhu', 5, 'Liyue', 'Dendro', 'N/A', 'Catalyst', 'Tall Male', 'Lagenaria', '25-Apr', 'Heat-Quelling Soup', 'Bubu Pharmacy', '2023-02-05', 'TRUE', 'Sean Durrie, Xanthe Huynh', 'Qin Qiege', 'Yusa Koji', 'Lee Hosan', 'HP', 'Violetgrass', 'Fungal Spores', 'Evergloom Ring', 'Fungal Spores', 'Teachings of Gold', 'Guide to Gold', 'Guide to Gold', 'Guide to Gold', 'Guide to Gold', 'Philosophies of Gold', 'Philosophies of Gold', 'Philosophies of Gold', 'Philosophies of Gold', 'Worldspan Fern', 13348, 192, 499, 1039, 14, 38, '0.00%', '0.00%', '7.20%', '14.40%', '14.40%', '21.60%', '28.80%', 'The owner of Bubu Pharmacy and Qiqi\'s guardian, Doctor Baizhu is a master of the medicinal arts and the latest recipient of a generational contract with a white snake named Changsheng. He seeks to achieve immortality to ensure he is the last to ever bear his contract, saving potential inheritors and even Changsheng herself from the cost that comes with its power.\n', NULL, NULL, NULL),
-('Barbara', 4, 'Mondstadt', 'Hydro', 'N/A', 'Catalyst', 'Medium Female', 'Crater', '05-Jul', 'Spicy Stew', 'Church of Favonius', '2020-09-28', 'FALSE', 'Laura Stahl', 'Yuanyuan Song', 'Akari Kit', 'Yun Ah-yeong', 'HP', 'Philanemo Mushroom', 'Divining Scroll', 'Cleansing Heart', 'Divining Scroll', 'Teachings of Freedom', 'Guide to Freedom', 'Guide to Freedom', 'Guide to Freedom', 'Guide to Freedom', 'Philosophies of Freedom', 'Philosophies of Freedom', 'Philosophies of Freedom', 'Philosophies of Freedom', 'Ring of Boreas', 9787, 159, 669, 821, 13, 56, '0.00%', '0.00%', '6.00%', '12.00%', '12.00%', '18.00%', '24.00%', 'She is the deaconess of the Church of Favonius and a prominent \"idol\" after learning about them from the intrepid adventurer Alice. She is also the younger sister of the Acting Grand Master Jean.\n', NULL, NULL, NULL),
-('Beidou', 4, 'Liyue', 'Electro', 'N/A', 'Claymore', 'Tall Female', 'Victor Mare', '14-Feb', 'Flash-Fried Filet', 'The Crux', '2020-09-28', 'FALSE', 'Allegra Clark', 'Yajing Tang', 'Ami Koshimizu', 'Jeong Yoo-mi', 'Electro DMG Bonus', 'Noctilucous Jade', 'Treasure Hoarder Insignia', 'Lightning Prism', 'Treasure Hoarder Insignia', 'Teachings of Gold', 'Guide to Gold', 'Guide to Gold', 'Guide to Gold', 'Guide to Gold', 'Philosophies of Gold', 'Philosophies of Gold', 'Philosophies of Gold', 'Philosophies of Gold', 'Dvalin\'s Sigh', 13050, 225, 648, 1094, 19, 54, '0.00%', '0.00%', '6.00%', '12.00%', '12.00%', '18.00%', '24.00%', 'She is the captain of The Crux, a renowned crew in Liyue. Besides her capabilities as a fleet captain and her immense strength, many in Liyue know her for her lack of fear towards the Tianquan of the Liyue Qixing, Ningguang - a trait that the other appreciates, yet grows irritated by.\n', NULL, NULL, NULL),
-('Bennett', 4, 'Mondstadt', 'Pyro', 'N/A', 'Sword', 'Medium Male', 'Rota Calamitas', '01-Feb', 'Teyvat Charred Egg', 'Adventurers\' Guild', '2020-09-28', 'FALSE', 'Cristina Vee Valenzuela', 'Xueting Mu', 'Ryta saka', 'Song Ha-rim', 'Energy Recharge', 'Windwheel Aster', 'Treasure Hoarder Insignia', 'Everflame Seed', 'Treasure Hoarder Insignia', 'Teachings of Resistance', 'Guide to Resistance', 'Guide to Resistance', 'Guide to Resistance', 'Guide to Resistance', 'Philosophies of Resistance', 'Philosophies of Resistance', 'Philosophies of Resistance', 'Philosophies of Resistance', 'Dvalin\'s Plume', 12397, 191, 771, 1039, 16, 65, '0.00%', '0.00%', '6.70%', '13.30%', '13.30%', '20.00%', '26.70%', 'An orphan discovered by an elderly adventurer as a baby, Bennett was raised in Mondstadt\'s Adventurers\' Guild. He is the one and only member of \"Benny\'s Adventure Team,\" as everyone else left the team after experiencing the constant misfortune that follows him.\n', NULL, NULL, NULL),
-('Candace', 4, 'Sumeru', 'Hydro', 'N/A', 'Polearm', 'Tall Female', 'Sagitta Scutum', '03-May', 'Utmost Care', 'Aaru Village', '2022-09-28', 'FALSE', 'Shara Kirby', 'Zhang Qi', 'Yuzuki Ryoka', 'Jeon Yeongsu', 'HP', 'Redcrest', 'Faded Red Satin', 'Light Guiding Tetrahedron', 'Faded Red Satin', 'Teachings of Admonition', 'Guide to Admonition', 'Guide to Admonition', 'Guide to Admonition', 'Guide to Admonition', 'Philosophies of Admonition', 'Philosophies of Admonition', 'Philosophies of Admonition', 'Philosophies of Admonition', 'Tears of the Calamitous God', 10874, 212, 682, 911, 17, 57, '0.00%', '0.00%', '6.00%', '12.00%', '12.00%', '18.00%', '24.00%', 'The scion of Al-Ahmar and the Guardian of Aaru Village, Candace is kind to travelers who visit, but is unforgiving to those who violate the village\'s rules.\n', NULL, NULL, NULL),
-('Charlotte', 4, 'Fontaine', 'Cryo', 'Pneuma', 'Catalyst', 'Medium Female', 'Hualina Veritas', '10-Apr', 'Exclusive Scoop: Gourmet Column', 'The Steambird', '2023-08-11', 'FALSE', 'Maya Aoki Tuttle', 'Ruan Congqing', 'Waki Azumi', 'Shin On-yu', 'ATK', 'Beryl Conch', 'Meshing Gear', '\"Tourbillon Device\"', 'Meshing Gear', 'Teachings of Justice', 'Guide to Justice', 'Guide to Justice', 'Guide to Justice', 'Guide to Justice', 'Philosophies of Justice', 'Philosophies of Justice', 'Philosophies of Justice', 'Philosophies of Justice', 'Lightless Silk String', 10766, 173, 546, 902, 14, 45, '0.00%', '0.00%', '6.00%', '12.00%', '12.00%', '18.00%', '24.00%', 'A journalist from The Steambird, Charlotte is always on the prowl for an exclusive scoop. Ever so relentless and indefatigable, she won\'t stop until she finds out the truth, even if she comes closer to danger.\n', NULL, NULL, NULL),
-('Chevreuse', 4, 'Fontaine', 'Pyro', 'Ousia', 'Polearm', 'Medium Female', 'None', 'None', 'None', 'None', '2024-01-09', 'N/A', 'None', 'None', 'None', 'None', 'None', 'None', 'None', 'None', 'None', 'None', 'None', 'None', 'None', 'None', 'None', 'None', 'None', 'None', 'None', 0, 0, 0, 0, 0, 0, '0', '0.00%', '0', '0.00%', '0.00%', '0.00%', '0.00%', 'She is the captain of the Maison Gardiennage\'s Special Security and Surveillance Patrol.\n', NULL, NULL, NULL),
-('Chongyun', 4, 'Liyue', 'Cryo', 'N/A', 'Claymore', 'Medium Male', 'Nubis Caesor', '07-Sep', 'Cold Noodles with Mountain Delicacies', 'Tianheng Thaumaturges', '2020-09-28', 'FALSE', 'Beau Bridgland', 'kinsen', 'Soma Saito', 'Yang Jeong-hwa', 'ATK', 'Cor Lapis', 'Damaged Mask', 'Hoarfrost Core', 'Damaged Mask', 'Teachings of Diligence', 'Guide to Diligence', 'Guide to Diligence', 'Guide to Diligence', 'Guide to Diligence', 'Philosophies of Diligence', 'Philosophies of Diligence', 'Philosophies of Diligence', 'Philosophies of Diligence', 'Dvalin\'s Sigh', 10984, 223, 648, 1003, 19, 54, '0.00%', '0.00%', '6.00%', '12.00%', '12.00%', '18.00%', '24.00%', 'Born with an excess of yang (positive) energy, Chongyun has become a highly effective exorcist in Liyue - so effective to the point where he hasn\'t seen a spirit himself, as they immediately flee when he approaches. The excessive yang energy also makes him particularly susceptible to heat and strong emotion, which has led to some rather unexpected results.\n', NULL, NULL, NULL),
-('Collei', 4, 'Sumeru', 'Dendro', 'N/A', 'Bow', 'Medium Female', 'Leptailurus Cervarius', '08-May', 'Yearning', 'Gandharva Ville', '2022-08-24', 'FALSE', 'Christina Costello', 'Qin Wenjing', 'Maekawa Ryoko', 'Bang Siu', 'ATK', 'Rukkhashava Mushrooms', 'Firm Arrowhead', 'Majestic Hooked Beak', 'Firm Arrowhead', 'Teachings of Praxis', 'Guide to Praxis', 'Guide to Praxis', 'Guide to Praxis', 'Guide to Praxis', 'Philosophies of Praxis', 'Philosophies of Praxis', 'Philosophies of Praxis', 'Philosophies of Praxis', 'Tears of the Calamitous God', 9787, 199, 600, 820, 16, 50, '0.00%', '0.00%', '6.00%', '12.00%', '12.00%', '18.00%', '24.00%', 'She has appeared in the official Manga and serves as one of its main characters. Originally an Eleazar-afflicted victim of Fatui human experimentation, Collei wandered the world as a vagrant until she met Amber in Mondstadt. Since then, Collei has turned her life around, and currently serves as a trainee Forest Ranger in the Avidya Forest.\n', NULL, NULL, NULL),
-('Cyno', 5, 'Sumeru', 'Electro', 'N/A', 'Polearm', 'Medium Male', 'Lupus Aureus', '23-Jun', 'Duel Soul', 'Temple of Silence', '2022-09-28', 'TRUE', 'Alejandro Saab', 'Li Qingyang', 'Irino Miyu', 'Lee Woo-ri', 'CRIT DMG', 'Scarab', 'Divining Scroll', 'Thunderclap Fruitcore', 'Divining Scroll', 'Teachings of Admonition', 'Guide to Admonition', 'Guide to Admonition', 'Guide to Admonition', 'Guide to Admonition', 'Philosophies of Admonition', 'Philosophies of Admonition', 'Philosophies of Admonition', 'Philosophies of Admonition', 'Mudra of the Malefic General', 12490, 318, 859, 972, 21, 66, '0.00%', '0.00%', '9.60%', '19.20%', '19.20%', '28.80%', '38.40%', 'As the General Mahamatra, Cyno leads the Matra and strikes fear into the hearts of researchers of the Sumeru Akademiya. In spite of this, Cyno has a fun side outside of his role in the Akademiya, as he has an affinity for Genius Invokation TCG and constantly cracks unfunny jokes.\n', 1, '3.1', '19052023'),
-('Dehya', 5, 'Sumeru', 'Pyro', 'N/A', 'Claymore', 'Tall Female', 'Mantichora', '07-Apr', 'Goldflame Tajine', 'The Eremites', '2023-01-03', 'FALSE', 'Amber May', 'Chen Yu', 'Fukuhara Ayaka', 'Kim Hyeon-sim', 'HP', 'Sand Grease Pupa', 'Faded Red Satin', 'Light Guiding Tetrahedron', 'Faded Red Satin', 'Teachings of Praxis', 'Guide to Praxis', 'Guide to Praxis', 'Guide to Praxis', 'Guide to Praxis', 'Philosophies of Praxis', 'Philosophies of Praxis', 'Philosophies of Praxis', 'Philosophies of Praxis', 'Puppet Strings', 15674, 265, 627, 1220, 20, 48, '0.00%', '0.00%', '7.20%', '14.40%', '14.40%', '21.60%', '28.80%', 'A fierce and strong warrior, the \"Flame-Mane\" Dehya is considered a legend among the Eremites for her might, passion, and conscientiousness. Unwilling to be trapped by the conditions that force most from the desert to stay there, she aspires to deliver hope back to the sands that she considers her home.\n', NULL, NULL, NULL),
-('Diluc', 5, 'Mondstadt', 'Pyro', 'N/A', 'Claymore', 'Tall Male', 'Noctua', '30-Apr', '\"Once Upon a Time in Mondstadt\"', 'Dawn Winery', '2020-09-28', 'FALSE', 'Sean Chiplock', 'Yang Ma', 'Kensho Ono', 'Choi Seung-hoon', 'CRIT Rate', 'Small Lamp Grass', 'Recruit\'s Insignia', 'Everflame Seed', 'Recruit\'s Insignia', 'Teachings of Resistance', 'Guide to Resistance', 'Guide to Resistance', 'Guide to Resistance', 'Guide to Resistance', 'Philosophies of Resistance', 'Philosophies of Resistance', 'Philosophies of Resistance', 'Philosophies of Resistance', 'Dvalin\'s Plume', 12981, 335, 784, 1011, 26, 61, '0.00%', '0.00%', '4.80%', '9.60%', '9.60%', '14.40%', '19.20%', 'Born into the affluent Ragnvindr Clan, Diluc is the current owner of the Dawn Winery and a nobleman of high esteem in Mondstadt. While a past incident caused him to split ways with the Knights of Favonius, he continues to protect Mondstadt in his own way.\n', NULL, NULL, NULL),
-('Diona', 4, 'Mondstadt', 'Cryo', 'N/A', 'Bow', 'Short Female', 'Feles', '18-Jan', 'Definitely Not Bar Food!', 'The Cat\'s Tail', '2020-11-11', 'FALSE', 'Dina Sherman', 'Nuoya', 'Shiori Izawa', 'Woo Jeong-sin', 'Cryo DMG Bonus', 'Calla Lily', 'Firm Arrowhead', 'Hoarfrost Core', 'Firm Arrowhead', 'Teachings of Freedom', 'Guide to Freedom', 'Guide to Freedom', 'Guide to Freedom', 'Guide to Freedom', 'Philosophies of Freedom', 'Philosophies of Freedom', 'Philosophies of Freedom', 'Philosophies of Freedom', 'Shard of a Foul Legacy', 9570, 212, 601, 802, 18, 50, '0.00%', '0.00%', '6.00%', '12.00%', '12.00%', '18.00%', '24.00%', 'Despite being a bartender at the Cat\'s Tail, she loathes alcohol and will stop at nothing to ruin Mondstadt\'s wine industry - a feat easier said than done when her patrons absolutely love her drinks. She is the daughter of Draff, a hunter in Springvale.\n', NULL, NULL, NULL),
-('Dori', 4, 'Sumeru', 'Electro', 'N/A', 'Claymore', 'Short Female', 'Magicae Lucerna', '21-Dec', 'Show Me the Mora', 'The Palace of Alcazarzaray', '2022-09-09', 'FALSE', 'Anjali Kunapaneni', 'Wang Xiaotong', 'Kaneda Tomoko', 'Lee Myeong-ho', 'HP', 'Kalpalata Lotus', 'Faded Red Satin', 'Thunderclap Fruitcore', 'Faded Red Satin', 'Teachings of Ingenuity', 'Guide to Ingenuity', 'Guide to Ingenuity', 'Guide to Ingenuity', 'Guide to Ingenuity', 'Philosophies of Ingenuity', 'Philosophies of Ingenuity', 'Philosophies of Ingenuity', 'Philosophies of Ingenuity', 'Bloodjade Branch', 12397, 223, 723, 1039, 18, 60, '0.00%', '0.00%', '6.00%', '12.00%', '12.00%', '18.00%', '24.00%', 'The owner of The Palace of Alcazarzaray and a merchant of high regard, \"Lord Sangemah Bay\" is well known for her ability to obtain anything a person needs, as long as they have enough Mora to afford her jaw-dropping prices.\n', NULL, NULL, NULL),
-('Eula', 5, 'Mondstadt', 'Cryo', 'N/A', 'Claymore', 'Tall Female', 'Aphros Delos', '25-Oct', 'Stormcrest Pie', 'Knights of Favonius', '2021-05-18', 'TRUE', 'Suzie Yeung', 'Ziyin', 'Rina Sato', 'Kim Hyeon-ji', 'CRIT DMG', 'Dandelion Seed', 'Damaged Mask', 'Crystalline Bloom', 'Damaged Mask', 'Teachings of Resistance', 'Guide to Resistance', 'Guide to Resistance', 'Guide to Resistance', 'Guide to Resistance', 'Philosophies of Resistance', 'Philosophies of Resistance', 'Philosophies of Resistance', 'Philosophies of Resistance', 'Dragon Lord\'s Crown', 13226, 342, 751, 1030, 27, 58, '0.00%', '0.00%', '9.60%', '19.20%', '19.20%', '28.80%', '38.40%', 'Although a descendant of the infamous and tyrannical Lawrence Clan, Eula severed her ties with the clan and became the captain of the Reconnaissance Company with the Knights of Favonius.\n', 2, '2.3', '29645456'),
-('Faruzan', 4, 'Sumeru', 'Anemo', 'N/A', 'Bow', 'Medium Female', 'Flosculi Implexi', '20-Aug', 'Traditionally-Made Charcoal-Baked Ajilenakh Cake', 'Haravatat', '2023-07-12', 'FALSE', 'Chandni Parekh', 'Yan Mengmeng', 'Horie Yui', 'Kim You-rim', 'ATK', 'Henna Berry', 'Faded Red Satin', 'Light Guiding Tetrahedron', 'Faded Red Satin', 'Teachings of Admonition', 'Guide to Admonition', 'Guide to Admonition', 'Guide to Admonition', 'Guide to Admonition', 'Philosophies of Admonition', 'Philosophies of Admonition', 'Philosophies of Admonition', 'Philosophies of Admonition', 'Puppet Strings', 9569, 196, 627, 802, 16, 52, '0.00%', '0.00%', '6.00%', '12.00%', '12.00%', '18.00%', '24.00%', 'She is a renowned professor of the Sumeru Akademiya and member of the Haravatat Darshan. She recently returned to the Akademiya after solving a puzzle and escaping the ruins that trapped her a century ago.\n', NULL, NULL, NULL),
-('Fischl', 4, 'Mondstadt', 'Electro', 'N/A', 'Bow', 'Medium Female', 'Corvus', '27-May', 'Die Heilige Sinfonie', 'Adventurers\' Guild', '2020-09-28', 'FALSE', 'Brittany Cox, Ben Pronsky', 'Yuantao Li', 'Maaya Uchida', 'Park Go-woon', 'ATK', 'Small Lamp Grass', 'Firm Arrowhead', 'Lightning Prism', 'Firm Arrowhead', 'Teachings of Ballad', 'Guide to Ballad', 'Guide to Ballad', 'Guide to Ballad', 'Guide to Ballad', 'Philosophies of Ballad', 'Philosophies of Ballad', 'Philosophies of Ballad', 'Philosophies of Ballad', 'Spirit Locket of Boreas', 9189, 244, 594, 770, 20, 50, '0.00%', '0.00%', '6.00%', '12.00%', '12.00%', '18.00%', '24.00%', 'She is an investigator for Mondstadt\'s Adventurers\' Guild, accompanied by the night raven Oz. A daring adventurer with seemingly outlandish theories that happen to turn out to be true, she claims to hail from a world beyond Teyvat.\n', NULL, NULL, NULL),
-('Freminet', 4, 'Fontaine', 'Cryo', 'Pneuma', 'Claymore', 'Medium Male', 'Automaton', '24-Sep', '\"Seabird\'s Sojourn\"', 'Hotel Bouffes d\'ete', '2023-05-09', 'FALSE', 'Paul Castro Jr.', 'Jinli', 'Toki Shunichi', 'Lee Joo-Seung', 'ATK', 'Romaritime Flower', 'Transoceanic Pearl', 'Artificed Spare Clockwork Component - Coppelius', 'Transoceanic Pearl', 'Teachings of Justice', 'Guide to Justice', 'Guide to Justice', 'Guide to Justice', 'Guide to Justice', 'Philosophies of Justice', 'Philosophies of Justice', 'Philosophies of Justice', 'Philosophies of Justice', 'Worldspan Fern', 12071, 254, 708, 1012, 21, 59, '0.00%', '0.00%', '6.00%', '12.00%', '12.00%', '18.00%', '24.00%', 'Despite his skill and experience as a professional diver, Freminet prefers to stay out of the spotlight, content to simply carry out orders and find peace next to the Tidalga and Romaritime Flowers underwater.\n', NULL, NULL, NULL),
-('Furina', 5, 'Fontaine', 'Hydro', 'Both', 'Sword', 'Medium Female', 'Animula Choragi', '13-Oct', '\"Pour la Justice\"', 'Court of Fontaine', '2023-08-11', 'TRUE', 'Amber Lee Connors', 'Qian Chen', 'Minase Inori', 'Kim Ha-yeong', 'CRIT Rate', 'Lakelight Lily', 'Whopperflower Nectar', 'Water That Failed To Transcend', 'Whopperflower Nectar', 'Teachings of Justice', 'Guide to Justice', 'Guide to Justice', 'Guide to Justice', 'Guide to Justice', 'Philosophies of Justice', 'Philosophies of Justice', 'Philosophies of Justice', 'Philosophies of Justice', 'Lightless Mass', 15307, 243, 695, 1191, 18, 54, '0.00%', '0.00%', '4.80%', '9.60%', '9.60%', '14.40%', '19.20%', 'Introduced as the flamboyant and overconfident Hydro Archon, Furina\'s theatrics are eventually revealed to be a public persona, which she later discards in favor of living a much humbler life.\n', NULL, NULL, NULL),
-('Gaming', 4, 'Liyue', 'Pyro', 'N/A', 'Claymore', 'Medium Male', 'None', 'None', 'None', 'None', '2000-01-01', 'N/A', 'None', 'None', 'None', 'None', 'None', 'None', 'None', 'None', 'None', 'None', 'None', 'None', 'None', 'None', 'None', 'None', 'None', 'None', 'None', 0, 0, 0, 0, 0, 0, '0.00%', '0.00%', '0.00%', '0.00%', '0.00%', '0.00%', '0.00%', 'A guard for the Sword and Strongbox Secure Transport Agency, Gaming is considered to be the best person in the agency to transport and protect goods, and is also the head of the Mighty Mythical Beasts dancing troupe.\n', NULL, NULL, NULL),
-('Ganyu', 5, 'Liyue', 'Cryo', 'N/A', 'Bow', 'Medium Female', 'Sinae Unicornis', '02-Dec', 'Prosperous Peace', 'Yuehai Pavilion', '2021-12-01', 'TRUE', 'Jennifer Losi', 'Su Lin', 'Reina Ueda', 'Kim Sun-hye', 'CRIT DMG', 'Qingxin', 'Whopperflower Nectar', 'Hoarfrost Core', 'Whopperflower Nectar', 'Teachings of Diligence', 'Guide to Diligence', 'Guide to Diligence', 'Guide to Diligence', 'Guide to Diligence', 'Philosophies of Diligence', 'Philosophies of Diligence', 'Philosophies of Diligence', 'Philosophies of Diligence', 'Shadow of the Warrior', 9797, 335, 630, 763, 26, 49, '0.00%', '0.00%', '9.60%', '19.20%', '19.20%', '28.80%', '38.40%', 'She is a half-qilin Adeptus under contract with the Geo Archon Morax and serves as the general secretary of the Liyue Qixing. \n', 3, '3.0', '58132056'),
-('Gorou', 4, 'Inazuma', 'Geo', 'N/A', 'Bow', 'Medium Male', 'Canis Bellatoris', '18-May', 'Victorious Legend', 'Watatsumi Island', '2021-12-14', 'FALSE', 'Cory Yee', 'Yang Xinran', 'Tasuku Hatanaka', 'Lee Sae-byeok', 'Geo DMG Bonus', 'Sango Pearl', 'Spectral Husk', 'Perpetual Heart', 'Spectral Husk', 'Teachings of Light', 'Guide to Light', 'Guide to Light', 'Guide to Light', 'Guide to Light', 'Philosophies of Light', 'Philosophies of Light', 'Philosophies of Light', 'Philosophies of Light', 'Molten Moment', 9570, 183, 648, 802, 15, 54, '0.00%', '0.00%', '6.00%', '12.00%', '12.00%', '18.00%', '24.00%', 'He is a general of the Watatsumi Army. Courageous and reliable, his men know they can place their trust in him both on and off of the battlefield.\n', NULL, NULL, NULL),
-('Hu Tao', 5, 'Liyue', 'Pyro', 'N/A', 'Polearm', 'Medium Female', 'Papilio Charontis', '15-Jul', 'Ghostly March', 'Wangsheng Funeral Parlor', '2021-02-03', 'TRUE', 'Brianna Knickerbocker', 'Dian Tao', 'Rie Takahashi', 'Kim Ha-ru', 'CRIT DMG', 'Silk Flower', 'Whopperflower Nectar', 'Juvenile Jade', 'Whopperflower Nectar', 'Teachings of Diligence', 'Guide to Diligence', 'Guide to Diligence', 'Guide to Diligence', 'Guide to Diligence', 'Philosophies of Diligence', 'Philosophies of Diligence', 'Philosophies of Diligence', 'Philosophies of Diligence', 'Shard of a Foul Legacy', 15552, 106, 876, 1211, 8, 68, '0.00%', '0.00%', '9.60%', '19.20%', '19.20%', '28.80%', '38.40%', 'Hu Tao\'s antics and eccentricity belies her role as the 77th Director of the Wangsheng Funeral Parlor and her talent as a poet. Nevertheless, she treats the parlor\'s operations with utmost importance, and holds funeral ceremonies with the highest dignity and solemnity.\n', 2, '2.2', '37708586'),
-('Jean', 5, 'Mondstadt', 'Anemo', 'N/A', 'Sword', 'Tall Female', 'Leo Minor', '14-Mar', 'Invigorating Pizza', 'Knights of Favonius', '2020-09-28', 'FALSE', 'Stephanie Southerland', 'Su Lin', 'Chiwa Sait', 'Ahn Young-mi', 'Healing Bonus', 'Dandelion Seed', 'Damaged Mask', 'Hurricane Seed', 'Damaged Mask', 'Teachings of Resistance', 'Guide to Resistance', 'Guide to Resistance', 'Guide to Resistance', 'Guide to Resistance', 'Philosophies of Resistance', 'Philosophies of Resistance', 'Philosophies of Resistance', 'Philosophies of Resistance', 'Dvalin\'s Plume', 14695, 239, 769, 1144, 19, 60, '0.00%', '0.00%', '5.50%', '11.10%', '11.10%', '16.60%', '22.20%', 'The older sister of Barbara, and a descendant of the prestigious Gunnhildr Clan, Jean is the Acting Grand Master of the Knights of Favonius. She is always busy handling unrest across Mondstadt and tirelessly working to maintain the City of Freedom.\n', NULL, NULL, NULL),
-('Kaedehara Kazuha', 5, 'Inazuma', 'Anemo', 'N/A', 'Sword', 'Medium Male', 'Acer Palmatum', '29-Oct', 'All-Weather Beauty', 'The Crux', '2021-06-29', 'TRUE', 'Mark Whitten', 'Banma', 'Nobunaga Shimazaki', 'Kim Shin-woo', 'Elemental Mastery', 'Sea Ganoderma', 'Treasure Hoarder Insignia', 'Marionette Core', 'Treasure Hoarder Insignia', 'Teachings of Diligence', 'Guide to Diligence', 'Guide to Diligence', 'Guide to Diligence', 'Guide to Diligence', 'Philosophies of Diligence', 'Philosophies of Diligence', 'Philosophies of Diligence', 'Philosophies of Diligence', 'Gilded Scale', 13348, 297, 807, 1039, 23, 63, '0', '0', '28.8', '57.6', '57.6', '86.4', '115.2', 'A wandering samurai of the once-famed Kaedehara Clan with an ability to read the sounds of nature, Kazuha is a temporary crewmember of The Crux. Despite being burdened by the many happenings of his past, Kazuha still maintains an easygoing disposition.\n', 2, '2.8', '34615591'),
-('Kaeya', 4, 'Mondstadt', 'Cryo', 'N/A', 'Sword', 'Tall Male', 'Pavo Ocellus', '30-Nov', 'Fruity Skewers', 'Knights of Favonius', '2020-09-28', 'FALSE', 'Josey Montana McCoy', 'Ye Sun', 'Kohsuke Toriumi', 'Jeong Joo-won', 'Energy Recharge', 'Calla Lily', 'Treasure Hoarder Insignia', 'Hoarfrost Core', 'Treasure Hoarder Insignia', 'Teachings of Ballad', 'Guide to Ballad', 'Guide to Ballad', 'Guide to Ballad', 'Guide to Ballad', 'Philosophies of Ballad', 'Philosophies of Ballad', 'Philosophies of Ballad', 'Philosophies of Ballad', 'Spirit Locket of Boreas', 11636, 223, 792, 976, 19, 66, '0.00%', '0.00%', '6.70%', '13.30%', '13.30%', '20.00%', '26.70%', 'Kaeya is the Cavalry Captain of the Knights of Favonius. He is held in high regard by the people of Mondstadt - even with all his eccentricities and secrets.\n', NULL, NULL, NULL),
-('Kamisato Ayaka', 5, 'Inazuma', 'Cryo', 'N/A', 'Sword', 'Medium Female', 'Grus Nivis', '28-Sep', '\"Snow on the Hearth\"', 'Yashiro Commission', '2021-07-21', 'TRUE', 'Erica Mendez', 'Xiao N', 'Saori Hayami', 'Lee Yu-ri', 'CRIT DMG', 'Sakura Bloom', 'Old Handguard', 'Perpetual Heart', 'Old Handguard', 'Teachings of Elegance', 'Guide to Elegance', 'Guide to Elegance', 'Guide to Elegance', 'Guide to Elegance', 'Philosophies of Elegance', 'Philosophies of Elegance', 'Philosophies of Elegance', 'Philosophies of Elegance', 'Bloodjade Branch', 12858, 342, 784, 1001, 27, 61, '0.00%', '0.00%', '9.60%', '19.20%', '19.20%', '28.80%', '38.40%', 'She is in charge of the internal and external affairs of the Kamisato Clan and is the younger sister of Kamisato Ayato. Beautiful, dignified, and noble, Ayaka has earned the title Shirasagi Himegimi and is considered a model of perfection in Inazuma.\n', 2, '2.6', '52390072'),
-('Kamisato Ayato', 5, 'Inazuma', 'Hydro', 'N/A', 'Sword', 'Tall Male', 'Cypressus Custos', '26-Mar', 'Quiet Elegance', 'Yashiro Commission', '2022-04-30', 'TRUE', 'Chris Hackney', 'Zhaolu', 'Akira Ishida', 'Jang Min-hyeok', 'CRIT DMG', 'Sakura Bloom', 'Old Handguard', 'Dew of Repudation', 'Old Handguard', 'Teachings of Elegance', 'Guide to Elegance', 'Guide to Elegance', 'Guide to Elegance', 'Guide to Elegance', 'Philosophies of Elegance', 'Philosophies of Elegance', 'Philosophies of Elegance', 'Philosophies of Elegance', 'Mudra of the Malefic General', 13715, 299, 769, 1068, 24, 60, '0.00%', '0.00%', '9.60%', '19.20%', '19.20%', '28.80%', '38.40%', 'He is the current head of the Kamisato Clan, the older brother of Kamisato Ayaka, and the Yashiro Commissioner. Resourceful and cunning, Ayato keeps a lower profile than his sister and focuses on government affairs in the Commission.\n', 1, '2.6', '22767455'),
-('Kaveh', 4, 'Sumeru', 'Dendro', 'N/A', 'Claymore', 'Tall Male', 'Paradisaea', '09-Jul', 'The Endeavor', 'Independent Design Studio', '2023-02-05', 'FALSE', 'Ben Balmaceda', 'Liu Sanmu', 'Uchida Yuma', 'Lee Jung-min', 'Elemental Mastery', 'Mourning Flower', 'Fungal Spores', 'Quelled Creeper', 'Fungal Spores', 'Teachings of Ingenuity', 'Guide to Ingenuity', 'Guide to Ingenuity', 'Guide to Ingenuity', 'Guide to Ingenuity', 'Philosophies of Ingenuity', 'Philosophies of Ingenuity', 'Philosophies of Ingenuity', 'Philosophies of Ingenuity', 'Primordial Greenbloom', 11962, 233, 750, 1002, 19, 62, '0', '0', '24', '48', '48', '72', '96', 'The architect behind the Palace of Alcazarzaray, Kaveh was a student of the Kshahrewar Darshan of the Sumeru Akademiya and graduated with honors, earning the moniker \"Light of Kshahrewar.\" Having become insolvent after the construction of the Palace of Alcazarzaray, he was forced to reside with Alhaitham, whom he has a complicated relationship with. In spite of the illustrious façade he maintains to outsiders, Kaveh is often saddled with guilt for his father\'s death, ashamed of his poverty, and struggling with realizing his ideals.\n', NULL, NULL, NULL),
-('Keqing', 5, 'Liyue', 'Electro', 'N/A', 'Sword', 'Medium Female', 'Trulla Cementarii', '20-Nov', 'Survival Grilled Fish', 'Liyue Qixing', '2020-09-28', 'FALSE', 'Kayli Mills', 'Ying Xie', 'Eri Kitamura', 'Lee Bo-hee', 'CRIT DMG', 'Cor Lapis', 'Whopperflower Nectar', 'Lightning Prism', 'Whopperflower Nectar', 'Teachings of Prosperity', 'Guide to Prosperity', 'Guide to Prosperity', 'Guide to Prosperity', 'Guide to Prosperity', 'Philosophies of Prosperity', 'Philosophies of Prosperity', 'Philosophies of Prosperity', 'Philosophies of Prosperity', 'Ring of Boreas', 13103, 323, 799, 1020, 25, 62, '0.00%', '0.00%', '9.60%', '19.20%', '19.20%', '28.80%', '38.40%', 'As the Yuheng of the Liyue Qixing, she is someone who seeks her own answers instead of idly letting chaos run amok in Liyue. She chooses her own path with her own power and ability, instead of letting the gods determine her fate.\n', 1, '1.3', '9505798'),
-('Kirara', 4, 'Inazuma', 'Dendro', 'N/A', 'Sword', 'Medium Female', 'Arcella', '22-Jan', 'Energizing Bento', 'Komaniya Express', '2023-05-24', 'FALSE', 'Julia Gu', 'Sun Yanqi', 'Suzushiro Sayumi', 'Kang Eun-ae', 'HP', 'Amakumo Fruit', 'Spectral Husk', 'Evergloom Ring', 'Spectral Husk', 'Teachings of Transience', 'Guide to Transience', 'Guide to Transience', 'Guide to Transience', 'Guide to Transience', 'Philosophies of Transience', 'Philosophies of Transience', 'Philosophies of Transience', 'Philosophies of Transience', 'Everamber', 12179, 223, 546, 1021, 18, 45, '0.00%', '0.00%', '6.00%', '12.00%', '12.00%', '18.00%', '24.00%', 'A youkai - a nekomata, specifically - Kirara is the Gold Level Courier of the Inazuma-based Komaniya Express. Her diligence in ensuring every package would be delivered to the right place has increased her company\'s renown and hers, making her the sole courier handling international deliveries.[5] She enjoys every delivery she makes as she considers these outings for herself.\n', NULL, NULL, NULL),
-('Klee', 5, 'Mondstadt', 'Pyro', 'N/A', 'Catalyst', 'Short Female', 'Trifolium', '27-Jul', 'Fish-Flavored Toast', 'Knights of Favonius', '2020-10-20', 'TRUE', 'Poonam Basu', 'Hualing', 'Misaki Kuno', 'Bang Yeon-ji', 'Pyro DMG Bonus', 'Philanemo Mushroom', 'Divining Scroll', 'Everflame Seed', 'Divining Scroll', 'Teachings of Freedom', 'Guide to Freedom', 'Guide to Freedom', 'Guide to Freedom', 'Guide to Freedom', 'Philosophies of Freedom', 'Philosophies of Freedom', 'Philosophies of Freedom', 'Philosophies of Freedom', 'Ring of Boreas', 10287, 311, 615, 801, 24, 48, '0.00%', '0.00%', '7.20%', '14.40%', '14.40%', '21.60%', '28.80%', 'The daughter of the intrepid and often quite destructive adventurer Alice, Klee takes after her mother in many ways, much to the dismay of the Knights of Favonius whom she has been entrusted to.\n', 3, '2.8', '54564739'),
-('Kujou Sara', 4, 'Inazuma', 'Electro', 'N/A', 'Bow', 'Tall Female', 'Flabellum', '14-Jul', 'Faith Eternal', 'Tenryou Commission', '2021-01-09', 'FALSE', 'Jeannie Tirado', 'Yang Menglu', 'Asami Seto', 'Mun Ji-yeong', 'ATK', 'Dendrobium', 'Damaged Mask', 'Storm Beads', 'Damaged Mask', 'Teachings of Elegance', 'Guide to Elegance', 'Guide to Elegance', 'Guide to Elegance', 'Guide to Elegance', 'Philosophies of Elegance', 'Philosophies of Elegance', 'Philosophies of Elegance', 'Philosophies of Elegance', 'Ashen Heart', 9570, 195, 628, 802, 16, 53, '0.00%', '0.00%', '6.00%', '12.00%', '12.00%', '18.00%', '24.00%', 'A tengu, Sara is the adopted daughter of the Kujou Clan of the Tenryou Commission. Loyal to both her clan and the Shogun, Sara carries out her orders by the Shogun\'s will.\n', NULL, NULL, NULL),
-('Kuki Shinobu', 4, 'Inazuma', 'Electro', 'N/A', 'Sword', 'Medium Female', 'Tribulatio Demptio', '27-Jul', 'Omurice Waltz', 'Arataki Gang', '2022-06-21', 'FALSE', 'Kira Buckland', 'Yang Ning', 'Kaori Mizuhashi', 'Kim Yool', 'HP', 'Naku Weed', 'Spectral Husk', 'Runic Fang', 'Spectral Husk', 'Teachings of Elegance', 'Guide to Elegance', 'Guide to Elegance', 'Guide to Elegance', 'Guide to Elegance', 'Philosophies of Elegance', 'Philosophies of Elegance', 'Philosophies of Elegance', 'Philosophies of Elegance', 'Tears of the Calamitous God', 12288, 212, 750, 1030, 17, 62, '0.00%', '0.00%', '6.00%', '12.00%', '12.00%', '18.00%', '24.00%', 'A former shrine maiden of the Grand Narukami Shrine, she is the sidekick of Arataki Itto and Deputy Leader of the Arataki Gang. Due to her professionalism and certifications, Kuki Shinobu has helped the Arataki Gang out of many problems, and has even expanded the gang\'s business scope outside of the regular mischief and delinquency.\n', NULL, NULL, NULL),
-('Layla', 4, 'Sumeru', 'Cryo', 'N/A', 'Sword', 'Medium Female', 'Luscinia', '19-Dec', 'Extravagant Slumber', 'Rtawahist', '2022-11-18', 'FALSE', 'Ashely Biski', 'Hou Xiaofei', 'Tomita Miyu', 'Kang Sae-Bom', 'HP', 'Nilotpala Lotus', 'Divining Scroll', 'Perpetual Caliber', 'Divining Scroll', 'Teachings of Ingenuity', 'Guide to Ingenuity', 'Guide to Ingenuity', 'Guide to Ingenuity', 'Guide to Ingenuity', 'Philosophies of Ingenuity', 'Philosophies of Ingenuity', 'Philosophies of Ingenuity', 'Philosophies of Ingenuity', 'Mirror of Mushin', 11092, 216, 655, 930, 18, 54, '0.00%', '0.00%', '6.00%', '12.00%', '12.00%', '18.00%', '24.00%', 'She is a student in the Rtawahist Darshan, specializing in Theoretical Astrology. Chronically sleep-deprived and of poor health as a result, Layla believes that \"The Stars\' Blessing\" is the reason she wakes from sleepwalking to find her papers fully completed.\n', NULL, NULL, NULL),
-('Lisa', 4, 'Mondstadt', 'Electro', 'N/A', 'Catalyst', 'Tall Female', 'Tempus Fugit', '09-Jun', 'Mysterious Bolognese', 'Knights of Favonius', '2020-09-28', 'FALSE', 'Mara Junot', 'Ke Zhong', 'Rie Tanaka', 'Park Go-woon', 'Elemental Mastery', 'Valberry', 'Slime Condensate', 'Lightning Prism', 'Slime Condensate', 'Teachings of Ballad', 'Guide to Ballad', 'Guide to Ballad', 'Guide to Ballad', 'Guide to Ballad', 'Philosophies of Ballad', 'Philosophies of Ballad', 'Philosophies of Ballad', 'Philosophies of Ballad', 'Dvalin\'s Claw', 9570, 232, 573, 802, 19, 48, '0', '0', '24', '48', '48', '72', '96', 'A powerful mage recognized as Sumeru Akademiya\'s most distinguished graduate in 200 years, Lisa has since returned to Mondstadt to become the humble Librarian of the Knights of Favonius.\n', NULL, NULL, NULL),
-('Lynette', 4, 'Fontaine', 'Anemo', 'Ousia', 'Sword', 'Medium Female', 'Felis Alba', '02-Feb', 'A Leisurely Sip', 'Hotel Bouffes d\'ete', '2023-08-16', 'FALSE', 'Anairis Quinones', 'Kekewei', 'Sasahara Yu', 'Lee Myung-hwa', 'Anemo DMG Bonus', 'Lumidouce Bell', 'Meshing Gear', 'Artificed Spare Clockwork Component - Coppelia', 'Meshing Gear', 'Teachings of Order', 'Guide to Order', 'Guide to Order', 'Guide to Order', 'Guide to Order', 'Philosophies of Order', 'Philosophies of Order', 'Philosophies of Order', 'Philosophies of Order', 'Everamber', 12397, 231, 711, 1039, 19, 59, '0.00%', '0.00%', '6.00%', '12.00%', '12.00%', '18.00%', '24.00%', 'Quiet and reserved, Lynette functions as a magician\'s assistant to her brother Lyney. After their parents\' death and having been saved from an abusive noble by their \"Father\", Lynette has also served as \"eyes\" and \"ears\" for the House of the Hearth.\n', NULL, NULL, NULL),
-('Lyney', 5, 'Fontaine', 'Pyro', 'Pneuma', 'Bow', 'Medium Male', 'Felis Fuscus', '02-Feb', 'Cubic Tricks', 'Hotel Bouffes d\'ete', '2023-08-16', 'TRUE', 'Daman Mills', 'Jinli', 'Shimono Hiro', 'Park Song-young', 'CRIT Rate', 'Rainbow Rose', 'Recruit\'s Insignia', 'Emperor\'s Resolution', 'Recruit\'s Insignia', 'Teachings of Equity', 'Guide to Equity', 'Guide to Equity', 'Guide to Equity', 'Guide to Equity', 'Philosophies of Equity', 'Philosophies of Equity', 'Philosophies of Equity', 'Philosophies of Equity', 'Primordial Greenbloom', 11021, 318, 537, 857, 24, 41, '0.00%', '0.00%', '4.80%', '9.60%', '9.60%', '14.40%', '19.20%', 'Skilled and eloquent, Lyney is Fontaine\'s Great Magician and Lynette\'s twin brother. After their parents\' death and having been saved from an abusive noble by their \"Father,\" Lyney has undertaken missions for the House of the Hearth and has said that he will eventually become the successor of \"Father.\"\n', NULL, NULL, NULL),
-('Mika', 4, 'Mondstadt', 'Cryo', 'N/A', 'Polearm', 'Medium Male', 'Palumbus', '11-Aug', 'Surveyor\'s Breakfast Sandwich', 'Knights of Favonius', '2023-03-21', 'FALSE', 'Robb Moreira', 'Deng Youxi', 'Sanpei Yko', 'Yoon Eun-seo', 'HP', 'Wolfhook', 'Recruit\'s Insignia', 'Pseudo-Stamens', 'Recruit\'s Insignia', 'Teachings of Ballad', 'Guide to Ballad', 'Guide to Ballad', 'Guide to Ballad', 'Guide to Ballad', 'Philosophies of Ballad', 'Philosophies of Ballad', 'Philosophies of Ballad', 'Philosophies of Ballad', 'Mirror of Mushin', 12506, 223, 713, 1048, 18, 59, '0.00%', '0.00%', '6.00%', '12.00%', '12.00%', '18.00%', '24.00%', 'Huffman\'s younger brother and the front-line surveyor of the Knights of Favonius Reconnaissance Company led by Eula, Mika diligently fulfills all his tasks efficiently and dreams of becoming an expert cartographer in the future. In spite of his shyness towards other people, he eventually warms up to those close to him as he values teamwork immensely and desires learning from his colleagues. \n', NULL, NULL, NULL),
-('Mona', 5, 'Mondstadt', 'Hydro', 'N/A', 'Catalyst', 'Medium Female', 'Astrolabos', '31-Aug', 'Der Weisheit Letzter Schluss (Life)', 'Mondstadt', '2020-09-28', 'FALSE', 'Felecia Angelle', 'Tingting Chen', 'Konomi Kohara', 'Woo Jeong-sin', 'Energy Recharge', 'Philanemo Mushroom', 'Whopperflower Nectar', 'Cleansing Heart', 'Whopperflower Nectar', 'Teachings of Resistance', 'Guide to Resistance', 'Guide to Resistance', 'Guide to Resistance', 'Guide to Resistance', 'Philosophies of Resistance', 'Philosophies of Resistance', 'Philosophies of Resistance', 'Philosophies of Resistance', 'Ring of Boreas', 10409, 287, 653, 810, 22, 51, '0.00%', '0.00%', '8.00%', '16.00%', '16.00%', '24.00%', '32.00%', 'An astrologist of knowledgeable skill and high pride, Mona has settled in Mondstadt to avoid suffering the ire of her master after unwittingly reading the latter\'s diary.\n', NULL, NULL, NULL),
-('Nahida', 5, 'Sumeru', 'Dendro', 'N/A', 'Catalyst', 'Short Female', 'Sapientia Oromasdis', '27-Oct', 'Halvamazd', 'Sumeru City', '2022-02-11', 'TRUE', 'Kimberley Anne Campbell', 'Hualing', 'Tamura Yukari', 'Park Shi-Yoon', 'Elemental Mastery', 'Kalpalata Lotus', 'Fungal Spores', 'Quelled Creeper', 'Fungal Spores', 'Teachings of Ingenuity', 'Guide to Ingenuity', 'Guide to Ingenuity', 'Guide to Ingenuity', 'Guide to Ingenuity', 'Philosophies of Ingenuity', 'Philosophies of Ingenuity', 'Philosophies of Ingenuity', 'Philosophies of Ingenuity', 'Puppet Strings', 10360, 298, 630, 806, 23, 49, '0', '0', '28.8', '57.6', '57.6', '86.4', '115.2', 'As Lesser Lord Kusanali, she strives to have a stronger presence in Sumeru now that she has been freed from her extensive confinement in the Sanctuary of Surasthana.\n', 1, '3.2', '32101943'),
-('Navia', 5, 'Fontaine', 'Geo', 'Ousia', 'Claymore', 'Tall Female', 'None', 'None', 'None', 'None', '2000-01-01', 'N/A', 'None', 'None', 'None', 'None', 'None', 'None', 'None', 'None', 'None', 'None', 'None', 'None', 'None', 'None', 'None', 'None', 'None', 'None', 'None', 0, 0, 0, 0, 0, 0, '0.00%', '0.00%', '0.00%', '0.00%', '0.00%', '0.00%', '0.00%', 'She is the president of the Spina di Rosula, a mantle previously held by her late father Callas.\n', NULL, NULL, NULL),
-('Neuvillette', 5, 'Fontaine', 'Hydro', 'Pneuma', 'Catalyst', 'Tall Male', 'Leviathan Judicator', '18-Dec', '\"Consomme Purete\"', 'Court of Fontaine', '2023-09-27', 'TRUE', 'Ray Chase', 'Sang Yuze', 'Kamiya Hiroshi', 'Kwak Yoon-sang', 'CRIT DMG', 'Lumitoile', 'Transoceanic Pearl', 'Fontemer Unihorn', 'Transoceanic Pearl', 'Teachings of Equity', 'Guide to Equity', 'Guide to Equity', 'Guide to Equity', 'Guide to Equity', 'Philosophies of Equity', 'Philosophies of Equity', 'Philosophies of Equity', 'Philosophies of Equity', 'Everamber', 14695, 208, 576, 1143, 16, 44, '0.00%', '0.00%', '9.60%', '19.20%', '19.20%', '28.80%', '38.40%', 'Neuvillette is the Iudex of Fontaine, and the leader of the Marechaussee Phantom. While Neuvillette upholds the rules of the court with utmost reverence, he is quite aloof when dealing with human emotions and often distances himself from the public eye. \n', NULL, NULL, NULL),
-('Nilou', 5, 'Sumeru', 'Hydro', 'N/A', 'Sword', 'Medium Female', 'Lotos Somno', '03-Dec', 'Swirling Steps', 'Zubayr Theater', '2022-10-14', 'TRUE', 'Dani Chambers', 'Zisu Jiuyue', 'Kanemoto Hisako', 'Chae Rim', 'HP', 'Padisarah', 'Fungal Spores', 'Perpetual Caliber', 'Fungal Spores', 'Teachings of Praxis', 'Guide to Praxis', 'Guide to Praxis', 'Guide to Praxis', 'Guide to Praxis', 'Philosophies of Praxis', 'Philosophies of Praxis', 'Philosophies of Praxis', 'Philosophies of Praxis', 'Tears of the Calamitous God', 15184, 229, 728, 1182, 17, 56, '0.00%', '0.00%', '7.20%', '14.40%', '14.40%', '21.60%', '28.80%', 'A dancer under the Zubayr Theater, Nilou\'s dancing is but elegant and graceful - however, outside the stage\'s spotlight, she\'s just like any girl her age; warm, smiling, and friendly.\n', 1, '3.1', '15731680'),
-('Ningguang', 4, 'Liyue', 'Geo', 'N/A', 'Catalyst', 'Tall Female', 'Opus Aequilibrium', '26-Aug', 'Qiankun Mora Meat', 'Liyue Qixing', '2020-09-28', 'FALSE', 'Erin Ebers', 'Mingya Du', 'Sayaka Ohara', 'Gwak Gyu-mi', 'Geo DMG Bonus', 'Glaze Lily', 'Recruit\'s Insignia', 'Basalt Pillar', 'Recruit\'s Insignia', 'Teachings of Prosperity', 'Guide to Prosperity', 'Guide to Prosperity', 'Guide to Prosperity', 'Guide to Prosperity', 'Philosophies of Prosperity', 'Philosophies of Prosperity', 'Philosophies of Prosperity', 'Philosophies of Prosperity', 'Spirit Locket of Boreas', 9787, 212, 573, 821, 18, 48, '0.00%', '0.00%', '6.00%', '12.00%', '12.00%', '18.00%', '24.00%', 'The Tianquan of the Liyue Qixing and owner of the floating Jade Chamber in the skies of Liyue, Ningguang is a mogul who shakes the very foundations of business circles. Even grabbing a few scraps from the documents she shreds from the Jade Chamber will gift one an invaluable fragment of her wisdom, enough to stay a step or two from one\'s peers.\n', NULL, NULL, NULL),
-('Noelle', 4, 'Mondstadt', 'Geo', 'N/A', 'Claymore', 'Medium Female', 'Parma Cordis', '21-Mar', 'Lighter-Than-Air Pancake', 'Knights of Favonius', '2020-09-28', 'FALSE', 'Laura Faye Smith', 'Yanning', 'Kanon Takao', 'Lee Bo-hee', 'DEF', 'Valberry', 'Damaged Mask', 'Basalt Pillar', 'Damaged Mask', 'Teachings of Resistance', 'Guide to Resistance', 'Guide to Resistance', 'Guide to Resistance', 'Guide to Resistance', 'Philosophies of Resistance', 'Philosophies of Resistance', 'Philosophies of Resistance', 'Philosophies of Resistance', 'Dvalin\'s Claw', 12071, 191, 799, 1012, 16, 67, '0.00%', '0.00%', '7.50%', '15.00%', '15.00%', '22.50%', '30.00%', 'Extremely strong and reliable, Noelle is considered to be \"the maid of all maids\" in the Knights of Favonius, with many thinking she has the ability to be everywhere all at once. She is stubborn, however, and willing to unnecessarily endanger her life at any moment to help someone. She has tried many times to join the ranks of the Knights of Favonius to accomplish her dream of becoming a full-fledged knight, but has fallen short every time so far.\n', NULL, NULL, NULL),
-('Qiqi', 5, 'Liyue', 'Cryo', 'N/A', 'Sword', 'Short Female', 'Pristina Nova', '03-Mar', 'No Tomorrow', 'Bubu Pharmacy', '2020-09-28', 'FALSE', 'Christie Cate', 'Yanning', 'Yukari Tamura', 'Lee Seul', 'Healing Bonus', 'Violetgrass', 'Divining Scroll', 'Hoarfrost Core', 'Divining Scroll', 'Teachings of Prosperity', 'Guide to Prosperity', 'Guide to Prosperity', 'Guide to Prosperity', 'Guide to Prosperity', 'Philosophies of Prosperity', 'Philosophies of Prosperity', 'Philosophies of Prosperity', 'Philosophies of Prosperity', 'Tail of Boreas', 12368, 287, 922, 963, 22, 72, '0.00%', '0.00%', '5.50%', '11.10%', '11.10%', '16.60%', '22.20%', 'Resurrected as a zombie by the adepti, she has ended up in Baizhu\'s care and now works at Bubu Pharmacy in Liyue Harbor.\n', NULL, NULL, NULL),
-('Raiden Shogun', 5, 'Inazuma', 'Electro', 'N/A', 'Polearm', 'Tall Female', 'Imperatrix Umbrosa', '26-Jun', 'None', 'Inazuma City', '2021-01-09', 'TRUE', 'Anne Yatco', 'Juhuahua', 'Miyuki Sawashiro', 'Park Ji-yoon', 'Energy Recharge', 'Amakumo Fruit', 'Old Handguard', 'Storm Beads', 'Old Handguard', 'Teachings of Light', 'Guide to Light', 'Guide to Light', 'Guide to Light', 'Guide to Light', 'Philosophies of Light', 'Philosophies of Light', 'Philosophies of Light', 'Philosophies of Light', 'Molten Moment', 12907, 337, 789, 1005, 26, 61, '0.00%', '0.00%', '8.00%', '16.00%', '16.00%', '24.00%', '32.00%', 'The Raiden Shogun is comprised of two beings in one body: Ei, the current Electro Archon of Inazuma; and the Shogun, the puppet created by Ei to act as the ruler of Inazuma in her stead.\n', 2, '2.5', '66581164'),
-('Razor', 4, 'Mondstadt', 'Electro', 'N/A', 'Claymore', 'Medium Male', 'Lupus Minor', '09-Sep', 'Puppy-Paw Hash Brown', 'Wolvendom', '2020-09-28', 'FALSE', 'Todd Haberkorn', 'Shuai Zhou', 'Kki Uchiyama', 'Kim Seo-yeong', 'Physical DMG Bonus', 'Wolfhook', 'Damaged Mask', 'Lightning Prism', 'Damaged Mask', 'Teachings of Resistance', 'Guide to Resistance', 'Guide to Resistance', 'Guide to Resistance', 'Guide to Resistance', 'Philosophies of Resistance', 'Philosophies of Resistance', 'Philosophies of Resistance', 'Philosophies of Resistance', 'Dvalin\'s Claw', 11962, 234, 751, 1003, 20, 63, '0.00%', '0.00%', '7.50%', '15.00%', '15.00%', '22.50%', '30.00%', 'Abandoned as an infant, Razor was taken in by the Wolf of the North Andrius and raised by his wolf pack in Wolvendom. After a chance encounter with Varka, the current Grand Master of the Knights of Favonius, he has slowly started integrating with humans again through the help of his teacher Lisa.\n', NULL, NULL, NULL);
-INSERT INTO `table_masterlist` (`character_name`, `rarity`, `region`, `vision`, `arkhe`, `weapon_type`, `model`, `constellation`, `birthday`, `special_dish`, `affiliation`, `release_date`, `limited`, `voice_en`, `voice_cn`, `voice_jp`, `voice_kr`, `ascension`, `ascension_specialty`, `ascension_material`, `ascension_boss`, `talent_material`, `talent_book_1-2`, `talent_book_2-3`, `talent_book_3-4`, `talent_book_4-5`, `talent_book_5-6`, `talent_book_6-7`, `talent_book_7-8`, `talent_book_8-9`, `talent_book_9-10`, `talent_weekly`, `hp_90_90`, `atk_90_90`, `def_90_90`, `hp_1_20`, `atk_1_20`, `def_1_20`, `special_0`, `special_1`, `special_2`, `special_3`, `special_4`, `special_5`, `special_6`, `character_description`, `total_banner_runs`, `last_banner_appearance`, `total_revenue`) VALUES
-('Rosaria', 4, 'Mondstadt', 'Cryo', 'N/A', 'Polearm', 'Tall Female', 'Spinea Corona', '24-Jan', 'Dinner of Judgement', 'Church of Favonius', '2021-06-04', 'FALSE', 'Elizabeth Maxwell', 'Anqi Zhang', 'Ai Kakuma', 'Kim Bo-na', 'ATK', 'Valberry', 'Recruit\'s Insignia', 'Hoarfrost Core', 'Recruit\'s Insignia', 'Teachings of Ballad', 'Guide to Ballad', 'Guide to Ballad', 'Guide to Ballad', 'Guide to Ballad', 'Philosophies of Ballad', 'Philosophies of Ballad', 'Philosophies of Ballad', 'Philosophies of Ballad', 'Shadow of the Warrior', 12289, 240, 710, 1030, 20, 60, '0.00%', '0.00%', '6.00%', '12.00%', '12.00%', '18.00%', '24.00%', 'The least devout among the nuns of the Church of Favonius, Rosaria prefers acting in the shadows rather than participating in the activities of the Church.\n', NULL, NULL, NULL),
-('Sangonomiya Kokomi', 5, 'Inazuma', 'Hydro', 'N/A', 'Catalyst', 'Medium Female', 'Dracanea Somnolenta', '22-Feb', 'A Stunning Stratagem', 'Watatsumi Island', '2021-09-21', 'TRUE', 'Risa Mei', 'Guiniang', 'Suzuko Mimori', 'Yeo Yun-mi', 'Hydro DMG Bonus', 'Sango Pearl', 'Spectral Husk', 'Dew of Repudation', 'Spectral Husk', 'Teachings of Transience', 'Guide to Transience', 'Guide to Transience', 'Guide to Transience', 'Guide to Transience', 'Philosophies of Transience', 'Philosophies of Transience', 'Philosophies of Transience', 'Philosophies of Transience', 'Hellfire Butterfly', 13471, 234, 657, 1049, 18, 51, '0.00%', '0.00%', '7.20%', '14.40%', '14.40%', '21.60%', '28.80%', 'The young Divine Priestess of Watatsumi Island and a descendant of the Sangonomiya Clan, Kokomi is in charge of most of Watatsumi\'s affairs, shouldering heavy responsibilities alone in hopes for giving Watatsumi Island\'s people the hopes and happiness that they desire.\n', 3, '3.0', '56263074'),
-('Sayu', 4, 'Inazuma', 'Anemo', 'N/A', 'Claymore', 'Short Female', 'Nyctereutes Minor', '19-Oct', 'Dizziness-Be-Gone no Justu Version 2.0', 'Shuumatsuban', '2021-10-08', 'FALSE', 'Lilypichu (Lily Ki)', 'Sakula', 'Aya Suzaki', 'Lee Ji-hyeon', 'Elemental Mastery', 'Crystal Marrow', 'Whopperflower Nectar', 'Marionette Core', 'Whopperflower Nectar', 'Teachings of Light', 'Guide to Light', 'Guide to Light', 'Guide to Light', 'Guide to Light', 'Philosophies of Light', 'Philosophies of Light', 'Philosophies of Light', 'Philosophies of Light', 'Gilded Scale', 11854, 244, 745, 994, 20, 62, '0', '0', '24', '48', '48', '72', '96', 'A ninja from the Shuumatsuban that is struggling with growing tall. Sayu believes that sleeping can help her growth, which is why she prefers to use her ninja techniques to hide and \"laze around.\"\n', NULL, NULL, NULL),
-('Shenhe', 5, 'Liyue', 'Cryo', 'N/A', 'Polearm', 'Tall Female', 'Crista Doloris', '10-Mar', 'Heartstring Noodles', 'Cloud Retainer\'s Abode', '2022-05-01', 'TRUE', 'Chelsea Kwoka', 'Ziyi Qin', 'Ayako Kawasumi', 'Lee Hyun-jin', 'ATK', 'Qingxin', 'Whopperflower Nectar', 'Dragonheir\'s False Fin', 'Whopperflower Nectar', 'Teachings of Prosperity', 'Guide to Prosperity', 'Guide to Prosperity', 'Guide to Prosperity', 'Guide to Prosperity', 'Philosophies of Prosperity', 'Philosophies of Prosperity', 'Philosophies of Prosperity', 'Philosophies of Prosperity', 'Hellfire Butterfly', 12993, 304, 830, 1011, 24, 65, '0.00%', '0.00%', '7.20%', '14.40%', '14.40%', '21.60%', '28.80%', 'The daughter of an unnamed exorcist couple, Shenhe was taken in and raised by Cloud Retainer as a disciple following a traumatic incident instigated by Shenhe\'s father during her childhood.\n', 1, '2.4', '16994406'),
-('Shikanoin Heizou', 4, 'Inazuma', 'Anemo', 'N/A', 'Catalyst', 'Medium Male', 'Cervus Minor', '24-Jul', 'The Only Truth', 'Tenryou Commission', '2022-07-13', 'FALSE', 'Kieran Regan', 'Lin Jing', 'Iguchi Yuuichi', 'Jeong-Ui-jin', 'Anemo DMG Bonus', 'Onikabuto', 'Treasure Hoarder Insignia', 'Runic Fang', 'Treasure Hoarder Insignia', 'Teachings of Transience', 'Guide to Transience', 'Guide to Transience', 'Guide to Transience', 'Guide to Transience', 'Philosophies of Transience', 'Philosophies of Transience', 'Philosophies of Transience', 'Philosophies of Transience', 'The Meaning of Aeons', 10657, 225, 683, 893, 18, 57, '0.00%', '0.00%', '6.00%', '12.00%', '12.00%', '18.00%', '24.00%', 'He is the number one Tenryou Commission detective, harboring a rivalry with the Bantan Sango Detective Agency\'s Sango.\n', NULL, NULL, NULL),
-('Sucrose', 4, 'Mondstadt', 'Anemo', 'N/A', 'Catalyst', 'Medium Female', 'Ampulla', '26-Sep', 'Nutritious Meal (V.593)', 'Knights of Favonius', '2020-09-28', 'FALSE', 'Valeria Rodriguez', 'Xiaogan', 'Akane Fujita', 'Kim Ha-yeong', 'Anemo DMG Bonus', 'Windwheel Aster', 'Whopperflower Nectar', 'Hurricane Seed', 'Whopperflower Nectar', 'Teachings of Freedom', 'Guide to Freedom', 'Guide to Freedom', 'Guide to Freedom', 'Guide to Freedom', 'Philosophies of Freedom', 'Philosophies of Freedom', 'Philosophies of Freedom', 'Philosophies of Freedom', 'Spirit Locket of Boreas', 9243, 170, 703, 775, 14, 59, '0.00%', '0.00%', '6.00%', '12.00%', '12.00%', '18.00%', '24.00%', 'An alchemist specializing in bio-alchemy, she also serves as an assistant for Albedo, the head alchemist of the Knights of Favonius.\n', NULL, NULL, NULL),
-('Tartaglia', 5, 'Snezhnaya', 'Hydro', 'N/A', 'Bow', 'Tall Male', 'Monoceros Caeli', '20-Jul', 'A Prize Catch', 'Fatui', '2020-11-11', 'TRUE', 'Griffin Burns', 'Yudong', 'Ryohei Kimura', 'Nam Doh-hyeong', 'Hydro DMG Bonus', 'Starconch', 'Recruit\'s Insignia', 'Cleansing Heart', 'Recruit\'s Insignia', 'Teachings of Freedom', 'Guide to Freedom', 'Guide to Freedom', 'Guide to Freedom', 'Guide to Freedom', 'Philosophies of Freedom', 'Philosophies of Freedom', 'Philosophies of Freedom', 'Philosophies of Freedom', 'Shard of a Foul Legacy', 13103, 301, 815, 1020, 23, 63, '0.00%', '0.00%', '7.20%', '14.40%', '14.40%', '21.60%', '28.80%', 'He is the Eleventh of the Eleven Fatui Harbingers. Wherever he goes, danger follows, and Childe is always eager for a challenge, making him extremely dangerous despite being the youngest member.\n', 3, '2.2', '28194502'),
-('Thoma', 4, 'Inazuma', 'Pyro', 'N/A', 'Polearm', 'Tall Male', 'Rubeum Scutum', '09-Jan', '\"Warmth\"', 'Yashiro Commission', '2021-02-10', 'FALSE', 'Christian Banas', 'Pei Zhang', 'Masakazu Morita', 'Ryu Seung-gon', 'ATK', 'Fluorescent Fungus', 'Treasure Hoarder Insignia', 'Smoldering Pearl', 'Treasure Hoarder Insignia', 'Teachings of Transience', 'Guide to Transience', 'Guide to Transience', 'Guide to Transience', 'Guide to Transience', 'Philosophies of Transience', 'Philosophies of Transience', 'Philosophies of Transience', 'Philosophies of Transience', 'Hellfire Butterfly', 10331, 202, 751, 866, 17, 63, '0.00%', '0.00%', '6.00%', '12.00%', '12.00%', '18.00%', '24.00%', 'Hailing from Mondstadt, Thoma is the sociable and responsible housekeeper for the Kamisato Clan and a well-known \"fixer\" in Inazuma. Having amassed a powerful network of people, Thoma defends the rights and interests of the Yashiro Commission with utmost seriousness.\n', NULL, NULL, NULL),
-('Tighnari', 5, 'Sumeru', 'Dendro', 'N/A', 'Bow', 'Medium Male', 'Vulpes Zerda', '29-Dec', 'Forest Watcher\'s Choice', 'Gandharva Ville', '2022-08-24', 'FALSE', 'Zachary Gordon', 'Moran', 'Kobayashi Sanae', 'Jung Ui-taek', 'Dendro DMG Bonus', 'Nilotpala Lotus', 'Fungal Spores', 'Majestic Hooked Beak', 'Fungal Spores', 'Teachings of Admonition', 'Guide to Admonition', 'Guide to Admonition', 'Guide to Admonition', 'Guide to Admonition', 'Philosophies of Admonition', 'Philosophies of Admonition', 'Philosophies of Admonition', 'Philosophies of Admonition', 'The Meaning of Aeons', 10849, 267, 630, 844, 20, 49, '0.00%', '0.00%', '7.20%', '14.40%', '14.40%', '21.60%', '28.80%', 'Tighnari is the stern Chief Officer of the Forest Rangers and Collei\'s mentor. Despite his intelligence, he prefers to live a solitary life in the depths of Avidya Forest rather than in the ivory tower of Sumeru Akademiya.\n', 1, '3.0', '19068372'),
-('Traveler (Aether, Anemo)', 5, 'N/A', 'Anemo', 'N/A', 'Sword', 'Medium Male', 'Viator', 'N/A', 'None', 'None', '2020-09-28', 'N/A', 'Zach Aguilar', 'Luyin', 'Horie Shun', 'Lee Kyung-tae', 'ATK', 'Windwheel Aster', 'Damaged Mask', 'None', 'Divining Scroll', 'Teachings of Freedom', 'Guide to Resistance', 'Guide to Ballad', 'Guide to Freedom', 'Guide to Resistance', 'Philosophies of Ballad', 'Philosophies of Freedom', 'Philosophies of Resistance', 'Philosophies of Ballad', 'Dvalin\'s Sigh', 10875, 212, 683, 912, 18, 57, '0.00%', '0.00%', '6.00%', '12.00%', '12.00%', '18.00%', '24.00%', NULL, NULL, NULL, NULL),
-('Traveler (Aether, Dendro)', 5, 'N/A', 'Dendro', 'N/A', 'Sword', 'Medium Male', 'Viator', 'N/A', 'None', 'None', '2022-08-23', 'N/A', 'Zach Aguilar', 'Luyin', 'Horie Shun', 'Lee Kyung-tae', 'ATK', 'Windwheel Aster', 'Damaged Mask', 'None', 'Fungal Spores', 'Teachings of Admonition', 'Guide to Ingenuity', 'Guide to Praxis', 'Guide to Admonition', 'Guide to Ingenuity', 'Philosophies of Praxis', 'Philosophies of Admonition', 'Philosophies of Ingenuity', 'Philosophies of Praxis', 'Mudra of the Malefic General', 10875, 212, 683, 912, 18, 57, '0.00%', '0.00%', '6.00%', '12.00%', '12.00%', '18.00%', '24.00%', NULL, NULL, NULL, NULL),
-('Traveler (Aether, Electro)', 5, 'N/A', 'Electro', 'N/A', 'Sword', 'Medium Male', 'Viator', 'N/A', 'None', 'None', '2021-07-21', 'N/A', 'Zach Aguilar', 'Luyin', 'Horie Shun', 'Lee Kyung-tae', 'ATK', 'Windwheel Aster', 'Damaged Mask', 'None', 'Old Handguard', 'Teachings of Transience', 'Guide to Elegance', 'Guide to Light', 'Guide to Transience', 'Guide to Elegance', 'Philosophies of Light', 'Philosophies of Transience', 'Philosophies of Elegance', 'Philosophies of Light', 'Dragon Lord\'s Crown', 10875, 212, 683, 912, 18, 57, '0.00%', '0.00%', '6.00%', '12.00%', '12.00%', '18.00%', '24.00%', NULL, NULL, NULL, NULL),
-('Traveler (Aether, Geo)', 5, 'N/A', 'Geo', 'N/A', 'Sword', 'Medium Male', 'Viator', 'N/A', 'None', 'None', '2020-09-28', 'N/A', 'Zach Aguilar', 'Luyin', 'Horie Shun', 'Lee Kyung-tae', 'ATK', 'Windwheel Aster', 'Damaged Mask', 'None', 'Divining Scroll', 'Teachings of Freedom', 'Guide to Resistance', 'Guide to Ballad', 'Guide to Freedom', 'Guide to Resistance', 'Philosophies of Ballad', 'Philosophies of Freedom', 'Philosophies of Resistance', 'Philosophies of Ballad', 'Dvalin\'s Sigh', 10875, 212, 683, 912, 18, 57, '0.00%', '0.00%', '6.00%', '12.00%', '12.00%', '18.00%', '24.00%', NULL, NULL, NULL, NULL),
-('Traveler (Aether, Hydro)', 5, 'N/A', 'Hydro', 'Pneuma', 'Sword', 'Medium Male', 'Viator', 'N/A', 'None', 'None', '2023-08-16', 'N/A', 'Zach Aguilar', 'Luyin', 'Horie Shun', 'Lee Kyung-tae', 'ATK', 'Windwheel Aster', 'Damaged Mask', 'None', 'Transoceanic Pearl', 'Teachings of Equity', 'Guide to Justice', 'Guide to Order', 'Guide to Equity', 'Guide to Justice', 'Philosophies of Order', 'Philosophies of Equity', 'Philosophies of Justice', 'Philosophies of Order', 'Worldspan Fern', 10875, 212, 683, 912, 18, 57, '0.00%', '0.00%', '6.00%', '12.00%', '12.00%', '18.00%', '24.00%', NULL, NULL, NULL, NULL),
-('Traveler (Lumine, Anemo)', 5, 'N/A', 'Anemo', 'N/A', 'Sword', 'Medium Female', 'Viatrix', 'N/A', 'None', 'None', '2020-09-28', 'N/A', 'Sarah Miller-Crews', 'Yanning', 'Yuuki Aoi', 'Lee Sae-a', 'ATK', 'Windwheel Aster', 'Damaged Mask', 'None', 'Divining Scroll', 'Teachings of Freedom', 'Guide to Resistance', 'Guide to Ballad', 'Guide to Freedom', 'Guide to Resistance', 'Philosophies of Ballad', 'Philosophies of Freedom', 'Philosophies of Resistance', 'Philosophies of Ballad', 'Dvalin\'s Sigh', 10875, 212, 683, 912, 18, 57, '0.00%', '0.00%', '6.00%', '12.00%', '12.00%', '18.00%', '24.00%', NULL, NULL, NULL, NULL),
-('Traveler (Lumine, Dendro)', 5, 'N/A', 'Dendro', 'N/A', 'Sword', 'Medium Female', 'Viatrix', 'N/A', 'None', 'None', '2022-08-23', 'N/A', 'Sarah Miller-Crews', 'Yanning', 'Yuuki Aoi', 'Lee Sae-a', 'ATK', 'Windwheel Aster', 'Damaged Mask', 'None', 'Fungal Spores', 'Teachings of Admonition', 'Guide to Ingenuity', 'Guide to Praxis', 'Guide to Admonition', 'Guide to Ingenuity', 'Philosophies of Praxis', 'Philosophies of Admonition', 'Philosophies of Ingenuity', 'Philosophies of Praxis', 'Mudra of the Malefic General', 10875, 212, 683, 912, 18, 57, '0.00%', '0.00%', '6.00%', '12.00%', '12.00%', '18.00%', '24.00%', NULL, NULL, NULL, NULL),
-('Traveler (Lumine, Electro)', 5, 'N/A', 'Electro', 'N/A', 'Sword', 'Medium Female', 'Viatrix', 'N/A', 'None', 'None', '2021-07-21', 'N/A', 'Sarah Miller-Crews', 'Yanning', 'Yuuki Aoi', 'Lee Sae-a', 'ATK', 'Windwheel Aster', 'Damaged Mask', 'None', 'Old Handguard', 'Teachings of Transience', 'Guide to Elegance', 'Guide to Light', 'Guide to Transience', 'Guide to Elegance', 'Philosophies of Light', 'Philosophies of Transience', 'Philosophies of Elegance', 'Philosophies of Light', 'Dragon Lord\'s Crown', 10875, 212, 683, 912, 18, 57, '0.00%', '0.00%', '6.00%', '12.00%', '12.00%', '18.00%', '24.00%', NULL, NULL, NULL, NULL),
-('Traveler (Lumine, Geo)', 5, 'N/A', 'Geo', 'N/A', 'Sword', 'Medium Female', 'Viatrix', 'N/A', 'None', 'None', '2020-09-28', 'N/A', 'Sarah Miller-Crews', 'Yanning', 'Yuuki Aoi', 'Lee Sae-a', 'ATK', 'Windwheel Aster', 'Damaged Mask', 'None', 'Divining Scroll', 'Teachings of Freedom', 'Guide to Resistance', 'Guide to Ballad', 'Guide to Freedom', 'Guide to Resistance', 'Philosophies of Ballad', 'Philosophies of Freedom', 'Philosophies of Resistance', 'Philosophies of Ballad', 'Dvalin\'s Sigh', 10875, 212, 683, 912, 18, 57, '0.00%', '0.00%', '6.00%', '12.00%', '12.00%', '18.00%', '24.00%', NULL, NULL, NULL, NULL),
-('Traveler (Lumine, Hydro)', 5, 'N/A', 'Hydro', 'Pneuma', 'Sword', 'Medium Female', 'Viatrix', 'N/A', 'None', 'None', '2023-08-16', 'N/A', 'Sarah Miller-Crews', 'Yanning', 'Yuuki Aoi', 'Lee Sae-a', 'ATK', 'Windwheel Aster', 'Damaged Mask', 'None', 'Transoceanic Pearl', 'Teachings of Equity', 'Guide to Justice', 'Guide to Order', 'Guide to Equity', 'Guide to Justice', 'Philosophies of Order', 'Philosophies of Equity', 'Philosophies of Justice', 'Philosophies of Order', 'Worldspan Fern', 10875, 212, 683, 912, 18, 57, '0.00%', '0.00%', '6.00%', '12.00%', '12.00%', '18.00%', '24.00%', NULL, NULL, NULL, NULL),
-('Venti', 5, 'Mondstadt', 'Anemo', 'N/A', 'Bow', 'Medium Male', 'Carmen Dei', '16-Jun', 'A Buoyant Breeze', 'Mondstadt', '2020-09-28', 'TRUE', 'Erika Harlacher', 'Miaojiang', 'Ayumu Murase', 'Jung Yoo-jung', 'Energy Recharge', 'Cecilia', 'Slime Condensate', 'Hurricane Seed', 'Slime Condensate', 'Teachings of Ballad', 'Guide to Ballad', 'Guide to Ballad', 'Guide to Ballad', 'Guide to Ballad', 'Philosophies of Ballad', 'Philosophies of Ballad', 'Philosophies of Ballad', 'Philosophies of Ballad', 'Tail of Boreas', 10531, 263, 669, 820, 20, 52, '0.00%', '0.00%', '8.00%', '16.00%', '16.00%', '24.00%', '32.00%', 'He is a free-spirited, wine-loving bard of Mondstadt, belying his identity as Barbatos, the Anemo Archon.\n', 4, '3.1', '89066439'),
-('Wanderer', 5, 'Sumeru', 'Anemo', 'N/A', 'Catalyst', 'Medium Male', 'Peregrinus', '03-Jan', 'Shimi Chazuke', 'None', '2022-07-12', 'TRUE', 'Patrick Pedraza', 'Luyin', 'Kakihara Tetsuya', 'Min Seung-woo', 'CRIT Rate', 'Rukkhashava Mushrooms', 'Old Handguard', 'Perpetual Caliber', 'Old Handguard', 'Teachings of Praxis', 'Guide to Praxis', 'Guide to Praxis', 'Guide to Praxis', 'Guide to Praxis', 'Philosophies of Praxis', 'Philosophies of Praxis', 'Philosophies of Praxis', 'Philosophies of Praxis', 'Daka\'s Bell', 10164, 327, 607, 791, 25, 47, '0.00%', '0.00%', '4.80%', '9.60%', '9.60%', '14.40%', '19.20%', 'The Wanderer came into existence in place of his previous incarnation after the latter expunged his previous appellations and their respective histories from Irminsul. Harboring his former self\'s memories after willingly regaining them, \"Wanderer\" is now the only title he goes by, for he has no home, kin, or destination.\n', NULL, NULL, NULL),
-('Wriothesley', 5, 'Fontaine', 'Cryo', 'Ousia', 'Catalyst', 'Tall Male', 'Cerberus', '23-Nov', 'Special Sauce BBQ Ribs', 'Fortress of Meropide', '2023-10-17', 'TRUE', 'Joe Zieja', 'Liu Beichen', 'Ono Daisuke', 'Kwon Chang-wook', 'CRIT DMG', 'Subdetection Unit', 'Meshing Gear', '\"Tourbillon Device\"', 'Meshing Gear', 'Teachings of Order', 'Guide to Order', 'Guide to Order', 'Guide to Order', 'Guide to Order', 'Philosophies of Order', 'Philosophies of Order', 'Philosophies of Order', 'Philosophies of Order', 'Primordial Greenbloom', 13592, 310, 763, 1058, 24, 59, '0.00%', '0.00%', '9.60%', '19.20%', '19.20%', '28.80%', '38.40%', 'Having killed his abusive foster parents to save his adoptive siblings, Wriothesley was sentenced and exiled to the Fortress of Meropide in his teenage years. He eventually became its Administrator and has enforced a series of reforms under his rule, serving as a role model for the prisoners.\n', NULL, NULL, NULL),
-('Xiangling', 4, 'Liyue', 'Pyro', 'N/A', 'Polearm', 'Medium Female', 'Trulla', '02-Nov', 'Wanmin Restaurant\'s Boiled Fish', 'Wanmin Restaurant', '2020-09-28', 'FALSE', 'Jackie Lastra', 'Xiao N', 'Ari Ozawa', 'Yun A-yeong', 'Elemental Mastery', 'Jueyun Chili', 'Slime Condensate', 'Everflame Seed', 'Slime Condensate', 'Teachings of Diligence', 'Guide to Diligence', 'Guide to Diligence', 'Guide to Diligence', 'Guide to Diligence', 'Philosophies of Diligence', 'Philosophies of Diligence', 'Philosophies of Diligence', 'Philosophies of Diligence', 'Dvalin\'s Claw', 10875, 225, 669, 912, 19, 56, '0', '0', '24', '48', '48', '72', '96', 'She is the Head Chef at the Wanmin Restaurant and runs it alongside her father Chef Mao. As a chef, Xiangling isn\'t afraid to try out different recipes or \"exotic\" ingredients, making her dishes sometimes quite unique.\n', NULL, NULL, NULL),
-('Xianyun', 5, 'Liyue', 'Anemo', 'N/A', 'Catalyst', 'Tall Female', 'None', 'None', 'None', 'None', '2000-01-01', 'N/A', 'None', 'None', 'None', 'None', 'None', 'None', 'None', 'None', 'None', 'None', 'None', 'None', 'None', 'None', 'None', 'None', 'None', 'None', 'None', 0, 0, 0, 0, 0, 0, '0.00%', '0.00%', '0.00%', '0.00%', '0.00%', '0.00%', '0.00%', 'Curious about what draws her disciples to Liyue Harbor,[2] she has taken up residence in the city to see for herself.\n', NULL, NULL, NULL),
-('Xiao', 5, 'Liyue', 'Anemo', 'N/A', 'Polearm', 'Medium Male', 'Alatus Nemeseos', '17-Apr', '\"Sweet Dream\"', 'Liyue Adeptus', '2021-03-02', 'TRUE', 'Laila Berzins', 'kinsen', 'Yoshitsugu Matsuoka', 'Sim Kyu-hyuk', 'CRIT Rate', 'Qingxin', 'Slime Condensate', 'Juvenile Jade', 'Slime Condensate', 'Teachings of Prosperity', 'Guide to Prosperity', 'Guide to Prosperity', 'Guide to Prosperity', 'Guide to Prosperity', 'Philosophies of Prosperity', 'Philosophies of Prosperity', 'Philosophies of Prosperity', 'Philosophies of Prosperity', 'Shadow of the Warrior', 12736, 349, 799, 991, 27, 62, '0.00%', '0.00%', '4.80%', '9.60%', '9.60%', '14.40%', '19.20%', 'He is an adeptus, under the name Alatus, and the sole surviving member of the five foremost Yakshas dispatched by Morax to subdue the demonic spirits that plagued Liyue. He currently resides at Wangshu Inn and mostly restrains himself from large crowds and social interactions.\n', 3, '2.7', '55752214'),
-('Xingqiu', 4, 'Liyue', 'Hydro', 'N/A', 'Sword', 'Medium Male', 'Fabulae Textile', '09-Oct', 'All-Delicacy Parcels', 'Feiyun Commerce Guild', '2020-09-28', 'FALSE', 'Cristina Vee Valenzuela', 'Yajing Tang', 'Junko Minagawa', 'Gwak Gyu-mi', 'ATK', 'Silk Flower', 'Damaged Mask', 'Cleansing Heart', 'Damaged Mask', 'Teachings of Gold', 'Guide to Gold', 'Guide to Gold', 'Guide to Gold', 'Guide to Gold', 'Philosophies of Gold', 'Philosophies of Gold', 'Philosophies of Gold', 'Philosophies of Gold', 'Tail of Boreas', 10223, 202, 758, 857, 17, 64, '0.00%', '0.00%', '6.00%', '12.00%', '12.00%', '18.00%', '24.00%', 'He is the second son of the Guild Manager of the Feiyun Commerce Guild, an influential group in Liyue, and is also a self-proclaimed practitioner of the Guhua Clan\'s arts. Also an avid reader, Xingqiu aims to be the embodiment of chivalry like the heroes from the books he reads; however, this belies his knack for mischief.\n', NULL, NULL, NULL),
-('Xinyan', 4, 'Liyue', 'Pyro', 'N/A', 'Claymore', 'Medium Female', 'Fila Ignium', '16-Oct', 'Rockin\' Riffin\' Chicken!', '\"The Red Strings\"', '2020-01-12', 'FALSE', 'Laura Stahl', 'Yaxin Wang', 'Chiaki Takahashi', 'Kim Chae-ha', 'ATK', 'Violetgrass', 'Treasure Hoarder Insignia', 'Everflame Seed', 'Treasure Hoarder Insignia', 'Teachings of Gold', 'Guide to Gold', 'Guide to Gold', 'Guide to Gold', 'Guide to Gold', 'Philosophies of Gold', 'Philosophies of Gold', 'Philosophies of Gold', 'Philosophies of Gold', 'Tusk of Monoceros Caeli', 11201, 249, 799, 939, 21, 67, '0.00%', '0.00%', '6.00%', '12.00%', '12.00%', '18.00%', '24.00%', 'Rock \'n\' roll is a relatively unpopular style of music in Liyue, having recently been brought over from Fontaine. Xinyan, however, loves the sound - and she\'s slowly but surely amassing a fanbase of her own as she performs throughout Liyue Harbor.\n', NULL, NULL, NULL),
-('Yae Miko', 5, 'Inazuma', 'Electro', 'N/A', 'Catalyst', 'Tall Female', 'Divina Vulpes', '27-Jun', 'Fukuuchi Udon', 'Grand Narukami Shrine', '2022-02-16', 'TRUE', 'Ratana', 'Mingya Du', 'Ayane Sakura', 'Moon Yoo-jeong', 'CRIT Rate', 'Sea Ganoderma', 'Old Handguard', 'Dragonheir\'s False Fin', 'Old Handguard', 'Teachings of Light', 'Guide to Light', 'Guide to Light', 'Guide to Light', 'Guide to Light', 'Philosophies of Light', 'Philosophies of Light', 'Philosophies of Light', 'Philosophies of Light', 'The Meaning of Aeons', 10372, 340, 569, 807, 26, 44, '0.00%', '0.00%', '4.80%', '9.60%', '9.60%', '14.40%', '19.20%', 'A kitsune of many facets, Yae Miko oversees the Grand Narukami Shrine, owns the Yae Publishing House, and is Eternity\'s servant and friend.\n', 1, '2.5', '15110264'),
-('Yanfei', 4, 'Liyue', 'Pyro', 'N/A', 'Catalyst', 'Medium Female', 'Bestia Iustitia', '28-Jul', '\"My Way\"', 'Yanfei Legal Consultancy', '2021-04-28', 'FALSE', 'Lizzie Freeman', 'Ziwu Su', 'Yumiri Hanamori', 'Cho Kyung-yi', 'Pyro DMG Bonus', 'Noctilucous Jade', 'Treasure Hoarder Insignia', 'Juvenile Jade', 'Treasure Hoarder Insignia', 'Teachings of Gold', 'Guide to Gold', 'Guide to Gold', 'Guide to Gold', 'Guide to Gold', 'Philosophies of Gold', 'Philosophies of Gold', 'Philosophies of Gold', 'Philosophies of Gold', 'Bloodjade Branch', 9352, 240, 587, 784, 20, 49, '0.00%', '0.00%', '6.00%', '12.00%', '12.00%', '18.00%', '24.00%', 'One of the few half-illuminated-beasts who have not signed a contract with Rex Lapis, Yanfei nevertheless works for the betterment of Liyue as a premier legal adviser who values fairness.\n', NULL, NULL, NULL),
-('Yaoyao', 4, 'Liyue', 'Dendro', 'N/A', 'Polearm', 'Short Female', 'Osmanthus', '06-Mar', 'Qingce Household Dish', 'Streetward Rambler\'s Abode', '2023-01-18', 'FALSE', 'Kelsey Jaffer', 'Liu Yinuo', 'Kadowaki Mai', 'Yu Hye-ji', 'HP', 'Jueyun Chili', 'Slime Condensate', 'Quelled Creeper', 'Slime Condensate', 'Teachings of Diligence', 'Guide to Diligence', 'Guide to Diligence', 'Guide to Diligence', 'Guide to Diligence', 'Philosophies of Diligence', 'Philosophies of Diligence', 'Philosophies of Diligence', 'Philosophies of Diligence', 'Daka\'s Bell', 12288, 212, 750, 1030, 17, 62, '0.00%', '0.00%', '6.00%', '12.00%', '12.00%', '18.00%', '24.00%', 'Hailing from a rural area not far from Qingce Village, Yaoyao grew up with nature at her side. Seeing potential in Yaoyao, Streetward Rambler took her in as her disciple, and Yaoyao left the tranquil mountains to live with her master in the bright and bustling Liyue Harbor.\n', NULL, NULL, NULL),
-('Yelan', 5, 'Liyue', 'Hydro', 'N/A', 'Bow', 'Tall Female', 'Umbrabilis Orchis', '20-Apr', 'Dew-Dipped Shrimp', 'Yanshang Teahouse', '2022-05-31', 'TRUE', 'Laura Post', 'Xu Hui', 'Endou Aya', 'Min-a', 'CRIT Rate', 'Starconch', 'Recruit\'s Insignia', 'Runic Fang', 'Recruit\'s Insignia', 'Teachings of Prosperity', 'Guide to Prosperity', 'Guide to Prosperity', 'Guide to Prosperity', 'Guide to Prosperity', 'Philosophies of Prosperity', 'Philosophies of Prosperity', 'Philosophies of Prosperity', 'Philosophies of Prosperity', 'Gilded Scale', 14450, 244, 548, 1125, 19, 43, '0.00%', '0.00%', '4.80%', '9.60%', '9.60%', '14.40%', '19.20%', 'She is a mysterious person who claims to work for the Ministry of Civil Affairs, but comes out as a non-entity on their list. She also claims to work for the Yanshang Teahouse, but only uses it for her true job, an intelligence agent collaborating with Ningguang.\n', 1, '2.7', '25612693'),
-('Yoimiya', 5, 'Inazuma', 'Pyro', 'N/A', 'Bow', 'Medium Female', 'Carassius Auratus', '21-Jun', 'Summer Festival Fish', 'Naganohara Fireworks', '2021-10-08', 'TRUE', 'Jenny Yokobori', 'Na Jin', 'Kana Ueda', 'Bak Sin-hee', 'CRIT Rate', 'Naku Weed', 'Divining Scroll', 'Smoldering Pearl', 'Divining Scroll', 'Teachings of Transience', 'Guide to Transience', 'Guide to Transience', 'Guide to Transience', 'Guide to Transience', 'Philosophies of Transience', 'Philosophies of Transience', 'Philosophies of Transience', 'Philosophies of Transience', 'Dragon Lord\'s Crown', 10164, 323, 615, 791, 25, 48, '0.00%', '0.00%', '4.80%', '9.60%', '9.60%', '14.40%', '19.20%', 'Yoimiya is the current owner of Naganohara Fireworks; with her colorful fireworks and outgoing personality, Yoimiya is loved by everyone on Narukami Island. She was coined as the \"Queen of the Summer Festival,\" as they believe summer is not the same without her.\n', 3, '3.2', '55050353'),
-('Yun Jin', 4, 'Liyue', 'Geo', 'N/A', 'Polearm', 'Medium Female', 'Opera Grandis', '21-May', 'Cloud-Shrouded Jade', 'Yun-Han Opera House', '2022-05-01', 'FALSE', 'Judy Alice Lee, Yang Yang (??)', 'Wenxiao He', 'Koiwai Kotori', 'Sa Mun-yeong', 'Energy Recharge', 'Glaze Lily', 'Damaged Mask', 'Riftborn Regalia', 'Damaged Mask', 'Teachings of Diligence', 'Guide to Diligence', 'Guide to Diligence', 'Guide to Diligence', 'Guide to Diligence', 'Philosophies of Diligence', 'Philosophies of Diligence', 'Philosophies of Diligence', 'Philosophies of Diligence', 'Ashen Heart', 10657, 191, 734, 894, 16, 62, '0.00%', '0.00%', '6.70%', '13.30%', '13.30%', '20.00%', '26.70%', 'A famous figure in Liyue Harbor\'s opera scene, Yun Jin is the director of the Yun-Han Opera Troupe, and performs at Heyu Tea House from time to time. She is also a playwright, having written all the plays the Yun-Han Opera Troupe has performed in recent years, including a new ending for \"The Divine Damsel of Devastation.\"\n', NULL, NULL, NULL),
-('Zhongli', 5, 'Liyue', 'Geo', 'N/A', 'Polearm', 'Tall Male', 'Lapis Dei', '31-Dec', 'Slow-Cooked Bamboo Shoot Soup', 'Liyue Harbor', '2020-01-12', 'TRUE', 'Keith Silverstein', 'Bo Peng', 'Tomoaki Maeno', 'Pyo Yeong-jae', 'Geo DMG Bonus', 'Cor Lapis', 'Slime Condensate', 'Basalt Pillar', 'Slime Condensate', 'Teachings of Gold', 'Guide to Gold', 'Guide to Gold', 'Guide to Gold', 'Guide to Gold', 'Philosophies of Gold', 'Philosophies of Gold', 'Philosophies of Gold', 'Philosophies of Gold', 'Tusk of Monoceros Caeli', 14695, 251, 738, 1144, 20, 57, '0.00%', '0.00%', '7.20%', '14.40%', '14.40%', '21.60%', '28.80%', 'A consultant of the Wangsheng Funeral Parlor, he is later revealed to be the Geo Archon, Morax, who has decided to experience the world from the perspective of a mortal.\n', 4, '3.0', '72328727');
-
--- --------------------------------------------------------
-
---
--- Stand-in structure for view `view_ascension_reqs`
--- (See below for the actual view)
---
-CREATE TABLE `view_ascension_reqs` (
-`character_name` varchar(26)
-,`ascension` varchar(18)
-,`ascension_specialty` varchar(21)
-,`ascension_material` varchar(25)
-,`ascension_boss` varchar(47)
-);
-
--- --------------------------------------------------------
-
---
--- Stand-in structure for view `view_base_stats`
--- (See below for the actual view)
---
-CREATE TABLE `view_base_stats` (
-`character_name` varchar(26)
-,`atk_1_20` int(2)
-,`def_1_20` int(2)
-,`hp_1_20` int(4)
-);
-
--- --------------------------------------------------------
-
---
--- Stand-in structure for view `view_character_general`
--- (See below for the actual view)
---
-CREATE TABLE `view_character_general` (
-`character_name` varchar(26)
-,`rarity` int(1)
-,`vision` varchar(7)
-,`weapon_type` varchar(8)
-,`region` varchar(9)
-,`model` varchar(13)
-,`arkhe` varchar(6)
-,`constellation` varchar(21)
-,`birthday` varchar(6)
-,`special_dish` varchar(48)
-,`affiliation` varchar(26)
-);
-
--- --------------------------------------------------------
-
---
--- Stand-in structure for view `view_character_queries`
--- (See below for the actual view)
---
-CREATE TABLE `view_character_queries` (
-`character_name` varchar(26)
-,`rarity` int(1)
-,`vision` varchar(7)
-,`weapon_type` varchar(8)
-,`region` varchar(9)
-,`model` varchar(13)
-);
-
--- --------------------------------------------------------
-
---
--- Stand-in structure for view `view_character_release`
--- (See below for the actual view)
---
-CREATE TABLE `view_character_release` (
-`character_name` varchar(26)
-,`release_date` date
-,`limited` varchar(5)
-,`voice_en` varchar(30)
-,`voice_cn` varchar(13)
-,`voice_jp` varchar(19)
-,`voice_kr` varchar(15)
-);
-
--- --------------------------------------------------------
-
---
--- Stand-in structure for view `view_max_stats`
--- (See below for the actual view)
---
-CREATE TABLE `view_max_stats` (
-`character_name` varchar(26)
-,`atk_90_90` int(3)
-,`def_90_90` int(3)
-,`hp_90_90` int(5)
-);
-
--- --------------------------------------------------------
-
---
--- Stand-in structure for view `view_revenue_summary`
--- (See below for the actual view)
---
-CREATE TABLE `view_revenue_summary` (
-`character_name` varchar(18)
-,`total_banner_runs` bigint(21)
-,`last_banner_appearance` decimal(2,1)
-,`total_revenue` decimal(32,0)
-);
-
--- --------------------------------------------------------
-
---
--- Stand-in structure for view `view_special_reqs`
--- (See below for the actual view)
---
-CREATE TABLE `view_special_reqs` (
-`character_name` varchar(26)
-,`special_0` varchar(5)
-,`special_1` varchar(5)
-,`special_2` varchar(5)
-,`special_3` varchar(6)
-,`special_4` varchar(6)
-,`special_5` varchar(6)
-,`special_6` varchar(6)
-);
-
--- --------------------------------------------------------
-
---
--- Stand-in structure for view `view_talent_reqs`
--- (See below for the actual view)
---
-CREATE TABLE `view_talent_reqs` (
-`character_name` varchar(26)
-,`talent_material` varchar(25)
-,`talent_book_1-2` varchar(23)
-,`talent_book_2-3` varchar(19)
-,`talent_book_3-4` varchar(19)
-,`talent_book_4-5` varchar(19)
-,`talent_book_5-6` varchar(19)
-,`talent_book_6-7` varchar(26)
-,`talent_book_7-8` varchar(26)
-,`talent_book_8-9` varchar(26)
-,`talent_book_9-10` varchar(26)
-,`talent_weekly` varchar(28)
-);
-
--- --------------------------------------------------------
-
---
--- Structure for view `view_ascension_reqs`
---
-DROP TABLE IF EXISTS `view_ascension_reqs`;
-
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_ascension_reqs`  AS SELECT `table_masterlist`.`character_name` AS `character_name`, `table_masterlist`.`ascension` AS `ascension`, `table_masterlist`.`ascension_specialty` AS `ascension_specialty`, `table_masterlist`.`ascension_material` AS `ascension_material`, `table_masterlist`.`ascension_boss` AS `ascension_boss` FROM `table_masterlist` ;
-
--- --------------------------------------------------------
-
---
--- Structure for view `view_base_stats`
---
-DROP TABLE IF EXISTS `view_base_stats`;
-
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_base_stats`  AS SELECT `table_masterlist`.`character_name` AS `character_name`, `table_masterlist`.`atk_1_20` AS `atk_1_20`, `table_masterlist`.`def_1_20` AS `def_1_20`, `table_masterlist`.`hp_1_20` AS `hp_1_20` FROM `table_masterlist`;
-
--- --------------------------------------------------------
-
---
--- Structure for view `view_character_general`
---
-DROP TABLE IF EXISTS `view_character_general`;
-
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_character_general`  AS SELECT `table_masterlist`.`character_name` AS `character_name`, `table_masterlist`.`rarity` AS `rarity`, `table_masterlist`.`vision` AS `vision`, `table_masterlist`.`weapon_type` AS `weapon_type`, `table_masterlist`.`region` AS `region`, `table_masterlist`.`model` AS `model`, `table_masterlist`.`arkhe` AS `arkhe`, `table_masterlist`.`constellation` AS `constellation`, `table_masterlist`.`birthday` AS `birthday`, `table_masterlist`.`special_dish` AS `special_dish`, `table_masterlist`.`affiliation` AS `affiliation` FROM `table_masterlist`;
-
--- --------------------------------------------------------
-
---
--- Structure for view `view_character_queries`
---
-DROP TABLE IF EXISTS `view_character_queries`;
-
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_character_queries`  AS SELECT `table_masterlist`.`character_name` AS `character_name`, `table_masterlist`.`rarity` AS `rarity`, `table_masterlist`.`vision` AS `vision`, `table_masterlist`.`weapon_type` AS `weapon_type`, `table_masterlist`.`region` AS `region`, `table_masterlist`.`model` AS `model` FROM `table_masterlist`;
-
--- --------------------------------------------------------
-
---
--- Structure for view `view_character_release`
---
-DROP TABLE IF EXISTS `view_character_release`;
-
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_character_release`  AS SELECT `table_masterlist`.`character_name` AS `character_name`, `table_masterlist`.`release_date` AS `release_date`, `table_masterlist`.`limited` AS `limited`, `table_masterlist`.`voice_en` AS `voice_en`, `table_masterlist`.`voice_cn` AS `voice_cn`, `table_masterlist`.`voice_jp` AS `voice_jp`, `table_masterlist`.`voice_kr` AS `voice_kr` FROM `table_masterlist`;
-
--- --------------------------------------------------------
-
---
--- Structure for view `view_max_stats`
---
-DROP TABLE IF EXISTS `view_max_stats`;
-
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_max_stats`  AS SELECT `table_masterlist`.`character_name` AS `character_name`, `table_masterlist`.`atk_90_90` AS `atk_90_90`, `table_masterlist`.`def_90_90` AS `def_90_90`, `table_masterlist`.`hp_90_90` AS `hp_90_90` FROM `table_masterlist`;
-
--- --------------------------------------------------------
-
---
--- Structure for view `view_revenue_summary`
---
-DROP TABLE IF EXISTS `view_revenue_summary`;
-
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_revenue_summary`  AS SELECT `import_revenue`.`5_star_characters` AS `character_name`, count(`import_revenue`.`5_star_characters`) AS `total_banner_runs`, max(`import_revenue`.`version`) AS `last_banner_appearance`, sum(`import_revenue`.`revenue`) AS `total_revenue` FROM `import_revenue` GROUP BY `import_revenue`.`5_star_characters`  ;
-
--- --------------------------------------------------------
-
---
--- Structure for view `view_special_reqs`
---
-DROP TABLE IF EXISTS `view_special_reqs`;
-
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_special_reqs`  AS SELECT `table_masterlist`.`character_name` AS `character_name`, `table_masterlist`.`special_0` AS `special_0`, `table_masterlist`.`special_1` AS `special_1`, `table_masterlist`.`special_2` AS `special_2`, `table_masterlist`.`special_3` AS `special_3`, `table_masterlist`.`special_4` AS `special_4`, `table_masterlist`.`special_5` AS `special_5`, `table_masterlist`.`special_6` AS `special_6` FROM `table_masterlist`;
-
--- --------------------------------------------------------
-
---
--- Structure for view `view_talent_reqs`
---
-DROP TABLE IF EXISTS `view_talent_reqs`;
-
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_talent_reqs`  AS SELECT `table_masterlist`.`character_name` AS `character_name`, `table_masterlist`.`talent_material` AS `talent_material`, `table_masterlist`.`talent_book_1-2` AS `talent_book_1-2`, `table_masterlist`.`talent_book_2-3` AS `talent_book_2-3`, `table_masterlist`.`talent_book_3-4` AS `talent_book_3-4`, `table_masterlist`.`talent_book_4-5` AS `talent_book_4-5`, `table_masterlist`.`talent_book_5-6` AS `talent_book_5-6`, `table_masterlist`.`talent_book_6-7` AS `talent_book_6-7`, `table_masterlist`.`talent_book_7-8` AS `talent_book_7-8`, `table_masterlist`.`talent_book_8-9` AS `talent_book_8-9`, `table_masterlist`.`talent_book_9-10` AS `talent_book_9-10`, `table_masterlist`.`talent_weekly` AS `talent_weekly` FROM `table_masterlist`;
-
 --
 -- Indexes for dumped tables
 --
@@ -1394,6 +1018,121 @@ ALTER TABLE `import_general`
 ALTER TABLE `import_thoughts`
   ADD PRIMARY KEY (`id`);
 COMMIT;
+
+
+
+
+
+/***********************************
+* #1 CREATING REVENUE SUMMARY VIEW *
+************************************/
+CREATE OR REPLACE VIEW view_revenue_summary AS SELECT 
+	`5_star_characters` AS `character_name`, 
+	COUNT(`5_star_characters`) AS total_banner_runs,
+    MAX(version) AS last_banner_appearance,
+    SUM(revenue) AS total_revenue
+FROM import_revenue
+GROUP BY `5_star_characters`;
+
+
+
+/*********************************************
+* #2 CREATING MASTERLIST FOR BETTER UPDATING *
+**********************************************/
+DROP TABLE IF EXISTS table_masterlist;
+CREATE TABLE table_masterlist AS
+SELECT 	import_general.* , 
+		import_descriptions.character_description, 
+        view_revenue_summary.total_banner_runs, view_revenue_summary.last_banner_appearance, view_revenue_summary.total_revenue FROM 
+	import_general LEFT JOIN import_descriptions 
+		ON import_general.character_name = import_descriptions.character_name
+    LEFT JOIN view_revenue_summary
+    	ON import_general.character_name = view_revenue_summary.character_name
+	ORDER BY character_name;
+
+# Remove unnecessary columns
+ALTER TABLE table_masterlist 
+    ADD UNIQUE(`character_name`),
+	DROP COLUMN hp_80_90, 
+    DROP COLUMN atk_80_90, 
+    DROP COLUMN def_80_90, 
+    DROP COLUMN hp_80_80, 
+    DROP COLUMN atk_80_80, 
+    DROP COLUMN def_80_80, 
+    DROP COLUMN hp_70_80, 
+    DROP COLUMN atk_70_80, 
+    DROP COLUMN def_70_80, 
+    DROP COLUMN hp_70_70, 
+    DROP COLUMN atk_70_70, 
+    DROP COLUMN def_70_70, 
+    DROP COLUMN hp_60_70,	
+    DROP COLUMN atk_60_70,	
+    DROP COLUMN def_60_70,	
+    DROP COLUMN hp_60_60,
+    DROP COLUMN atk_60_60,
+    DROP COLUMN def_60_60,
+    DROP COLUMN hp_50_60,
+    DROP COLUMN atk_50_60,
+    DROP COLUMN def_50_60,
+    DROP COLUMN hp_50_50,
+    DROP COLUMN atk_50_50,
+    DROP COLUMN def_50_50,
+    DROP COLUMN hp_40_50,
+    DROP COLUMN atk_40_50,
+    DROP COLUMN def_40_50,
+    DROP COLUMN hp_40_40,
+    DROP COLUMN atk_40_40,
+    DROP COLUMN def_40_40,
+    DROP COLUMN hp_20_40,
+    DROP COLUMN atk_20_40,
+    DROP COLUMN def_20_40,
+    DROP COLUMN hp_20_20,
+    DROP COLUMN atk_20_20,
+    DROP COLUMN def_20_20,
+    DROP COLUMN special_1,
+    DROP COLUMN special_2,
+    DROP COLUMN special_3,
+    DROP COLUMN special_4,
+    DROP COLUMN special_5;
+
+
+
+/*************************
+* #3 Create Query View   *
+*************************/
+CREATE OR REPLACE VIEW view_character_queries AS
+	SELECT character_name, rarity, vision, weapon_type, region, model FROM table_masterlist;
+    
+/***********************************
+* #9 CREATING CHARACTER RELEASE VIEW*
+************************************/
+CREATE OR REPLACE VIEW view_character_release AS
+	SELECT character_name, release_date, limited, voice_en, voice_cn, voice_jp, voice_kr 
+    FROM table_masterlist;
+    
+/***********************************
+* #10 CREATING CHARACTER DATA VIEW *
+************************************/
+CREATE OR REPLACE VIEW view_character_general AS
+	SELECT character_name, rarity, vision, weapon_type, region, model, arkhe, constellation, birthday, special_dish, affiliation, character_description
+    FROM table_masterlist;
+
+/***********************************
+* #11 CREATING LEVELING REQS       *
+************************************/
+CREATE OR REPLACE VIEW view_leveling_reqs AS
+	SELECT character_name, ascension_specialty, ascension_material, ascension_boss, 
+    talent_material, `talent_book_1-2`, `talent_book_2-3`, `talent_book_3-4`, `talent_book_4-5`, `talent_book_5-6`, `talent_book_6-7`, `talent_book_7-8`, `talent_book_8-9`, `talent_book_9-10`, talent_weekly
+    FROM table_masterlist;
+
+/***********************************
+* #12 CREATING CHARACTER STATS     *
+************************************/
+CREATE OR REPLACE VIEW view_character_stats AS
+	SELECT character_name, atk_1_20, def_1_20, hp_1_20, atk_90_90, def_90_90, hp_90_90, ascension, special_0, special_6
+	FROM table_masterlist;
+
+
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

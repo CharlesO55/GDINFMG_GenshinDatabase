@@ -37,9 +37,14 @@ public class FilterCharacters : MonoBehaviour
         this._dictQueries.Add("Region", new() { "'Mondstadt'", "'Sumeru'", "'N/A'", "'Inazuma'", "'Liyue'", "'Fontaine'", "'Snezhnaya'" });
         this._dictQueries.Add("Weapon", new() { "'Sword'", "'Bow'", "'Claymore'", "'Catalyst'", "'Polearm'" });
         this._dictQueries.Add("Model", new() { "'Medium Male'","'Tall Male'","'Medium Female'","'Tall Female'","'Short Female'" });
+        this.UpdateQueryDisplay();
     }
 
-
+    public void UpdateQueryDisplay()
+    {
+        DeleteCurrentPanels();
+        this.StartCoroutine(DoFilterCharacters());
+    }
 
     private IEnumerator DoFilterCharacters()
     {
@@ -68,9 +73,10 @@ public class FilterCharacters : MonoBehaviour
         }
     }
 
+    
+
     void ExtractQueriedCharacters(string results)
     {
-        DeleteCurrentPanels();
         foreach(string res in results.Split('@'))
         {
             if(res != "")
@@ -123,8 +129,7 @@ public class FilterCharacters : MonoBehaviour
                 this._dictQueries[key].Remove(value);
         }
 
-
-        this.StartCoroutine(DoFilterCharacters());
+        this.UpdateQueryDisplay();
     }
 
     private string ExtractFilterString<T>(List<T> values)

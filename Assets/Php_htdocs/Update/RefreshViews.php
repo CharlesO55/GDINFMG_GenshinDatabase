@@ -61,6 +61,14 @@ $sql11 = "CREATE OR REPLACE VIEW view_leveling_reqs AS
 		talent_material, `talent_book_1-2`, `talent_book_2-3`, `talent_book_3-4`, `talent_book_4-5`, `talent_book_5-6`, `talent_book_6-7`, `talent_book_7-8`, `talent_book_8-9`, `talent_book_9-10`, talent_weekly
     FROM table_masterlist";
 
+/***********************************
+* #12 CREATING CHARACTER STATS     *
+************************************/
+$sql12 = "CREATE OR REPLACE VIEW view_character_stats AS
+	SELECT character_name, atk_1_20, def_1_20, hp_1_20, atk_90_90, def_90_90, hp_90_90, ascension, special_0, special_6
+	FROM table_masterlist";
+
+
 mysqli_query($CONNECTION, $sql3) or die("[3] Query view failed");
 mysqli_query($CONNECTION, $sql4) or die("[4] Max stats view failed");
 mysqli_query($CONNECTION, $sql5) or die("[5] Base stats view failed");
@@ -70,6 +78,7 @@ mysqli_query($CONNECTION, $sql8) or die("[8] Talent reqs view failed");
 mysqli_query($CONNECTION, $sql9) or die("[9] Char release view failed");
 mysqli_query($CONNECTION, $sql10) or die("[10] Char general view failed");
 mysqli_query($CONNECTION, $sql11) or die("[11] Char leveing reqs view failed");
+mysqli_query($CONNECTION, $sql12) or die("[12] Char stats view failed");
 
 echo "SUCCESS~";
 ?>

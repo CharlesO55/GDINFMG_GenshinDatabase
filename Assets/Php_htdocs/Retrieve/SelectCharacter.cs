@@ -84,6 +84,11 @@ public class SelectCharacter : MonoBehaviour
         switch (EStore)
         {
             case EStoreType.GENERAL:
+                if (results.Length < 8)
+                {
+                    Debug.LogError("Lacking element in general data");
+                    break;
+                }
                 this.CharName = results[0];
                 this.CharRarity = results[1];
                 this.CharVision = results[2];
@@ -94,6 +99,11 @@ public class SelectCharacter : MonoBehaviour
                 this.CharDescription = results[7];
                 break;
             case EStoreType.STATS:
+                if (results.Length < 3)
+                {
+                    Debug.LogError("Lacking element in stats data");
+                    break;
+                }
                 this.CharAscStat = results[1];
                 this.CharAscValue = results[2];
                 break;
@@ -106,6 +116,7 @@ public class SelectCharacter : MonoBehaviour
         if(this._nCoroutinesRunning == 0)
         {
             this.OnLoadingFinished?.Invoke();
+            this.OnLoadingFinished.RemoveAllListeners();
         }
     }
 }
