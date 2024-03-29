@@ -20,7 +20,6 @@ public class SceneLoader : MonoBehaviour
 
     public void LoadScene(string name)
     {
-        Debug.Log($"Loading scene:{name}");
         SceneManager.LoadScene(name);
     }
 }

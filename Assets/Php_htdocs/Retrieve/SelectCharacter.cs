@@ -10,7 +10,10 @@ using UnityEngine.Networking;
 public class SelectCharacter : MonoBehaviour
 {
     public static SelectCharacter Instance;
+    
     public UnityEvent OnLoadingFinished;
+
+    private int _nCoroutinesRunning = 0;
 
     enum EStoreType
     {
@@ -18,25 +21,9 @@ public class SelectCharacter : MonoBehaviour
         STATS
     };
 
-    [Header("General Info")]
-    public Dictionary<string, string> DictGeneralStats;
-    public string CharName;
-    public string CharRarity;
-    public string CharVision;
-    public string CharWeapon;
-    public string CharRegion;
-    public string CharConstellation;
-    public string CharAffiliation;
-    public string CharDescription;
+    public CharacterGeneralData GeneralData;
+    public CharacterStatsData StatsData;
 
-    [Header("Character Stats")]
-    public int CharHP;
-    public int CharATK;
-    public int CharDEF;
-    public string CharAscValue;
-    public string CharAscStat;
-
-    private int _nCoroutinesRunning = 0;
 
     private void Awake()
     {
@@ -67,9 +54,7 @@ public class SelectCharacter : MonoBehaviour
             yield return handler.SendWebRequest();
 
             if (handler.error == null)
-            {
-                this.StoreResults(handler.downloadHandler.text.Split('|'), EStore);
-            }
+                this.StoreResults(handler.downloadHandler.text, EStore);
             else
                 Debug.LogError(handler.error);
 
@@ -79,33 +64,15 @@ public class SelectCharacter : MonoBehaviour
         UpdateCoroutinesCount();
     }
 
-    private void StoreResults(string[] results, EStoreType EStore)
+    private void StoreResults(string result, EStoreType EStore)
     {
         switch (EStore)
         {
             case EStoreType.GENERAL:
-                if (results.Length < 8)
-                {
-                    Debug.LogError("Lacking element in general data");
-                    break;
-                }
-                this.CharName = results[0];
-                this.CharRarity = results[1];
-                this.CharVision = results[2];
-                this.CharWeapon = results[3];
-                this.CharRegion = results[4];
-                this.CharConstellation = results[5];
-                this.CharAffiliation = results[6];
-                this.CharDescription = results[7];
+                this.GeneralData = JsonUtility.FromJson<CharacterGeneralData>(result);    
                 break;
             case EStoreType.STATS:
-                if (results.Length < 3)
-                {
-                    Debug.LogError("Lacking element in stats data");
-                    break;
-                }
-                this.CharAscStat = results[1];
-                this.CharAscValue = results[2];
+                this.StatsData = JsonUtility.FromJson<CharacterStatsData>(result);
                 break;
         }
     }

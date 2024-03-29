@@ -147,7 +147,7 @@ public class FilterCharacters : MonoBehaviour
         if (query.Length == 0)
             query = "''";
 
-        Debug.Log($"Querying:{query}");
+        //Debug.Log($"Filtering:{query}");
         return query;
     }
 }

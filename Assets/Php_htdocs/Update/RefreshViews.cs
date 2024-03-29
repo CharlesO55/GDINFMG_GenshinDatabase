@@ -5,9 +5,18 @@ using UnityEngine.Networking;
 
 public class RefreshViews : MonoBehaviour
 {
+    public static RefreshViews Instance;
+
     private void Awake()
     {
-        this.Refresh();   
+        if (Instance == null)
+        {
+            Instance = this;
+            this.Refresh();
+            DontDestroyOnLoad(this);
+        }
+        else
+            Destroy(this.gameObject);
     }
 
 
@@ -22,15 +31,10 @@ public class RefreshViews : MonoBehaviour
         {
             yield return handler.SendWebRequest();
 
-            if(handler.error == null)
-            {
-                Debug.Log("Refreshed views");
-            }
-            else
-            {
+            if(handler.error != null)
                 Debug.LogError(handler.error);
-                Debug.LogError(handler.downloadHandler.text);
-            }
+
+            Debug.Log(handler.downloadHandler.text);
         }
     }
 }

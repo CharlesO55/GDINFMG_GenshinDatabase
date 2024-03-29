@@ -10,16 +10,18 @@ $query = mysqli_query($CONNECTION, $sql) or die("[1] Character General Query fai
 if(mysqli_num_rows($query) == 1){
     $result = mysqli_fetch_assoc($query);
 
-    $name = $result["character_name"]; 
-    $rarity = $result["rarity"];
-    $vision = $result["vision"];
-    $weapon = $result["weapon_type"];
-    $region = $result["region"];
-    $constellation = $result["constellation"];
-    $affiliation = $result["affiliation"];
-    $description = $result["character_description"];
 
-    echo $name . "|" . $rarity . "|". $vision . "|". $weapon . "|" . $region . "|". $constellation . "|". $affiliation . "|". $description;
+    $OUT_JSON = new stdClass();
+    $OUT_JSON->Character_name = $result["character_name"];
+    $OUT_JSON->Rarity = $result["rarity"];
+    $OUT_JSON->Vision = $result["vision"];
+    $OUT_JSON->Weapon = $result["weapon_type"];
+    $OUT_JSON->Region = $result["region"];
+    $OUT_JSON->Constellation = $result["constellation"];
+    $OUT_JSON->Affiliation = $result["affiliation"];
+    $OUT_JSON->Description = $result["character_description"];
+
+    echo json_encode($OUT_JSON);
 } 
 else{
     die("[2] Query returned incorrect: " . mysqli_num_rows($query) . " results.");
