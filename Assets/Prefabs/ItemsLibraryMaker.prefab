@@ -1,0 +1,137 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7980721933333535746
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 195242720821040192}
+  - component: {fileID: 4350588119713619162}
+  m_Layer: 0
+  m_Name: ItemsLibraryMaker
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &195242720821040192
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7980721933333535746}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 938.7274, y: 440.84335, z: -3.0089512}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4350588119713619162
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7980721933333535746}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 420743004963bf744b4473a57c576063, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _bossItems:
+  - ItemName: Hurricane Seed
+    Sprite: {fileID: 21300000, guid: 12345560bfa9b714b81a04ae5efd82a8, type: 3}
+    _itemID: 
+  - ItemName: Lightning Prism
+    Sprite: {fileID: 21300000, guid: 7a5fc3a8520442e42921add6342b6271, type: 3}
+    _itemID: 
+  - ItemName: Basalt Pillar
+    Sprite: {fileID: 21300000, guid: b607a290103d4ac48a6f5d4156fbc0af, type: 3}
+    _itemID: 
+  - ItemName: Hoarfrost Core
+    Sprite: {fileID: 21300000, guid: 17d4149300d9ff44ba9be33e3dc7deb7, type: 3}
+    _itemID: 
+  - ItemName: Everflame Seed
+    Sprite: {fileID: 21300000, guid: 2047a159195819f41912f135c46db174, type: 3}
+    _itemID: 
+  - ItemName: Cleansing Heart
+    Sprite: {fileID: 21300000, guid: edc3ef5e4fbad5e418b3a98d4ca886bf, type: 3}
+    _itemID: 
+  - ItemName: Juvenile Jade
+    Sprite: {fileID: 21300000, guid: 4c696e14446c1f943ac8c9186ed75064, type: 3}
+    _itemID: 
+  - ItemName: Crystalline Bloom
+    Sprite: {fileID: 21300000, guid: 01e43425718476348bc6bf4b1c394ec5, type: 3}
+    _itemID: 
+  - ItemName: Marionette Core
+    Sprite: {fileID: 21300000, guid: 90270b0f82b1fac4f9f3a5d2b40fe4f8, type: 3}
+    _itemID: 
+  - ItemName: Perpetual Heart
+    Sprite: {fileID: 21300000, guid: 037200c5ba8726a4c8c52f54a817a48c, type: 3}
+    _itemID: 
+  - ItemName: Smoldering Pearl
+    Sprite: {fileID: 21300000, guid: 8c8abe98ba412d846b3b9d897b98bbfa, type: 3}
+    _itemID: 
+  - ItemName: Dew of Repudiation
+    Sprite: {fileID: 21300000, guid: b2a02c92053080a4b9528f33f9bbc2cc, type: 3}
+    _itemID: 
+  - ItemName: Storm Beads
+    Sprite: {fileID: 21300000, guid: d6dc34b760f4b1640ad7a618ddc1ea1d, type: 3}
+    _itemID: 
+  - ItemName: Riftborn Regalia
+    Sprite: {fileID: 21300000, guid: 0a2b01719989c3b47956936089267401, type: 3}
+    _itemID: 
+  - ItemName: Dragonheir's False Fin
+    Sprite: {fileID: 21300000, guid: 31a784d7e149d7f43ab3b9cce15a74f7, type: 3}
+    _itemID: 
+  - ItemName: Runic Fang
+    Sprite: {fileID: 21300000, guid: 3b4933ebb90a53440a560ce2f2f9a442, type: 3}
+    _itemID: 
+  - ItemName: Majestic Hooked Beak
+    Sprite: {fileID: 21300000, guid: c41625bb665e78043bf011c6abf0b155, type: 3}
+    _itemID: 
+  - ItemName: Thunderclap Fruitcore
+    Sprite: {fileID: 21300000, guid: 72af40d2c951de545a4975d0875b73ed, type: 3}
+    _itemID: 
+  - ItemName: Perpetual Caliber
+    Sprite: {fileID: 21300000, guid: af96c1c6ed0f4a64396e4081a0ba7b8d, type: 3}
+    _itemID: 
+  - ItemName: Light Guiding Tetrahedron
+    Sprite: {fileID: 21300000, guid: 2d486e6ba3a0d0a4280a1766681fef43, type: 3}
+    _itemID: 
+  - ItemName: Quelled Creeper
+    Sprite: {fileID: 21300000, guid: af219295e5c742044a3ec68d968083ac, type: 3}
+    _itemID: 
+  - ItemName: Pseudo-Stamens
+    Sprite: {fileID: 21300000, guid: 466bf4c04e3f790438c95538198a18e9, type: 3}
+    _itemID: 
+  - ItemName: Evergloom Ring
+    Sprite: {fileID: 21300000, guid: 6eab439c5da5e0042ade69f0a1b9a419, type: 3}
+    _itemID: 
+  - ItemName: "Ar\xADti\xADficed Spare Clock\xADwork Com\xADpo\xADnent \u2014 Cop\xADpe\xADli\xADa"
+    Sprite: {fileID: 21300000, guid: 190efd5bdce5bbb4cb0ad1ca0d1c75cd, type: 3}
+    _itemID: 
+  - ItemName: "Ar\xADti\xADficed Spare Clock\xADwork Com\xADpo\xADnent \u2014 Cop\xADpe\xADli\xADus"
+    Sprite: {fileID: 21300000, guid: 12fcefaf4b5bb6745af6e8eff5d8bd97, type: 3}
+    _itemID: 
+  - ItemName: Emperor's Resolution
+    Sprite: {fileID: 21300000, guid: 5580cc9ef21505c4eaac2f1274ae0133, type: 3}
+    _itemID: 
+  - ItemName: Fontemer Unihorn
+    Sprite: {fileID: 21300000, guid: a2c7728626ef594469441832c0c35ced, type: 3}
+    _itemID: 
+  - ItemName: '"Tourbillon Device"'
+    Sprite: {fileID: 21300000, guid: 1558a09b656a72d45872bb4f916e5a59, type: 3}
+    _itemID: 
+  - ItemName: Water That Failed To Transcend
+    Sprite: {fileID: 21300000, guid: 6dbcd04f82d65d0428fa0ff66e57a79e, type: 3}
+    _itemID: 
+  - ItemName: Cloudseam Scale
+    Sprite: {fileID: 21300000, guid: 6e70c137274575e4b909eff8550e061c, type: 3}
+    _itemID: 

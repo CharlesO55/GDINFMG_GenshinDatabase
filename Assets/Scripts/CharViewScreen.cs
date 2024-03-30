@@ -30,6 +30,8 @@ public class CharViewScreen : MonoBehaviour
     [SerializeField] Image _visionIcon;
     [SerializeField] Image _weaponIcon;
 
+    [Header("Leveling")]
+    [SerializeField] Image _itemBoss;
 
     private void Start()
     {
@@ -53,10 +55,7 @@ public class CharViewScreen : MonoBehaviour
         
         ImageLoader.LoadImage(this._visionIcon.sprite, "Assets/Sprites/Elements/UI_Buff_Element_" + gen_Data.Vision + ".png");
         ImageLoader.LoadImage(this._weaponIcon.sprite, "Assets/Sprites/Weapons/UI_GachaTypeIcon_" + gen_Data.Weapon + ".png");
-        if(!ImageLoader.LoadImage(this._splashArt.sprite, "Assets/Sprites/Splash/UI_Gacha_AvatarImg_" + gen_Data.Character_name + ".png"))
-        {
-            Debug.LogWarning("No splash art found");
-        }
+        ImageLoader.LoadImage(this._splashArt.sprite, "Assets/Sprites/Splash/UI_Gacha_AvatarImg_" + gen_Data.Character_name + ".png");
     }
 
     void AssignRarity(int rarity)

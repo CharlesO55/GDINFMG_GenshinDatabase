@@ -18,12 +18,14 @@ public class SelectCharacter : MonoBehaviour
     enum EStoreType
     {
         GENERAL,
-        STATS
+        STATS,
+        LEVELING_REQS,
     };
 
+    [Header("Data Stored")]
     public CharacterGeneralData GeneralData;
     public CharacterStatsData StatsData;
-
+    public CharacterLevelingData LevelingData;
 
     private void Awake()
     {
@@ -44,6 +46,7 @@ public class SelectCharacter : MonoBehaviour
 
         this.StartCoroutine(LoadData(form, "http://localhost/Retrieve/GetCharacterGeneral.php", EStoreType.GENERAL));
         this.StartCoroutine(LoadData(form, "http://localhost/Retrieve/GetCharacterStats.php", EStoreType.STATS));
+        this.StartCoroutine(LoadData(form, "http://localhost/Retrieve/GetCharacterLevelingReqs.php", EStoreType.LEVELING_REQS));
     }
     IEnumerator LoadData(WWWForm form, string url, EStoreType EStore)
     {
@@ -73,6 +76,9 @@ public class SelectCharacter : MonoBehaviour
                 break;
             case EStoreType.STATS:
                 this.StatsData = JsonUtility.FromJson<CharacterStatsData>(result);
+                break;
+            case EStoreType.LEVELING_REQS:
+                this.LevelingData = JsonUtility.FromJson<CharacterLevelingData>(result);
                 break;
         }
     }

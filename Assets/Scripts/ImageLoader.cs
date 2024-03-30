@@ -5,12 +5,17 @@ using UnityEngine;
 
 public static class ImageLoader
 {
-    public static bool LoadImage(Sprite targetSprite, string filename)
+    public static bool LoadImage(Sprite targetSprite, string filename, string altFile = "Assets/Sprites/Regions/Unknown.png")
     {
         if(!System.IO.File.Exists(filename))
         {
             Debug.LogError($"Failed to load image {filename}");
-            return false;
+            filename = altFile;
+            if (!System.IO.File.Exists(filename))
+            {
+                Debug.LogError($"Neither files work {altFile}");
+                return false;
+            }
         }
 
         byte[] imgData = System.IO.File.ReadAllBytes(filename);

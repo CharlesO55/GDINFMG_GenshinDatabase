@@ -1133,6 +1133,19 @@ CREATE OR REPLACE VIEW view_character_stats AS
 	FROM table_masterlist;
 
 
+/************************************
+* #13 CREATING THE SPRITE ID TABLE  *
+************************************/
+DROP TABLE IF EXISTS table_itemid;
+
+CREATE TABLE table_itemid AS SELECT DISTINCT ascension_boss AS itemName FROM table_masterlist 
+        UNION 
+        SELECT DISTINCT ascension_material AS itemName FROM table_masterlist 
+        UNION
+        SELECT DISTINCT ascension_specialty AS itemName FROM table_masterlist;
+        
+ALTER TABLE table_itemid
+	ADD itemID varchar(9) DEFAULT 'None';
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

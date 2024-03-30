@@ -106,3 +106,18 @@ CREATE OR REPLACE VIEW view_leveling_reqs AS
 CREATE OR REPLACE VIEW view_character_stats AS
 	SELECT character_name, atk_1_20, def_1_20, hp_1_20, atk_90_90, def_90_90, hp_90_90, ascension, special_0, special_6
 	FROM table_masterlist;
+    
+    
+/************************************
+* #13 CREATING THE SPRITE ID TABLE  *
+************************************/
+DROP TABLE IF EXISTS table_itemid;
+
+CREATE TABLE table_itemid AS SELECT DISTINCT ascension_boss AS itemName FROM table_masterlist 
+        UNION 
+        SELECT DISTINCT ascension_material AS itemName FROM table_masterlist 
+        UNION
+        SELECT DISTINCT ascension_specialty AS itemName FROM table_masterlist;
+        
+ALTER TABLE table_itemid
+	ADD itemID varchar(9) DEFAULT 'None';
