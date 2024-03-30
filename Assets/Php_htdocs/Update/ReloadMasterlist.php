@@ -57,9 +57,16 @@ $sql3 = "ALTER TABLE table_masterlist
     DROP COLUMN special_4,
     DROP COLUMN special_5;";
 
+#COPY TRAVELER'S DESCRIPTION
+$sql4 = "UPDATE table_masterlist 
+	        SET character_description = (SELECT character_description FROM import_descriptions WHERE character_name = 'Traveler') 
+        WHERE character_name LIKE '%Traveler%';";
+
+
 mysqli_query($CONNECTION, $sql1) or die("[1]: Masterlist drop duplicate failed");
 mysqli_query($CONNECTION, $sql2) or die("[2]: Masterlist copy imports failed");
 mysqli_query($CONNECTION, $sql3) or die("[3]: Masterlist drop cols failed");
+mysqli_query($CONNECTION, $sql4) or die("[4]: Masterlist copy traveler description failed");
 
 echo "SUCCESS ~ MasterList Reloaded";
 ?>

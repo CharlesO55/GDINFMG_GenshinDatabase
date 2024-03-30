@@ -83,7 +83,10 @@ ALTER TABLE table_masterlist
     DROP COLUMN special_4,
     DROP COLUMN special_5;
 
-
+#COPY THE DESCRIPTION FOR TRAVELER
+UPDATE table_masterlist 
+	SET character_description = (SELECT character_description FROM import_descriptions WHERE character_name = 'Traveler') 
+WHERE character_name LIKE '%Traveler%';
 
 /*************************
 * #3 Create Query View   *
