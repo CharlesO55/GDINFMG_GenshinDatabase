@@ -14,4 +14,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/CharacterViewScreen.unity
     guid: 9d87fc73fb1aa7d42af63fdb95219dea
-  m_configObjects: {}
+  m_configObjects:
+    com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000,
+      guid: be11a270a8affde44924bb569d1f7f9b, type: 2}

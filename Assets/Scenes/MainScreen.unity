@@ -1014,19 +1014,26 @@ MonoBehaviour:
   OnLoadingFinished:
     m_PersistentCalls:
       m_Calls: []
-  CharName: 
-  CharRarity: 
-  CharVision: 
-  CharWeapon: 
-  CharRegion: 
-  CharConstellation: 
-  CharAffiliation: 
-  CharDescription: 
-  CharHP: 0
-  CharATK: 0
-  CharDEF: 0
-  CharAscValue: 
-  CharAscStat: 
+  GeneralData:
+    Character_name: 
+    Vision: 
+    Weapon: 
+    Region: 
+    Constellation: 
+    Affiliation: 
+    Description: 
+    Rarity: 0
+  StatsData:
+    Character_name: 
+    Atk_base: 0
+    Def_base: 0
+    Hp_base: 0
+    Atk_max: 0
+    Def_max: 0
+    Hp_max: 0
+    Ascension_stat: 
+    Ascension_base: 
+    Ascension_max: 
 --- !u!1 &1726276955
 GameObject:
   m_ObjectHideFlags: 0

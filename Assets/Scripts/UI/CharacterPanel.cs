@@ -11,11 +11,20 @@ public class CharacterPanel : MonoBehaviour, IPointerClickHandler
     [SerializeField] Image _charIcon;
     [SerializeField] Image _charRarity;
 
-    public void Initialize(string name, Sprite icon, int rarity = 4)
+    public void Initialize(string name, int rarity = 4)
     {
-        //Debug.Log($"{name} {rarity}");
         this._charName.text = name;
         this._charRarity.color = (rarity == 5) ? new Color32(208, 144, 64, 255) : new Color32(150, 65, 210, 255);
+
+        if (name.Contains("Lumine"))
+            name = "Lumine";
+        else if (name.Contains("Aether"))
+            name = "Aether";
+        
+        if (!ImageLoader.LoadImageInResources(_charIcon, "Portrait/UI_AvatarIcon_" + name))
+        {
+            ImageLoader.LoadImageInResources(_charIcon, "Portrait/Unknown");
+        }
     }
 
     public void OnPointerClick(PointerEventData eventData)

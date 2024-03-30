@@ -85,7 +85,7 @@ public class FilterCharacters : MonoBehaviour
                 GameObject newCharPanel = Instantiate(this._characterPanelPrefab, this._characterPanelsContainer);
                 if (newCharPanel.TryGetComponent<CharacterPanel>(out CharacterPanel panel))
                 {
-                    panel.Initialize(currChar[0], null, int.Parse(currChar[1]));
+                    panel.Initialize(currChar[0], int.Parse(currChar[1]));
                 }
             }
         }

@@ -1703,6 +1703,8 @@ MonoBehaviour:
   _starPrefab: {fileID: 5780834219652152454, guid: aa93fe7f5b932864aa16da3840ec5f17,
     type: 3}
   _starContainer: {fileID: 8928406}
+  _bgColor: {fileID: 1006789665}
+  _splashArt: {fileID: 173306849}
   _visionIcon: {fileID: 2917437807713128977}
   _weaponIcon: {fileID: 233363748}
 --- !u!1 &737160674

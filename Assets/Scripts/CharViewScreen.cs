@@ -25,6 +25,8 @@ public class CharViewScreen : MonoBehaviour
     [SerializeField] Transform _starContainer;
 
     [Header("Images")]
+    [SerializeField] Image _bgColor;
+    [SerializeField] Image _splashArt;
     [SerializeField] Image _visionIcon;
     [SerializeField] Image _weaponIcon;
 
@@ -47,8 +49,14 @@ public class CharViewScreen : MonoBehaviour
         this._statSpecialVal.text = stat_Data.Ascension_base;
 
         this.AssignRarity(gen_Data.Rarity);
+        this.AssignBGColor(gen_Data.Vision);
+        
         ImageLoader.LoadImage(this._visionIcon.sprite, "Assets/Sprites/Elements/UI_Buff_Element_" + gen_Data.Vision + ".png");
         ImageLoader.LoadImage(this._weaponIcon.sprite, "Assets/Sprites/Weapons/UI_GachaTypeIcon_" + gen_Data.Weapon + ".png");
+        if(!ImageLoader.LoadImage(this._splashArt.sprite, "Assets/Sprites/Splash/UI_Gacha_AvatarImg_" + gen_Data.Character_name + ".png"))
+        {
+            Debug.LogWarning("No splash art found");
+        }
     }
 
     void AssignRarity(int rarity)
@@ -57,5 +65,10 @@ public class CharViewScreen : MonoBehaviour
         {
             GameObject.Instantiate(_starPrefab, this._starContainer);
         }
+    }
+
+    void AssignBGColor(string element)
+    {
+        this._bgColor.color = ElementColors.Dict[element];
     }
 }
