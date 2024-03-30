@@ -32,6 +32,9 @@ public class CharViewScreen : MonoBehaviour
 
     [Header("Leveling")]
     [SerializeField] Image _itemBoss;
+    [SerializeField] Image _itemMob;
+    [SerializeField] Image _itemGather;
+    [SerializeField] Image _itemGem;
 
     private void Start()
     {
@@ -52,10 +55,14 @@ public class CharViewScreen : MonoBehaviour
 
         this.AssignRarity(gen_Data.Rarity);
         this.AssignBGColor(gen_Data.Vision);
-        
+
+        CharacterLevelingData lvl_Data = SelectCharacter.Instance.LevelingData;
         ImageLoader.LoadImage(this._visionIcon.sprite, "Assets/Sprites/Elements/UI_Buff_Element_" + gen_Data.Vision + ".png");
         ImageLoader.LoadImage(this._weaponIcon.sprite, "Assets/Sprites/Weapons/UI_GachaTypeIcon_" + gen_Data.Weapon + ".png");
         ImageLoader.LoadImage(this._splashArt.sprite, "Assets/Sprites/Splash/UI_Gacha_AvatarImg_" + gen_Data.Character_name + ".png");
+
+        ImageLoader.LoadImage(this._itemBoss.sprite, "Assets/Sprites/Mats_BossDrops/UI_ItemIcon_" + lvl_Data.ID_Boss + ".png");
+        ImageLoader.LoadImage(this._itemGem.sprite, "Assets/Sprites/Mats_Gem/UI_ItemIcon_" + lvl_Data.ID_Gem+ ".png");
     }
 
     void AssignRarity(int rarity)

@@ -1,8 +1,8 @@
 <?php
 require('../Connect.php');
 
-$FIELD_BossItems = $_POST["FIELD_BossItems"];
-$arrayItems = json_decode($FIELD_BossItems);
+$FIELD_Items = $_POST["FIELD_Items"];
+$arrayItems = json_decode($FIELD_Items);
 
 
 foreach($arrayItems->Items as $item){

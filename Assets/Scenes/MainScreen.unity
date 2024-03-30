@@ -1036,9 +1036,14 @@ MonoBehaviour:
     Ascension_max: 
   LevelingData:
     Character_Name: 
-    Req_Gather: 
-    Req_Mob: 
-    Req_Boss: 
+    Req_Gather: None
+    ID_Gather: None
+    Req_Mob: None
+    ID_Mob: None
+    Req_Boss: None
+    ID_Boss: None
+    Req_Gem: None
+    ID_Gem: None
 --- !u!1 &1726276955
 GameObject:
   m_ObjectHideFlags: 0
@@ -1590,6 +1595,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4350588119713619162, guid: ae975535f1b7bfe4d96df22ae644e572,
         type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4350588119713619162, guid: ae975535f1b7bfe4d96df22ae644e572,
+        type: 3}
       propertyPath: _isPerformUpdate
       value: 1
       objectReference: {fileID: 0}
@@ -1597,6 +1607,11 @@ PrefabInstance:
         type: 3}
       propertyPath: _itemsBoss.Array.size
       value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 4350588119713619162, guid: ae975535f1b7bfe4d96df22ae644e572,
+        type: 3}
+      propertyPath: _gemMaterials.Items.Array.size
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4350588119713619162, guid: ae975535f1b7bfe4d96df22ae644e572,
         type: 3}
@@ -2235,6 +2250,54 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4350588119713619162, guid: ae975535f1b7bfe4d96df22ae644e572,
         type: 3}
+      propertyPath: _gemMaterials.Items.Array.data[0].Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 04bfe672e7dc98e4d9fd755c58f26ac7,
+        type: 3}
+    - target: {fileID: 4350588119713619162, guid: ae975535f1b7bfe4d96df22ae644e572,
+        type: 3}
+      propertyPath: _gemMaterials.Items.Array.data[1].Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: c3fdfba8976c76e4db26b39cba571e24,
+        type: 3}
+    - target: {fileID: 4350588119713619162, guid: ae975535f1b7bfe4d96df22ae644e572,
+        type: 3}
+      propertyPath: _gemMaterials.Items.Array.data[2].Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 600a894173ee22949a98fe3276477682,
+        type: 3}
+    - target: {fileID: 4350588119713619162, guid: ae975535f1b7bfe4d96df22ae644e572,
+        type: 3}
+      propertyPath: _gemMaterials.Items.Array.data[3].Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: e5955fd060ed7c44b8ccf103566b1c15,
+        type: 3}
+    - target: {fileID: 4350588119713619162, guid: ae975535f1b7bfe4d96df22ae644e572,
+        type: 3}
+      propertyPath: _gemMaterials.Items.Array.data[4].Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: cc7694b09515dc540ab0331fe19dfc0d,
+        type: 3}
+    - target: {fileID: 4350588119713619162, guid: ae975535f1b7bfe4d96df22ae644e572,
+        type: 3}
+      propertyPath: _gemMaterials.Items.Array.data[5].Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 7557c8a79cba6584c98e201c394150a1,
+        type: 3}
+    - target: {fileID: 4350588119713619162, guid: ae975535f1b7bfe4d96df22ae644e572,
+        type: 3}
+      propertyPath: _gemMaterials.Items.Array.data[6].Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 1afdb3706c919c24fa5872269a850b02,
+        type: 3}
+    - target: {fileID: 4350588119713619162, guid: ae975535f1b7bfe4d96df22ae644e572,
+        type: 3}
+      propertyPath: _gemMaterials.Items.Array.data[7].Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: a4fc3d42a318cf2458dc32acd102320e,
+        type: 3}
+    - target: {fileID: 4350588119713619162, guid: ae975535f1b7bfe4d96df22ae644e572,
+        type: 3}
       propertyPath: _bossMaterials.Items.Array.data[0].ItemID
       value: 113001
       objectReference: {fileID: 0}
@@ -2615,6 +2678,46 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4350588119713619162, guid: ae975535f1b7bfe4d96df22ae644e572,
         type: 3}
+      propertyPath: _gemMaterials.Items.Array.data[0].ItemName
+      value: Agnidus Agate Gemstone
+      objectReference: {fileID: 0}
+    - target: {fileID: 4350588119713619162, guid: ae975535f1b7bfe4d96df22ae644e572,
+        type: 3}
+      propertyPath: _gemMaterials.Items.Array.data[1].ItemName
+      value: Varunada Lazurite Gemstone
+      objectReference: {fileID: 0}
+    - target: {fileID: 4350588119713619162, guid: ae975535f1b7bfe4d96df22ae644e572,
+        type: 3}
+      propertyPath: _gemMaterials.Items.Array.data[2].ItemName
+      value: Nagadus Emerald Gemstone
+      objectReference: {fileID: 0}
+    - target: {fileID: 4350588119713619162, guid: ae975535f1b7bfe4d96df22ae644e572,
+        type: 3}
+      propertyPath: _gemMaterials.Items.Array.data[3].ItemName
+      value: Vajrada Amethyst Gemstone
+      objectReference: {fileID: 0}
+    - target: {fileID: 4350588119713619162, guid: ae975535f1b7bfe4d96df22ae644e572,
+        type: 3}
+      propertyPath: _gemMaterials.Items.Array.data[4].ItemName
+      value: Vayuda Turquoise Gemstone
+      objectReference: {fileID: 0}
+    - target: {fileID: 4350588119713619162, guid: ae975535f1b7bfe4d96df22ae644e572,
+        type: 3}
+      propertyPath: _gemMaterials.Items.Array.data[5].ItemName
+      value: Shivada Jade Gemstone
+      objectReference: {fileID: 0}
+    - target: {fileID: 4350588119713619162, guid: ae975535f1b7bfe4d96df22ae644e572,
+        type: 3}
+      propertyPath: _gemMaterials.Items.Array.data[6].ItemName
+      value: Prithiva Topaz Gemstone
+      objectReference: {fileID: 0}
+    - target: {fileID: 4350588119713619162, guid: ae975535f1b7bfe4d96df22ae644e572,
+        type: 3}
+      propertyPath: _gemMaterials.Items.Array.data[7].ItemName
+      value: Brilliant Diamond Gemstone
+      objectReference: {fileID: 0}
+    - target: {fileID: 4350588119713619162, guid: ae975535f1b7bfe4d96df22ae644e572,
+        type: 3}
       propertyPath: _bossMaterials.Items.Array.data[0].ItemName
       value: HurricaneSeed
       objectReference: {fileID: 0}
@@ -2867,6 +2970,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ItemsLibraryMaker
+      objectReference: {fileID: 0}
+    - target: {fileID: 7980721933333535746, guid: ae975535f1b7bfe4d96df22ae644e572,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -9,7 +9,7 @@ public static class ImageLoader
     {
         if(!System.IO.File.Exists(filename))
         {
-            Debug.LogError($"Failed to load image {filename}");
+            Debug.LogWarning($"Failed to load image {filename}");
             filename = altFile;
             if (!System.IO.File.Exists(filename))
             {

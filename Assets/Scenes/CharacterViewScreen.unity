@@ -1707,6 +1707,10 @@ MonoBehaviour:
   _splashArt: {fileID: 173306849}
   _visionIcon: {fileID: 2917437807713128977}
   _weaponIcon: {fileID: 233363748}
+  _itemBoss: {fileID: 1253005026}
+  _itemMob: {fileID: 1913242741}
+  _itemGather: {fileID: 454458069}
+  _itemGem: {fileID: 757018464}
 --- !u!1 &737160674
 GameObject:
   m_ObjectHideFlags: 0
