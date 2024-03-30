@@ -7,16 +7,16 @@ using UnityEngine;
 public class CharacterLevelingData
 {
     public string Character_Name;
-    public string Req_Gather = "None";
+    public string Name_Gather = "None";
     public string ID_Gather = "None";
-    public string Req_Mob = "None";
+    public string Name_Mob = "None";
     public string ID_Mob = "None";
-    public string Req_Boss = "None";
+    public string Name_Boss = "None";
     public string ID_Boss = "None";
-    public string Req_Gem = "None";
+    public string Name_Gem = "None";
     public string ID_Gem = "None";
 
-    private Dictionary<EElements, string> DictGemNames = new()
+    /*private Dictionary<EElements, string> DictGemNames = new()
     {
         { EElements.ANEMO, "Vayuda Turquoise Gemstone"},
         { EElements.GEO, "Prithiva Topaz Gemstone"},
@@ -44,5 +44,5 @@ public class CharacterLevelingData
 
         this.Req_Gem = this.DictGemNames[element];
         return this.Req_Gem;
-    }
+    }*/
 }

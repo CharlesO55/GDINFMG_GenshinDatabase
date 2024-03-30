@@ -57,9 +57,9 @@ $sql10 = "CREATE OR REPLACE VIEW view_character_general AS
 * #11 CREATING LEVELING REQS       *
 ************************************/
 $sql11 = "CREATE OR REPLACE VIEW view_leveling_reqs AS
-	SELECT character_name, ascension_specialty, ascension_material, ascension_boss, 
-		talent_material, `talent_book_1-2`, `talent_book_2-3`, `talent_book_3-4`, `talent_book_4-5`, `talent_book_5-6`, `talent_book_6-7`, `talent_book_7-8`, `talent_book_8-9`, `talent_book_9-10`, talent_weekly
-    FROM table_masterlist";
+	SELECT character_name, ascension_specialty, ascension_material, ascension_boss, ascension_gem,
+			talent_material, `talent_book_1-2`, `talent_book_2-3`, `talent_book_3-4`, `talent_book_4-5`, `talent_book_5-6`, `talent_book_6-7`, `talent_book_7-8`, `talent_book_8-9`, `talent_book_9-10`, talent_weekly
+	FROM table_masterlist;";
 
 /***********************************
 * #12 CREATING CHARACTER STATS     *

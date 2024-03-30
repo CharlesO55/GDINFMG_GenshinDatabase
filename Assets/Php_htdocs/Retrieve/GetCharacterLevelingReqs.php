@@ -13,9 +13,10 @@ if(mysqli_num_rows($query) == 1){
 
     $OUT_JSON = new stdClass();
     $OUT_JSON->Character_Name = $result["character_name"];
-    $OUT_JSON->Req_Gather = $result["ascension_specialty"];
-    $OUT_JSON->Req_Mob = $result["ascension_material"];
-    $OUT_JSON->Req_Boss = $result["ascension_boss"];
+    $OUT_JSON->Name_Gather = $result["ascension_specialty"];
+    $OUT_JSON->Name_Mob = $result["ascension_material"];
+    $OUT_JSON->Name_Boss = $result["ascension_boss"];
+    $OUT_JSON->Name_Gem = $result["ascension_gem"];
 
     echo json_encode($OUT_JSON);
 } 

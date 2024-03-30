@@ -1022,7 +1022,6 @@ COMMIT;
 
 
 
-
 /***********************************
 * #1 CREATING REVENUE SUMMARY VIEW *
 ************************************/
@@ -1034,7 +1033,20 @@ CREATE OR REPLACE VIEW view_revenue_summary AS SELECT
 FROM import_revenue
 GROUP BY `5_star_characters`;
 
-
+/**********************************
+* #1.a ADD ADDITIONAL COLUMN GEMS *
+***********************************/
+ALTER TABLE import_general
+	ADD COLUMN ascension_gem varchar(30) NOT NULL DEFAULT 'Brilliant Diamond Gemstone';
+    
+UPDATE import_general SET ascension_gem = 'Agnidus Agate Gemstone' WHERE vision = 'Pyro';
+UPDATE import_general SET ascension_gem = 'Varunada Lazurite Gemstone' WHERE vision = 'Hydro';
+UPDATE import_general SET ascension_gem = 'Nagadus Emerald Gemstone' WHERE vision = 'Dendro';
+UPDATE import_general SET ascension_gem = 'Vajrada Amethyst Gemstone' WHERE vision = 'Electro';
+UPDATE import_general SET ascension_gem = 'Vayuda Turquoise Gemstone' WHERE vision = 'Anemo';
+UPDATE import_general SET ascension_gem = 'Shivada Jade Gemstone' WHERE vision = 'Cryo';
+UPDATE import_general SET ascension_gem = 'Prithiva Topaz Gemstone' WHERE vision = 'Geo';
+UPDATE import_general SET ascension_gem = 'Brilliant Diamond Gemstone' WHERE character_name LIKE '%Traveler%'; 
 
 /*********************************************
 * #2 CREATING MASTERLIST FOR BETTER UPDATING *
@@ -1052,7 +1064,7 @@ SELECT 	import_general.* ,
 
 # Remove unnecessary columns
 ALTER TABLE table_masterlist 
-    ADD UNIQUE(`character_name`),
+	ADD UNIQUE(`character_name`),
 	DROP COLUMN hp_80_90, 
     DROP COLUMN atk_80_90, 
     DROP COLUMN def_80_90, 
@@ -1121,18 +1133,18 @@ CREATE OR REPLACE VIEW view_character_general AS
 * #11 CREATING LEVELING REQS       *
 ************************************/
 CREATE OR REPLACE VIEW view_leveling_reqs AS
-	SELECT character_name, ascension_specialty, ascension_material, ascension_boss, 
+	SELECT character_name, ascension_specialty, ascension_material, ascension_boss, ascension_gem,
     talent_material, `talent_book_1-2`, `talent_book_2-3`, `talent_book_3-4`, `talent_book_4-5`, `talent_book_5-6`, `talent_book_6-7`, `talent_book_7-8`, `talent_book_8-9`, `talent_book_9-10`, talent_weekly
     FROM table_masterlist;
-
+    
 /***********************************
 * #12 CREATING CHARACTER STATS     *
 ************************************/
 CREATE OR REPLACE VIEW view_character_stats AS
 	SELECT character_name, atk_1_20, def_1_20, hp_1_20, atk_90_90, def_90_90, hp_90_90, ascension, special_0, special_6
 	FROM table_masterlist;
-
-
+    
+    
 /************************************
 * #13 CREATING THE SPRITE ID TABLE  *
 ************************************/

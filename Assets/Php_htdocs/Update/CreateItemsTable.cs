@@ -13,19 +13,14 @@ public class CreateItemsTable : MonoBehaviour
         public List<ItemData> Items;
     }
 
-    [SerializeField] private bool _isPerformUpdate = false;
     [SerializeField] private ItemListJson _bossMaterials = new();
     [SerializeField] private ItemListJson _mobMaterials = new();
     [SerializeField] private ItemListJson _gatherMaterials = new();
     [SerializeField] private ItemListJson _gemMaterials = new();
 
+
     private void Start()
     {
-        if(!_isPerformUpdate)
-        {
-            return;
-        }
-
         Debug.LogWarning("Creating items library database");
         this.CleanAndUpload(_gemMaterials);
         this.CleanAndUpload(_gatherMaterials);
