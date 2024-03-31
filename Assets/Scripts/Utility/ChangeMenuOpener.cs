@@ -18,4 +18,10 @@ public class ChangeMenuOpener : MonoBehaviour
         this.m_BasicData.SetBool("Open", false);
         this.m_AscensionData.SetBool("Open", true);
     }
+
+    public void CloseAllPanels()
+    {
+        this.m_BasicData.SetBool("Open", false);
+        this.m_AscensionData.SetBool("Open", false);
+    }
 }
