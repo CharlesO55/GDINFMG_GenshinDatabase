@@ -22,6 +22,10 @@ public class CharEditScreen : MonoBehaviour
     [SerializeField] TMP_InputField _speicalVal;
     [SerializeField] TMP_Dropdown _specialStatLabel;
 
+    [Header("Image Info")]
+    [SerializeField] Transform _rarityStarsContainer;
+    [SerializeField] GameObject _rarityStarPrefab;
+    [SerializeField] Image _charElement;
 
     private void Start()
     {
@@ -31,6 +35,8 @@ public class CharEditScreen : MonoBehaviour
 
         this.LoadTextData(gen_Data);
         this.LoadStatsData(stats_Data);
+        this.LoadRarityStars(gen_Data.Rarity);
+
 
         _speicalVal.onSubmit.AddListener(CleanSpecialPercentage);
     }
@@ -61,20 +67,24 @@ public class CharEditScreen : MonoBehaviour
         this._specialStatLabel.value = _specialStatLabel.options.FindIndex(option => option.text == stats_Data.Ascension_stat);
     }
 
+    void LoadRarityStars(int nStars)
+    {
+        foreach(Transform child in _rarityStarsContainer)
+        {
+            Destroy(child.gameObject);
+        }
+        for (int i = 0; i < nStars; i++)
+        {
+            Instantiate(_rarityStarPrefab, _rarityStarsContainer);
+        }
+    }
+
 
 
     public void SaveData()
     {
-        CharacterStatsData stats_Data = SelectCharacter.Instance.StatsData;
-
-        stats_Data.Atk_max = CleanNumbers(this._atkVal.text);
-        stats_Data.Def_max = CleanNumbers(this._defVal.text);
-        stats_Data.Hp_max = CleanNumbers(this._hpVal.text);
-
-        this.CleanSpecialPercentage(this._speicalVal.text);
-        stats_Data.Ascension_max = this._speicalVal.text;
-        stats_Data.Ascension_stat = this._specialStatLabel.options[_specialStatLabel.value].text;
-
+        this.SaveGeneralData();
+        this.SaveStatsData();
 
         SceneLoader.Instance.LoadScene("MainScreen");
     }
@@ -100,5 +110,32 @@ public class CharEditScreen : MonoBehaviour
         cleaned = (cleaned == "") ? "0" : cleaned;
 
         return int.Parse(cleaned);
+    }
+
+
+    void SaveGeneralData()
+    {
+        CharacterGeneralData gen_Data = SelectCharacter.Instance.GeneralData;
+
+        gen_Data.Character_name = this._charName.text;
+        gen_Data.Vision = this._charElement.mainTexture.name.Replace("UI_Buff_Element_", "");
+        //gen_Data.Weapon;
+        //gen_Data.Region;
+        gen_Data.Constellation = this._constellation.text;
+        gen_Data.Affiliation = this._affiliation.text;
+        gen_Data.Description = this._charDescription.text;
+        gen_Data.Rarity = this._rarityStarsContainer.childCount;
+}
+    void SaveStatsData()
+    {
+        CharacterStatsData stats_Data = SelectCharacter.Instance.StatsData;
+
+        stats_Data.Atk_max = CleanNumbers(this._atkVal.text);
+        stats_Data.Def_max = CleanNumbers(this._defVal.text);
+        stats_Data.Hp_max = CleanNumbers(this._hpVal.text);
+
+        this.CleanSpecialPercentage(this._speicalVal.text);
+        stats_Data.Ascension_max = this._speicalVal.text;
+        stats_Data.Ascension_stat = this._specialStatLabel.options[_specialStatLabel.value].text;
     }
 }

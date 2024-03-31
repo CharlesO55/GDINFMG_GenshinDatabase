@@ -20,7 +20,6 @@ public class FilterCharacters : MonoBehaviour
     List<int> _rarities;
     Dictionary<string, List<string>> _dictQueries = new();
 
-
     public static FilterCharacters Instance;
     private void Awake()
     {

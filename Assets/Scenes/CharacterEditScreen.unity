@@ -4378,6 +4378,7 @@ MonoBehaviour:
   _hpVal: {fileID: 2085397848}
   _speicalVal: {fileID: 1550644004}
   _specialStatLabel: {fileID: 1329343449}
+  _rarityStarsContainer: {fileID: 8928406}
 --- !u!4 &249939640
 Transform:
   m_ObjectHideFlags: 0
@@ -9217,7 +9218,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 100, y: -56019.418}
+  m_AnchoredPosition: {x: 100, y: -56616.883}
   m_SizeDelta: {x: 1720, y: 2370}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &583356803

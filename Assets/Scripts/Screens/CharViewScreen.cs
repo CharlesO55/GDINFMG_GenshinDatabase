@@ -82,14 +82,23 @@ public class CharViewScreen : MonoBehaviour
     }
     void AssignImages(CharacterGeneralData gen_Data, CharacterLevelingData lvl_Data)
     {
+        ImageLoader.LoadImageInResources(this._visionIcon, "Elements/UI_Buff_Element_" + gen_Data.Vision);
+        ImageLoader.LoadImageInResources(this._weaponIcon, "Weapons/UI_GachaTypeIcon_" + gen_Data.Weapon);
+        ImageLoader.LoadImageInResources(this._itemBoss, "Mats_BossDrops/UI_ItemIcon_" + lvl_Data.ID_Boss);
+        ImageLoader.LoadImageInResources(this._itemMob, "Mats_MobDrops/UI_ItemIcon_" + lvl_Data.ID_Mob);
+        ImageLoader.LoadImageInResources(this._itemGem, "Mats_Gem/UI_ItemIcon_" + lvl_Data.ID_Gem);
+        ImageLoader.LoadImageInResources(this._itemGather, "Mats_Gather/UI_ItemIcon_" + lvl_Data.ID_Gather);
+
+
+
+        /*
         ImageLoader.LoadImage(this._visionIcon.sprite, "Assets/Sprites/Elements/UI_Buff_Element_" + gen_Data.Vision + ".png");
         ImageLoader.LoadImage(this._weaponIcon.sprite, "Assets/Sprites/Weapons/UI_GachaTypeIcon_" + gen_Data.Weapon + ".png");
-
         ImageLoader.LoadImage(this._itemBoss.sprite, "Assets/Sprites/Mats_BossDrops/UI_ItemIcon_" + lvl_Data.ID_Boss + ".png");
         ImageLoader.LoadImage(this._itemMob.sprite, "Assets/Sprites/Mats_MobDrops/UI_ItemIcon_" + lvl_Data.ID_Mob + ".png");
         ImageLoader.LoadImage(this._itemGem.sprite, "Assets/Sprites/Mats_Gem/UI_ItemIcon_" + lvl_Data.ID_Gem + ".png");
         ImageLoader.LoadImage(this._itemGather.sprite, "Assets/Sprites/Mats_Gather/UI_ItemIcon_" + lvl_Data.ID_Gather + ".png");
-
+        */
 
         //SPECIAL CHECK FOR TRAVELER NAME
         string splashName = gen_Data.Character_name;
@@ -97,7 +106,9 @@ public class CharViewScreen : MonoBehaviour
             splashName = "Aether";
         else if (splashName.Contains("Lumine"))
             splashName = "Lumine";
-        ImageLoader.LoadImage(this._splashArt.sprite, "Assets/Sprites/Splash/UI_Gacha_AvatarImg_" + splashName + ".png");
+
+        ImageLoader.LoadImageInResources(this._splashArt, "Splash/UI_Gacha_AvatarImg_" + splashName);
+        //ImageLoader.LoadImage(this._splashArt.sprite, "Assets/Sprites/Splash/UI_Gacha_AvatarImg_" + splashName + ".png");
     }
 
 }

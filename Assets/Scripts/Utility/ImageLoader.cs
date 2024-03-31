@@ -26,9 +26,15 @@ public static class ImageLoader
     }
 
 
-    public static bool LoadImageInResources(UnityEngine.UI.Image targetImage, string filename)
+    public static bool LoadImageInResources(UnityEngine.UI.Image targetImage, string filename, string altFile = "Portrait/Unknown")
     {
         targetImage.sprite = Resources.Load<Sprite>(filename);
+        if(targetImage.sprite == null)
+        {
+            targetImage.sprite = Resources.Load<Sprite>(altFile);
+            Debug.LogWarning($"Image Resource load failed: {filename}");
+        }
+
         return targetImage.sprite != null;
     }
 }

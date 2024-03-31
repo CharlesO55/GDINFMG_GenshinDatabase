@@ -20,11 +20,8 @@ public class CharacterPanel : MonoBehaviour, IPointerClickHandler
             name = "Lumine";
         else if (name.Contains("Aether"))
             name = "Aether";
-        
-        if (!ImageLoader.LoadImageInResources(_charIcon, "Portrait/UI_AvatarIcon_" + name))
-        {
-            ImageLoader.LoadImageInResources(_charIcon, "Portrait/Unknown");
-        }
+
+        ImageLoader.LoadImageInResources(_charIcon, "Portrait/UI_AvatarIcon_" + name);
     }
 
     public void OnPointerClick(PointerEventData eventData)
