@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class ElementColors
+public static class ElementColors
 {
     public static Dictionary<string, Color32> Dict = new()
     {

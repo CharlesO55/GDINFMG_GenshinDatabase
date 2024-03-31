@@ -23,12 +23,14 @@ public class DistinctValues : MonoBehaviour
         DistinctColValues = new() 
         {
             { EColNames.VISIONS, new()}, 
+            { EColNames.SPECIAL_STATS, new()},
             { EColNames.GATHER_MATS, new()}, 
             { EColNames.GEM_MATS, new()}, 
             { EColNames.MOB_MATS, new()}, 
             { EColNames.BOSS_MATS, new()} 
         };
         this.StartCoroutine(LoadDistinctColValues("vision", EColNames.VISIONS));
+        this.StartCoroutine(LoadDistinctColValues("ascension", EColNames.SPECIAL_STATS));
         this.StartCoroutine(LoadDistinctColValues("ascension_specialty", EColNames.GATHER_MATS));
         this.StartCoroutine(LoadDistinctColValues("ascension_gem", EColNames.GEM_MATS));
         this.StartCoroutine(LoadDistinctColValues("ascension_material", EColNames.MOB_MATS));

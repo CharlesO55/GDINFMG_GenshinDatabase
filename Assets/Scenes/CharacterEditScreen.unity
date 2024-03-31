@@ -4324,6 +4324,60 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 238828565}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &249939638
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 249939640}
+  - component: {fileID: 249939639}
+  m_Layer: 0
+  m_Name: CharEdit Screen
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &249939639
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 249939638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d21e10d9014ddb4794b8e29029672ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _charName: {fileID: 869188468}
+  _region: {fileID: 1173234891}
+  _constellation: {fileID: 1196293963}
+  _affiliation: {fileID: 713712510}
+  _charDescription: {fileID: 948783979}
+  _atkVal: {fileID: 2027283489}
+  _defVal: {fileID: 513638168}
+  _hpVal: {fileID: 2085397848}
+  _speicalVal: {fileID: 1550644004}
+  _specialStatLabel: {fileID: 1329343449}
+--- !u!4 &249939640
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 249939638}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1311.4695, y: 244.46468, z: -10.125506}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &253382813
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9148,7 +9202,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 100, y: -32454.334}
+  m_AnchoredPosition: {x: 100, y: -48332.723}
   m_SizeDelta: {x: 1720, y: 2370}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &583356803
@@ -33111,10 +33165,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Delegates:
-  - eventID: 0
+  - eventID: 4
     callback:
       m_PersistentCalls:
-        m_Calls: []
+        m_Calls:
+        - m_Target: {fileID: 249939639}
+          m_TargetAssemblyTypeName: CharEditScreen, Assembly-CSharp
+          m_MethodName: SaveData
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1001 &2010978027
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -36011,3 +36077,4 @@ SceneRoots:
   - {fileID: 672765850}
   - {fileID: 1302767703}
   - {fileID: 570082321}
+  - {fileID: 249939640}

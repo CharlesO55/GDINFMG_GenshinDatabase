@@ -74,12 +74,11 @@ public class CharViewScreen : MonoBehaviour
     }
     void AssignStats(CharacterStatsData stat_Data)
     {
-        this._statAtk.text = stat_Data.Atk_base.ToString();
-        this._statDef.text = stat_Data.Def_base.ToString();
-        this._statHp.text = stat_Data.Hp_base.ToString();
+        this._statAtk.text = stat_Data.Atk_max.ToString();
+        this._statDef.text = stat_Data.Def_max.ToString();
+        this._statHp.text = stat_Data.Hp_max.ToString();
         this._statSpecial.text = stat_Data.Ascension_stat;
-        this._statSpecialVal.text = stat_Data.Ascension_base;
-
+        this._statSpecialVal.text = stat_Data.Ascension_max;
     }
     void AssignImages(CharacterGeneralData gen_Data, CharacterLevelingData lvl_Data)
     {
@@ -99,6 +98,6 @@ public class CharViewScreen : MonoBehaviour
         else if (splashName.Contains("Lumine"))
             splashName = "Lumine";
         ImageLoader.LoadImage(this._splashArt.sprite, "Assets/Sprites/Splash/UI_Gacha_AvatarImg_" + splashName + ".png");
-
     }
+
 }
