@@ -20,11 +20,7 @@ public class SelectCharacter : MonoBehaviour
     {
         GENERAL,
         STATS,
-        LEVELING_REQS,
-        BOSS_MATS,
-        MOB_MATS,
-        GATHER_MATS,
-        GEM_MATS
+        LEVELING_REQS
     };
 
     [Header("Data Stored")]
@@ -84,21 +80,45 @@ public class SelectCharacter : MonoBehaviour
                 break;
             case EStoreType.LEVELING_REQS:
                 this.LevelingData = JsonUtility.FromJson<CharacterLevelingData>(result);
-                this.StartCoroutine(GetItemID(LevelingData.Name_Boss, LevelingData.ID_Boss, EStoreType.BOSS_MATS));
+                /*this.StartCoroutine(GetItemID(LevelingData.Name_Boss, LevelingData.ID_Boss, EStoreType.BOSS_MATS));
                 this.StartCoroutine(GetItemID(LevelingData.Name_Mob, LevelingData.ID_Mob, EStoreType.MOB_MATS));
                 this.StartCoroutine(GetItemID(LevelingData.Name_Gather, LevelingData.ID_Gather, EStoreType.GATHER_MATS));
-                this.StartCoroutine(GetItemID(LevelingData.Name_Gem, LevelingData.ID_Gem, EStoreType.GEM_MATS));
+                this.StartCoroutine(GetItemID(LevelingData.Name_Gem, LevelingData.ID_Gem, EStoreType.GEM_MATS));*/
+
+                this.UpdateItemIDs(EColNames.BOSS_MATS);
+                this.UpdateItemIDs(EColNames.MOB_MATS);
+                this.UpdateItemIDs(EColNames.GATHER_MATS);
+                this.UpdateItemIDs(EColNames.GEM_MATS);
                 break;
         }
     }
 
-    private IEnumerator GetItemID(string inName, string inID, EStoreType EStore)
+    public void UpdateItemIDs(EColNames E_ITEM_COL_NAME)
+    {
+        switch (E_ITEM_COL_NAME)
+        {
+            case EColNames.BOSS_MATS:
+                this.StartCoroutine(GetItemID(LevelingData.Name_Boss, LevelingData.ID_Boss, E_ITEM_COL_NAME));
+                break;
+            case EColNames.MOB_MATS:
+                this.StartCoroutine(GetItemID(LevelingData.Name_Mob, LevelingData.ID_Mob, E_ITEM_COL_NAME));
+                break;
+            case EColNames.GATHER_MATS:
+                this.StartCoroutine(GetItemID(LevelingData.Name_Gather, LevelingData.ID_Gather, E_ITEM_COL_NAME));
+                break;
+            case EColNames.GEM_MATS:
+                this.StartCoroutine(GetItemID(LevelingData.Name_Gem, LevelingData.ID_Gem, E_ITEM_COL_NAME));
+                break;
+        }
+    }
+    private IEnumerator GetItemID(string inName, string inID, EColNames E_ITEM_COL_NAME)//EStoreType EStore)
     { 
         this._nCoroutinesRunning++;
 
 
         WWWForm form = new();
         form.AddField("FIELD_Name", Regex.Replace(inName, "[^\\w\\._]", ""));
+        //form.AddField("FIELD_Name", TextCleaner.ParseAlphanumeric(inName, true, "None"));
         form.AddField("FIELD_Id", inID);
 
         using (UnityWebRequest handler = UnityWebRequest.Post("http://localhost/Retrieve/GetItemID.php", form))
@@ -107,29 +127,28 @@ public class SelectCharacter : MonoBehaviour
 
             if (handler.error == null)
             {
+                Debug.LogWarning($"{inName}|{inID}=-----={handler.downloadHandler.text}");
                 string[] result = handler.downloadHandler.text.Split('|');
 
-                switch (EStore)
+                switch (E_ITEM_COL_NAME)
                 {
-                    case EStoreType.BOSS_MATS:
+                    case EColNames.BOSS_MATS:
                         LevelingData.Name_Boss = result[0];
                         LevelingData.ID_Boss = result[1];
                         break;
-                    case EStoreType.MOB_MATS:
+                    case EColNames.MOB_MATS:
                         LevelingData.Name_Mob= result[0];
                         LevelingData.ID_Mob = result[1];
                         break;
-                    case EStoreType.GATHER_MATS:
+                    case EColNames.GATHER_MATS:
                         LevelingData.Name_Gather= result[0];
                         LevelingData.ID_Gather = result[1];
                         break;
-                    case EStoreType.GEM_MATS:
+                    case EColNames.GEM_MATS:
                         LevelingData.Name_Gem = result[0];
                         LevelingData.ID_Gem = result[1];
                         break;
                 }
-                
-                //Debug.LogWarning(result[0] + result[1]);
             }
             else
                 Debug.LogError($"Failed to get item id for {inName}");

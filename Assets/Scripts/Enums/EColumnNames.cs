@@ -1,5 +1,7 @@
 public enum EColNames
 {
+    CHAR_NAMES,
+    REGIONS,
     VISIONS,
     SPECIAL_STATS,
     GATHER_MATS,

@@ -7,7 +7,7 @@ public class DistinctValues : MonoBehaviour
 {
     public static DistinctValues Instance;
     
-    public Dictionary<EColNames, List<string>> DistinctColValues {  get; private set; }
+    public static Dictionary<EColNames, List<string>> DistinctColValues {  get; private set; }
 
     
     private void Awake()
@@ -22,13 +22,17 @@ public class DistinctValues : MonoBehaviour
 
         DistinctColValues = new() 
         {
-            { EColNames.VISIONS, new()}, 
+            { EColNames.CHAR_NAMES, new()}, 
+            { EColNames.REGIONS, new()},
+            { EColNames.VISIONS, new()},
             { EColNames.SPECIAL_STATS, new()},
             { EColNames.GATHER_MATS, new()}, 
             { EColNames.GEM_MATS, new()}, 
             { EColNames.MOB_MATS, new()}, 
             { EColNames.BOSS_MATS, new()} 
         };
+        this.StartCoroutine(LoadDistinctColValues("character_name", EColNames.CHAR_NAMES));
+        this.StartCoroutine(LoadDistinctColValues("region", EColNames.REGIONS));
         this.StartCoroutine(LoadDistinctColValues("vision", EColNames.VISIONS));
         this.StartCoroutine(LoadDistinctColValues("ascension", EColNames.SPECIAL_STATS));
         this.StartCoroutine(LoadDistinctColValues("ascension_specialty", EColNames.GATHER_MATS));
@@ -66,7 +70,7 @@ public class DistinctValues : MonoBehaviour
         {
             if(s != "")
             {
-                this.DistinctColValues[EColName].Add(s);
+                DistinctColValues[EColName].Add(s);
             }
         }
     }
