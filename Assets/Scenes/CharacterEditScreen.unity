@@ -4081,6 +4081,7 @@ GameObject:
   - component: {fileID: 238628999}
   - component: {fileID: 238628998}
   - component: {fileID: 238628997}
+  - component: {fileID: 238629000}
   m_Layer: 5
   m_Name: BackButton
   m_TagString: Untagged
@@ -4124,10 +4125,10 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 222211728}
-          m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
-          m_MethodName: SetTrigger
-          m_Mode: 5
+        - m_Target: {fileID: 238629000}
+          m_TargetAssemblyTypeName: ChangeMenuOpener, Assembly-CSharp
+          m_MethodName: CloseAllPanels
+          m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -4174,6 +4175,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 238628995}
   m_CullTransparentMesh: 1
+--- !u!114 &238629000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 238628995}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3219fcc433a39948842f0f2417c1bbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_BasicData: {fileID: 222211728}
+  m_AscensionData: {fileID: 1602065867}
 --- !u!1001 &238828565
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9202,7 +9217,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 100, y: -48332.723}
+  m_AnchoredPosition: {x: 100, y: -56019.418}
   m_SizeDelta: {x: 1720, y: 2370}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &583356803
@@ -29758,6 +29773,7 @@ GameObject:
   - component: {fileID: 1774531481}
   - component: {fileID: 1774531480}
   - component: {fileID: 1774531479}
+  - component: {fileID: 1774531482}
   m_Layer: 5
   m_Name: BackButton
   m_TagString: Untagged
@@ -29801,16 +29817,16 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1602065867}
-          m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
-          m_MethodName: SetTrigger
-          m_Mode: 5
+        - m_Target: {fileID: 1774531482}
+          m_TargetAssemblyTypeName: ChangeMenuOpener, Assembly-CSharp
+          m_MethodName: CloseAllPanels
+          m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
-            m_StringArgument: Close
+            m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
 --- !u!114 &1774531480
@@ -29851,6 +29867,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1774531477}
   m_CullTransparentMesh: 1
+--- !u!114 &1774531482
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1774531477}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3219fcc433a39948842f0f2417c1bbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_BasicData: {fileID: 222211728}
+  m_AscensionData: {fileID: 1602065867}
 --- !u!1001 &1776850879
 PrefabInstance:
   m_ObjectHideFlags: 0
