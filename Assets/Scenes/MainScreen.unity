@@ -1473,6 +1473,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3391175686813849821, guid: 8bb876dd1eaa1674da56da7fd3c5ea79,
+        type: 3}
+      propertyPath: value
+      value: '''Medium Male'''
+      objectReference: {fileID: 0}
     - target: {fileID: 3921527649791562812, guid: 8bb876dd1eaa1674da56da7fd3c5ea79,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -1567,6 +1572,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9099300508266316949, guid: 8bb876dd1eaa1674da56da7fd3c5ea79,
+        type: 3}
+      propertyPath: m_Name
+      value: Medium Male
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

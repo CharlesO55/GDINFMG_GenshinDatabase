@@ -42,7 +42,6 @@ public class FilterCharacters : MonoBehaviour
 
     public void UpdateQueryDisplay()
     {
-        DeleteCurrentPanels();
         this.StartCoroutine(DoFilterCharacters());
     }
 
@@ -59,17 +58,20 @@ public class FilterCharacters : MonoBehaviour
         using (UnityWebRequest handler = UnityWebRequest.Post("http://localhost/Retrieve/FilterCharacters.php", form))
         {
             yield return handler.SendWebRequest();
+            DeleteCurrentPanels();
+
 
             string result = handler.downloadHandler.text;
             if (result.Contains("SUCCESS"))
             {
-                Debug.Log("Character filter passed");
                 this.ExtractQueriedCharacters(result.Split('~')[1]);
+                Debug.Log($"FILTERED:{result}");
             }
             else
-                Debug.LogError("Filter failed [ERROR]: " + handler.downloadHandler.error);
-            
-            Debug.Log(result);
+            {
+                //Debug.LogWarning("Filter failed [ERROR]: " + handler.downloadHandler.error);
+                Debug.LogWarning($"FILTERED Failed:{result}");
+            }
         }
     }
 
