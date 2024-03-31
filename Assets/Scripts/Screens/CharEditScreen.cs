@@ -31,6 +31,8 @@ public class CharEditScreen : MonoBehaviour
 
         this.LoadTextData(gen_Data);
         this.LoadStatsData(stats_Data);
+
+        _speicalVal.onSubmit.AddListener(CleanSpecialPercentage);
     }
 
     void LoadTextData(CharacterGeneralData gen_Data)
@@ -68,11 +70,28 @@ public class CharEditScreen : MonoBehaviour
         stats_Data.Atk_max = CleanNumbers(this._atkVal.text);
         stats_Data.Def_max = CleanNumbers(this._defVal.text);
         stats_Data.Hp_max = CleanNumbers(this._hpVal.text);
-        stats_Data.Ascension_max = CleanPercentage(this._speicalVal.text);
+
+        this.CleanSpecialPercentage(this._speicalVal.text);
+        stats_Data.Ascension_max = this._speicalVal.text;
         stats_Data.Ascension_stat = this._specialStatLabel.options[_specialStatLabel.value].text;
-        
+
 
         SceneLoader.Instance.LoadScene("MainScreen");
+    }
+
+    void CleanSpecialPercentage(string s)
+    {
+        string newS = Regex.Replace(s, "[^0-9]", "");
+
+        newS = newS.Length switch
+        {
+            0 => "0.00",
+            1 => "0.0" + newS,
+            2 => "0." + newS,
+            _ => newS.Insert(newS.Length - 2, ".")
+        };
+
+        this._speicalVal.text = newS + "%";
     }
 
     int CleanNumbers(string s)
@@ -81,21 +100,5 @@ public class CharEditScreen : MonoBehaviour
         cleaned = (cleaned == "") ? "0" : cleaned;
 
         return int.Parse(cleaned);
-    }
-
-    string CleanPercentage(string s)
-    {
-        /*string addDecimal = s;
-        for(int i = s.Length - 1; i > 0; i--)
-        {
-
-        }
-*/
-        string cleaned = Regex.Replace(s, "[^0-9]+\\.", "");
-
-        //string cleaned = Regex.Replace(s, "^\\d+[.]?\\d*%?$\"", "");
-        //string cleaned = Regex.Replace(s, "\\d+(?:\\.\\d+)?%", "");
-        cleaned = (cleaned == "") ? "0.00%" : cleaned;
-        return cleaned;
     }
 }
