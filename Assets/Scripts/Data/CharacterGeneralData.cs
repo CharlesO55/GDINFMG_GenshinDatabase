@@ -15,4 +15,13 @@ public class CharacterGeneralData
     public string Description;
 
     public int Rarity;
+
+
+    public void CleanStrings()
+    {
+        Character_name = TextCleaner.RegexAlphaNumeric(Character_name);
+        Constellation = TextCleaner.RegexAlphaNumeric(Constellation);
+        Affiliation = TextCleaner.RegexAlphaNumeric(Affiliation);
+        Description = TextCleaner.RegexAlphaNumeric(Description);
+    }
 }

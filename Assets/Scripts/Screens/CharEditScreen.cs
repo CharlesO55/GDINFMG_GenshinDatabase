@@ -31,6 +31,7 @@ public class CharEditScreen : MonoBehaviour
     [SerializeField] Image _itemMob;
     [SerializeField] Image _itemGem;
     [SerializeField] Image _itemGather;
+    [SerializeField] Image _splashImage;
     private void Start()
     {
         CharacterGeneralData gen_Data = SelectCharacter.Instance.GeneralData;
@@ -48,10 +49,18 @@ public class CharEditScreen : MonoBehaviour
         ImageLoader.LoadImageInResources(this._itemGem, "Mats_Gem/UI_ItemIcon_" + lvl_Data.ID_Gem);
         ImageLoader.LoadImageInResources(this._itemGather, "Mats_Gather/UI_ItemIcon_" + lvl_Data.ID_Gather);
 
-        
+
+        //SPLASH ART
+        ImageLoader.LoadImageInResources(this._splashImage, "Splash/UI_Gacha_AvatarImg_" + gen_Data.Character_name);
+
+
         _speicalVal.onSubmit.AddListener(value => 
         { 
             this._speicalVal.text = TextCleaner.CleanSpecialPercentage(value);
+        });
+        _charName.onSubmit.AddListener(value =>
+        {
+            this.CheckName();
         });
     }
 
@@ -119,6 +128,8 @@ public class CharEditScreen : MonoBehaviour
     void SwapToMainScreen()
     {
         SelectCharacter.Instance.OnLoadingFinished.RemoveListener(SwapToMainScreen);
+        SelectCharacter.Instance.CallUpdateCharacterDatabase();
+
         SceneLoader.Instance.LoadScene("MainScreen");
     }
 
@@ -127,11 +138,16 @@ public class CharEditScreen : MonoBehaviour
 
     void CheckName()
     {
-        this._charName.text = TextCleaner.ParseAlphanumeric(this._charName.text, true, "None");
+        //this._charName.text = TextCleaner.ParseAlphanumeric(this._charName.text, true, "None");
+        this._charName.text = TextCleaner.RegexAlphaNumeric(this._charName.text);
 
-        if (DistinctValues.DistinctColValues[EColNames.CHAR_NAMES].Contains(this._charName.text))
+
+        //DO NOT ALLOW SAME NAME WHEN ONE EXISTS ALREADY
+        if (DistinctValues.DICT_COUNT_CHAR_NAMES.ContainsKey(this._charName.text) &&
+            DistinctValues.DICT_COUNT_CHAR_NAMES[this._charName.text] > 1)
         {
             this._charName.text += System.DateTime.Now.ToString("HH:mm:ss tt");
+            Debug.LogError("Existin " + _charName.text);
         }
     }
 
@@ -139,6 +155,7 @@ public class CharEditScreen : MonoBehaviour
     {
         CharacterGeneralData gen_Data = SelectCharacter.Instance.GeneralData;
 
+        
         gen_Data.Character_name = this._charName.text;
 
         gen_Data.Vision = this._charElement.mainTexture.name.Replace("UI_Buff_Element_", "");
@@ -150,6 +167,8 @@ public class CharEditScreen : MonoBehaviour
         gen_Data.Constellation = this._constellation.text;
         gen_Data.Affiliation = this._affiliation.text;
         gen_Data.Description = this._charDescription.text;
+
+        gen_Data.CleanStrings();
 }
     void SaveStatsData()
     {
@@ -188,5 +207,7 @@ public class CharEditScreen : MonoBehaviour
     {
         if (_speicalVal != null)
             _speicalVal.onSubmit.RemoveAllListeners();
+        if(_charName != null) 
+            _charName.onSubmit.RemoveAllListeners();
     }
 }

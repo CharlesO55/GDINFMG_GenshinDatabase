@@ -5,9 +5,10 @@ using UnityEngine;
 
 public static class TextCleaner
 {
-    public static string ParseAlphanumeric(string text, bool keepSpaces = true, string textIfEmpty = "None")
+    /*public static string ParseAlphanumeric(string text, bool keepSpaces = true, string textIfEmpty = "None")
     {
         string cleanedText = "";
+
 
         for (int i = 0; i < text.Length; i++)
         {
@@ -20,13 +21,24 @@ public static class TextCleaner
             }
         }
 
-        if(text.Length == 0 )
+        if (cleanedText.Length == 0 )
         {
             cleanedText = textIfEmpty;
         }
-        return text;
-    }
+        return cleanedText;
+    }*/
 
+
+    public static string RegexAlphaNumeric(string s, string characterSet = "[^A-Za-z0-9_ ]", string textIfEmpty = "None")
+    {
+        string cleanedText = Regex.Replace(s, characterSet, "");
+
+        if (cleanedText.Length == 0)
+        {
+            cleanedText = textIfEmpty;
+        }
+        return cleanedText;
+    }
     public static int CleanNumbers(string s)
     {
         string cleaned = Regex.Replace(s, "[^0-9]", "");

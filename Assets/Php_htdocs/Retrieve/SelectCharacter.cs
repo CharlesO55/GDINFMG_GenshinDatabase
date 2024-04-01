@@ -127,7 +127,7 @@ public class SelectCharacter : MonoBehaviour
 
             if (handler.error == null)
             {
-                Debug.LogWarning($"{inName}|{inID}=-----={handler.downloadHandler.text}");
+                //Debug.LogWarning($"{inName}|{inID}=-----={handler.downloadHandler.text}");
                 string[] result = handler.downloadHandler.text.Split('|');
 
                 switch (E_ITEM_COL_NAME)
@@ -165,4 +165,31 @@ public class SelectCharacter : MonoBehaviour
             this.OnLoadingFinished.RemoveAllListeners();
         }
     }
+
+
+
+    public void CallUpdateCharacterDatabase()
+    {
+        this.StartCoroutine(UploadSelectedCharacterInfo());
+    }
+    private IEnumerator UploadSelectedCharacterInfo()
+    {
+        WWWForm form = new();
+
+        //Debug.LogWarning(JsonUtility.ToJson(this.GeneralData));
+        form.AddField("JSON_GenData", JsonUtility.ToJson(this.GeneralData));
+        form.AddField("JSON_StatsData", JsonUtility.ToJson(this.StatsData));
+        form.AddField("JSON_LvlData", JsonUtility.ToJson(this.LevelingData));
+
+
+        using (UnityWebRequest handler = UnityWebRequest.Post("http://localhost/Update/UpdateCharacter.php", form))
+        {
+            yield return handler.SendWebRequest();
+
+            if (handler.error != null)
+                Debug.LogError($"Character update failed {handler.error}");
+            else
+                Debug.LogWarning($"RESULT: {handler.downloadHandler.text}");
+        }
+    } 
 }
