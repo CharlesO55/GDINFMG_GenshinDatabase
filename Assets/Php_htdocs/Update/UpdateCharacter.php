@@ -12,28 +12,45 @@ $StatsData = json_decode($JSON_StatsData);
 $LvlData = json_decode($JSON_LvlData);
 
 $sql = "UPDATE table_masterlist SET 
+        character_name = '".$GenData->Character_name."',
         vision = '".$GenData->Vision."',
         weapon_type = '".$GenData->Weapon."',
         region = '".$GenData->Region."',
         constellation = '".$GenData->Constellation."',
         affiliation = '".$GenData->Affiliation."',
         character_description = '".$GenData->Description."',
-        rarity = '".$GenData->Rarity."'
-WHERE character_name = '".$GenData->Character_name."';";
+        rarity = '".$GenData->Rarity."',
+        atk_1_20 = '".$StatsData->Atk_base."',
+        def_1_20 = '".$StatsData->Def_base."',
+        hp_1_20 = '".$StatsData->Hp_base."',
+        atk_90_90 = '".$StatsData->Atk_max."',
+        def_90_90 = '".$StatsData->Def_max."',
+        hp_90_90 = '".$StatsData->Hp_max."',
+        ascension = '".$StatsData->Ascension_stat."',
+        special_0 = '".$StatsData->Ascension_base."',
+        special_6 ='".$StatsData->Ascension_max."',
+        ascension_boss = '".$LvlData->Name_Boss."',
+        ascension_material = '".$LvlData->Name_Mob."',
+        ascension_specialty = '".$LvlData->Name_Gather."',
+        ascension_gem = '".$LvlData->Name_Gem."'
+WHERE character_id = '".$GenData->Character_Id."';";
 
-// atk_1_20 = '".$GenData->Atk_base."'
-
-// public int Atk_base;
-// public int Def_base;
-// public int Hp_base;
-// public int Atk_max;
-// public int Def_max;
-// public int Hp_max;
-// public string Ascension_stat;
-// public string Ascension_base;
-// public string Ascension_max;
 
 
+
+mysqli_query($CONNECTION, $sql) or die("[1] FAILED TO UPDATE CHARACTER");
+
+echo "[Updated Char]:". $GenData->Character_name;// . "Check" . $LvlData->Name_Gather . "|" . $LvlData->Name_Mob . "|" . $LvlData->Name_Boss . "|" . $LvlData->Name_Gem;
+
+/*
+public string Name_Gather = "None";
+public string ID_Gather = "None";
+public string Name_Mob = "None";
+public string ID_Mob = "None";
+public string Name_Boss = "None";
+public string ID_Boss = "None";
+public string Name_Gem = "None";
+public string ID_Gem = "None";*/
 
 // $FIELD_CharacterName = $_POST["FIELD_CharacterName"];
 
@@ -138,9 +155,4 @@ WHERE character_name = '".$GenData->Character_name."';";
 //     last_banner_appearance = '".$FIELD_last_banner_appearance."',  
 //     total_revenue = '".$FIELD_total_revenue."'
 // WHERE character_name = '".$FIELD_CharacterName."'";
-
-
-mysqli_query($CONNECTION, $sql) or die("[1] FAILED TO UPDATE CHARACTER");
-
-echo "UPDATED:" . $GenData->Character_name;
 ?>

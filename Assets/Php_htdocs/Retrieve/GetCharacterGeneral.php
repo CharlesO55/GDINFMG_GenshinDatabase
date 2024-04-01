@@ -12,6 +12,7 @@ if(mysqli_num_rows($query) == 1){
 
 
     $OUT_JSON = new stdClass();
+    $OUT_JSON->Character_Id = $result["character_id"];
     $OUT_JSON->Character_name = $result["character_name"];
     $OUT_JSON->Rarity = $result["rarity"];
     $OUT_JSON->Vision = $result["vision"];

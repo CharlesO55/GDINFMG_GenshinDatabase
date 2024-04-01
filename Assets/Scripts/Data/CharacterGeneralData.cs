@@ -6,6 +6,7 @@ using UnityEngine;
 [Serializable]
 public class CharacterGeneralData
 {
+    public int Character_Id;
     public string Character_name;
     public string Vision;
     public string Weapon;

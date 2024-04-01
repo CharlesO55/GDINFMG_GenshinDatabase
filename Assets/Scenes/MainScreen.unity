@@ -1058,7 +1058,11 @@ MonoBehaviour:
   OnLoadingFinished:
     m_PersistentCalls:
       m_Calls: []
+  OnDatabaseUpdateFinished:
+    m_PersistentCalls:
+      m_Calls: []
   GeneralData:
+    Character_Id: 0
     Character_name: 
     Vision: 
     Weapon: 

@@ -14,6 +14,7 @@ SELECT 	import_general.* ,
 
 # Remove unnecessary columns
 $sql3 = "ALTER TABLE table_masterlist 
+    ADD COLUMN `character_id` INT AUTO_INCREMENT UNIQUE FIRST,
     ADD UNIQUE(`character_name`),
 	DROP COLUMN hp_80_90, 
     DROP COLUMN atk_80_90, 

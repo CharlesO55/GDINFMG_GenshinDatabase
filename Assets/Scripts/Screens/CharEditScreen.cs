@@ -8,8 +8,11 @@ using UnityEngine.UI;
 
 public class CharEditScreen : MonoBehaviour
 {
+    private string _compareStartingCharName;
+
     [Header("Text Info")]
     [SerializeField] TMP_InputField _charName;
+    [SerializeField] TMP_Dropdown _rarity;
     [SerializeField] TMP_Dropdown _region;
     [SerializeField] TMP_InputField _constellation;
     [SerializeField] TMP_InputField _affiliation;
@@ -23,8 +26,6 @@ public class CharEditScreen : MonoBehaviour
     [SerializeField] TMP_Dropdown _specialStatLabel;
 
     [Header("Image Info")]
-    [SerializeField] Transform _rarityStarsContainer;
-    [SerializeField] GameObject _rarityStarPrefab;
     [SerializeField] Image _charElement;
     [SerializeField] Image _charWeapon;
     [SerializeField] Image _itemBoss;
@@ -37,6 +38,8 @@ public class CharEditScreen : MonoBehaviour
         CharacterGeneralData gen_Data = SelectCharacter.Instance.GeneralData;
         CharacterStatsData stats_Data = SelectCharacter.Instance.StatsData;
         CharacterLevelingData lvl_Data = SelectCharacter.Instance.LevelingData;
+
+        this._compareStartingCharName = gen_Data.Character_name;
 
         this.LoadTextData(gen_Data);
         this.LoadStatsData(stats_Data);
@@ -70,6 +73,9 @@ public class CharEditScreen : MonoBehaviour
         this._constellation.text = gen_Data.Constellation;
         this._affiliation.text = gen_Data.Affiliation;
         this._charDescription.text = gen_Data.Description;
+
+        this._rarity.value = _rarity.options.FindIndex(option => option.text == gen_Data.Rarity.ToString() + " Star");
+
 
         this._region.options.Clear();
         foreach (string s in DistinctValues.DistinctColValues[EColNames.REGIONS])
@@ -127,10 +133,12 @@ public class CharEditScreen : MonoBehaviour
 
     void SwapToMainScreen()
     {
-        SelectCharacter.Instance.OnLoadingFinished.RemoveListener(SwapToMainScreen);
-        SelectCharacter.Instance.CallUpdateCharacterDatabase();
+        SelectCharacter.Instance.OnDatabaseUpdateFinished.AddListener(() => {
+            SelectCharacter.Instance.OnDatabaseUpdateFinished.RemoveAllListeners();
+            SceneLoader.Instance.LoadScene("MainScreen");
+        });
 
-        SceneLoader.Instance.LoadScene("MainScreen");
+        SelectCharacter.Instance.CallUpdateCharacterDatabase(); 
     }
 
     
@@ -138,16 +146,14 @@ public class CharEditScreen : MonoBehaviour
 
     void CheckName()
     {
-        //this._charName.text = TextCleaner.ParseAlphanumeric(this._charName.text, true, "None");
         this._charName.text = TextCleaner.RegexAlphaNumeric(this._charName.text);
 
 
-        //DO NOT ALLOW SAME NAME WHEN ONE EXISTS ALREADY
-        if (DistinctValues.DICT_COUNT_CHAR_NAMES.ContainsKey(this._charName.text) &&
-            DistinctValues.DICT_COUNT_CHAR_NAMES[this._charName.text] > 1)
+        //DO NOT ALLOW SETTING NEW NAME TO AN EXISTING OLD ONE
+        if (this._compareStartingCharName != _charName.text && DistinctValues.DICT_COUNT_CHAR_NAMES.ContainsKey(_charName.text))
         {
-            this._charName.text += System.DateTime.Now.ToString("HH:mm:ss tt");
-            Debug.LogError("Existin " + _charName.text);
+            this._charName.text += System.DateTime.Now.ToString("HHmmsstt");
+            Debug.LogWarning("Existing name! Changed to " + _charName.text);
         }
     }
 
@@ -161,7 +167,7 @@ public class CharEditScreen : MonoBehaviour
         gen_Data.Vision = this._charElement.mainTexture.name.Replace("UI_Buff_Element_", "");
         gen_Data.Weapon = this._charWeapon.mainTexture.name.Replace("UI_GachaTypeIcon_", "");
 
-        gen_Data.Rarity = this._rarityStarsContainer.childCount;
+        gen_Data.Rarity = this._rarity.options[_rarity.value].text[0] - '0';
 
         gen_Data.Region = this._region.options[_region.value].text;
         gen_Data.Constellation = this._constellation.text;

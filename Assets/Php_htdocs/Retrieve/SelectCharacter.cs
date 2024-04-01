@@ -13,6 +13,7 @@ public class SelectCharacter : MonoBehaviour
     public static SelectCharacter Instance;
     
     public UnityEvent OnLoadingFinished;
+    public UnityEvent OnDatabaseUpdateFinished;
 
     private int _nCoroutinesRunning = 0;
 
@@ -159,8 +160,9 @@ public class SelectCharacter : MonoBehaviour
     private void UpdateCoroutinesCount()
     {
         this._nCoroutinesRunning--;
-        if(this._nCoroutinesRunning == 0)
+        if(this._nCoroutinesRunning <= 0)
         {
+            _nCoroutinesRunning = 0;
             this.OnLoadingFinished?.Invoke();
             this.OnLoadingFinished.RemoveAllListeners();
         }
@@ -191,5 +193,7 @@ public class SelectCharacter : MonoBehaviour
             else
                 Debug.LogWarning($"RESULT: {handler.downloadHandler.text}");
         }
+
+        this.OnDatabaseUpdateFinished?.Invoke();
     } 
 }
