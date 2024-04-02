@@ -36,10 +36,6 @@ public class DeleteCharacter : MonoBehaviour, IPointerClickHandler, IPointerEnte
                 Debug.LogError("Failed to delete character" + handler.error);
 
             Debug.Log(handler.downloadHandler.text);
-
-            //Debug.LogWarning("Refresh views is turned off");
-            //RefreshViews.Instance.Refresh();
-            //SceneLoader.Instance.LoadScene("MainScreen");
             SceneLoader.Instance.LoadScene(EScenes.LOADING_SCREEN, new LoadingParams(EScenes.MAIN_SCREEN, false, false, true, true));
         }
     }

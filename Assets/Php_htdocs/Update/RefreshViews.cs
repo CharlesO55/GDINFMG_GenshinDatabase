@@ -17,7 +17,6 @@ public class RefreshViews : MonoBehaviour
             Destroy(this.gameObject);
     }
 
-
     public void CallRefresh()
     {
         this.StartCoroutine(DoViewsRefresh());

@@ -2286,7 +2286,13 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1302767704}
+      objectReference: {fileID: 8316474034952209704, guid: 8baf304ce74a7a74b85dbdf1d5d3876c,
+        type: 3}
+    - target: {fileID: 4175536153208996650, guid: 8bb876dd1eaa1674da56da7fd3c5ea79,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadSceneWithoutDatabaseAction
+      objectReference: {fileID: 0}
     - target: {fileID: 4378368076659391332, guid: 8bb876dd1eaa1674da56da7fd3c5ea79,
         type: 3}
       propertyPath: m_Name
@@ -9807,7 +9813,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 100, y: -73935.56}
+  m_AnchoredPosition: {x: 100, y: -74501.74}
   m_SizeDelta: {x: 1720, y: 2370}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &583356803
@@ -22547,18 +22553,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8baf304ce74a7a74b85dbdf1d5d3876c, type: 3}
---- !u!114 &1302767704 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8316474034952209704, guid: 8baf304ce74a7a74b85dbdf1d5d3876c,
-    type: 3}
-  m_PrefabInstance: {fileID: 1302767703}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f302073e3137784b8b7f2d8ef3c6668, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1307674869
 PrefabInstance:
   m_ObjectHideFlags: 0

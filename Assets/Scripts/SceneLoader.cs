@@ -19,13 +19,17 @@ public class SceneLoader : MonoBehaviour
         { EScenes.CHAR_EDIT_SCREEN, "CharacterEditScreen"}
     };
 
-    private LoadingParams currLoadingParams;
+    private LoadingParams _currLoadingParams;
+    private TextMeshProUGUI _currLoadingText;
+    private GrayscaleProgressBar _currLoadingBar;
+
 
     private void Awake()
     {
         if (Instance == null)
         {
             Instance = this;
+            SceneManager.sceneLoaded += GetNewProgressGUI;
             SceneManager.sceneLoaded += DoDatabaseUpdates;
             DontDestroyOnLoad(this);
         }
@@ -33,10 +37,26 @@ public class SceneLoader : MonoBehaviour
             Destroy(this.gameObject);
     }
 
+    void GetNewProgressGUI(Scene scene, LoadSceneMode _)
+    {
+        if(scene.name == "LoadingScreen")
+        {
+            this._currLoadingBar = GameObject.FindAnyObjectByType<GrayscaleProgressBar>();
+            this._currLoadingBar.Init(4);
+
+            GameObject textObject = GameObject.Find("LoadingProgressText");
+            if (textObject != null)
+            {
+                textObject.TryGetComponent<TextMeshProUGUI>(out this._currLoadingText);
+            }
+        }
+    }
+    
+
     //CALLED ON EVERY SCENE LEVEL LOADED
     void DoDatabaseUpdates(Scene scene, LoadSceneMode _)
     {
-        if(currLoadingParams != null)
+        if(_currLoadingParams != null)
         {
             this.CheckReloadMasterlist();
         }
@@ -45,13 +65,11 @@ public class SceneLoader : MonoBehaviour
     public void LoadSceneWithoutDatabaseAction(string sceneName)
     {
         EScenes sceneKey = _DictSceneNames.FirstOrDefault(x => x.Value == sceneName).Key;
-        Debug.LogWarning($"SceneIS{sceneKey}");
-
         this.LoadScene(sceneKey, null);
     }
-    public void LoadScene(EScenes eScene, LoadingParams loadingParams = null)
+    public void LoadScene(EScenes eScene, LoadingParams loadingParams)
     {
-        currLoadingParams = loadingParams;
+        _currLoadingParams = loadingParams;
         SceneManager.LoadScene(_DictSceneNames[eScene]);
     }
 
@@ -59,9 +77,9 @@ public class SceneLoader : MonoBehaviour
 
     void CheckReloadMasterlist()
     {
-        LogLoadingProgress("Reloading database masterlist...");
+        LogLoadingProgress("Reloading database masterlist...", true);
         //WAIT FOR MASTERLIST TO FINISH RELOADING
-        if (currLoadingParams.IsReloadMasterlistTable)
+        if (_currLoadingParams.IsReloadMasterlistTable)
         {
             ReloadMasterlist.Instance.OnDatabaseActionCompleted.AddListener(result => {
                 ReloadMasterlist.Instance.OnDatabaseActionCompleted.RemoveAllListeners();
@@ -79,10 +97,10 @@ public class SceneLoader : MonoBehaviour
 
     void CheckReloadViews()
     {
-        LogLoadingProgress("Refreshing views...");
+        LogLoadingProgress("Refreshing views...", true);
 
         //WAIT FOR VIEWS TO FINISH RELOADING
-        if (currLoadingParams.IsReloadViews)
+        if (_currLoadingParams.IsReloadViews)
         {
             RefreshViews.Instance.OnDatabaseActionCompleted.AddListener(result => {
                 RefreshViews.Instance.OnDatabaseActionCompleted.RemoveAllListeners();
@@ -99,10 +117,10 @@ public class SceneLoader : MonoBehaviour
 
     void CheckReloadItemSpriteTable()
     {
-        LogLoadingProgress("Refreshing item sprites table...");
+        LogLoadingProgress("Refreshing item sprites table...", true);
 
         //WAIT FOR ITEM SPRITES TO FINISH RELOADING
-        if (currLoadingParams.IsReloadItemsTable)
+        if (_currLoadingParams.IsReloadItemsTable)
         {
             CreateItemsTable.Instance.OnDatabaseActionCompleted.AddListener(result =>
             {
@@ -121,10 +139,10 @@ public class SceneLoader : MonoBehaviour
 
     void CheckReloadDistinctValues()
     {
-        LogLoadingProgress("Refreshing distinct values...");
+        LogLoadingProgress("Refreshing distinct values...", true);
 
         //WAIT FOR ITEM SPRITES TO FINISH RELOADING
-        if (currLoadingParams.IsReloadDistinctValues)
+        if (_currLoadingParams.IsReloadDistinctValues)
         {
             DistinctValues.Instance.OnDatabaseActionCompleted.AddListener(() =>
             {
@@ -142,17 +160,17 @@ public class SceneLoader : MonoBehaviour
 
     void LoadNextScene()
     {
-        this.LoadScene(currLoadingParams.ENextScene, null);
+        this.LoadScene(_currLoadingParams.ENextScene, null);
     }
 
-    void LogLoadingProgress(string resultText)
+    void LogLoadingProgress(string resultText, bool isIncrementProgress = false)
     {
         Debug.Log($"Checking: {resultText}");
-
-        GameObject textObject = GameObject.Find("LoadingProgressText");
-        if(textObject != null && textObject.TryGetComponent<TextMeshProUGUI>(out var TMP_Text))
+        this._currLoadingText.text = resultText;
+        
+        if(isIncrementProgress)
         {
-            TMP_Text.text = resultText;
+            this._currLoadingBar.IncrementProgress();
         }
     }
 }
