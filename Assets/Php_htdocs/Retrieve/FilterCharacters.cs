@@ -1,3 +1,4 @@
+using Newtonsoft.Json;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -42,6 +43,27 @@ public class FilterCharacters : MonoBehaviour
     public void UpdateQueryDisplay()
     {
         this.StartCoroutine(DoFilterCharacters());
+        this.StartCoroutine(DoFilterByMaterials());
+    }
+
+
+    private IEnumerator DoFilterByMaterials()
+    {
+        WWWForm form = new();
+        form.AddField("FIELD_ItemID", 100021);
+        
+        using (UnityWebRequest handler = UnityWebRequest.Post("http://localhost/Retrieve/FilterByMaterials.php", form))
+        {
+            yield return handler.SendWebRequest();
+            //DeleteCurrentPanels();
+
+
+            string[][] results = JsonConvert.DeserializeObject<string[][]>(handler.downloadHandler.text);
+            foreach (string[] character in results)
+            {
+                Debug.LogWarning($"Name: {character[0]} Rarity: {character[1]}");
+            }
+        }
     }
 
     private IEnumerator DoFilterCharacters()
