@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.Networking;
 
 public class CreateItemsTable : MonoBehaviour
@@ -13,15 +14,29 @@ public class CreateItemsTable : MonoBehaviour
         public List<ItemData> Items;
     }
 
+    public static CreateItemsTable Instance;
+    public UnityEvent<string> OnDatabaseActionCompleted;
+
+    private int _nTaskCompleted;
     [SerializeField] private ItemListJson _bossMaterials = new();
     [SerializeField] private ItemListJson _mobMaterials = new();
     [SerializeField] private ItemListJson _gatherMaterials = new();
     [SerializeField] private ItemListJson _gemMaterials = new();
 
 
-    private void Start()
+    private void Awake()
+    {
+        if (Instance == null)
+            Instance = this;
+        else
+            Destroy(this.gameObject);
+    }
+
+    public void CallUpdateItemsTable()
     {
         Debug.LogWarning("Creating items library database");
+        
+        this._nTaskCompleted = 0;
         this.CleanAndUpload(_gemMaterials);
         this.CleanAndUpload(_gatherMaterials);
         this.CleanAndUpload(_mobMaterials);
@@ -52,6 +67,18 @@ public class CreateItemsTable : MonoBehaviour
                 Debug.LogError(handler.error);
 
             Debug.Log(handler.downloadHandler.text);
+        }
+
+        UpdateTaskCounter();
+    }
+
+    void UpdateTaskCounter()
+    {
+        this._nTaskCompleted++;
+
+        if(_nTaskCompleted >= 4)
+        {
+            this.OnDatabaseActionCompleted?.Invoke("[SUCCESS] All 4 Item lists have been uploaded");
         }
     }
 }

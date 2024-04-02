@@ -1,26 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.Networking;
 
 public class RefreshViews : MonoBehaviour
 {
     public static RefreshViews Instance;
+    public UnityEvent<string> OnDatabaseActionCompleted;
 
     private void Awake()
     {
         if (Instance == null)
-        {
             Instance = this;
-            this.Refresh();
-            DontDestroyOnLoad(this);
-        }
         else
             Destroy(this.gameObject);
     }
 
 
-    public void Refresh()
+    public void CallRefresh()
     {
         this.StartCoroutine(DoViewsRefresh());
     }
@@ -33,8 +31,7 @@ public class RefreshViews : MonoBehaviour
 
             if(handler.error != null)
                 Debug.LogError(handler.error);
-
-            Debug.Log(handler.downloadHandler.text);
+            this.OnDatabaseActionCompleted?.Invoke(handler.downloadHandler.text);
         }
     }
 }

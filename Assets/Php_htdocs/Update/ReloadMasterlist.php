@@ -69,5 +69,5 @@ mysqli_query($CONNECTION, $sql2) or die("[2]: Masterlist copy imports failed");
 mysqli_query($CONNECTION, $sql3) or die("[3]: Masterlist drop cols failed");
 mysqli_query($CONNECTION, $sql4) or die("[4]: Masterlist copy traveler description failed");
 
-echo "SUCCESS ~ MasterList Reloaded";
+echo "[SUCCESS] MasterList Reloaded";
 ?>

@@ -29,7 +29,8 @@ public class CharacterPanel : MonoBehaviour, IPointerClickHandler
         SelectCharacter.Instance.LoadSelectedCharacter(this._charName.text);
 
         SelectCharacter.Instance.OnLoadingFinished.AddListener(() => {
-            SceneLoader.Instance.LoadScene("CharacterViewScreen");
+            //SceneLoader.Instance.LoadScene("CharacterViewScreen");
+            SceneLoader.Instance.LoadScene(EScenes.LOADING_SCREEN, new LoadingParams(EScenes.CHAR_VIEW_SCREEN, false, false, false, false));
         });
     }
 }

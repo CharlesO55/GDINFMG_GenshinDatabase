@@ -135,7 +135,8 @@ public class CharEditScreen : MonoBehaviour
     {
         SelectCharacter.Instance.OnDatabaseUpdateFinished.AddListener(() => {
             SelectCharacter.Instance.OnDatabaseUpdateFinished.RemoveAllListeners();
-            SceneLoader.Instance.LoadScene("MainScreen");
+            //SceneLoader.Instance.LoadScene("MainScreen");
+            SceneLoader.Instance.LoadScene(EScenes.MAIN_SCREEN);
         });
 
         SelectCharacter.Instance.CallUpdateCharacterDatabase(); 

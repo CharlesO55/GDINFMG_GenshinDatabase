@@ -80,5 +80,5 @@ mysqli_query($CONNECTION, $sql10) or die("[10] Char general view failed");
 mysqli_query($CONNECTION, $sql11) or die("[11] Char leveing reqs view failed");
 mysqli_query($CONNECTION, $sql12) or die("[12] Char stats view failed");
 
-echo "SUCCESS~Refresh views updated";
+echo "[SUCCESS] Views refreshed";
 ?>
