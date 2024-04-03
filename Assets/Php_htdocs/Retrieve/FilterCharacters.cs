@@ -37,31 +37,38 @@ public class FilterCharacters : MonoBehaviour
         this._dictQueries.Add("Region", new() { "'Mondstadt'", "'Sumeru'", "'N/A'", "'Inazuma'", "'Liyue'", "'Fontaine'", "'Snezhnaya'" });
         this._dictQueries.Add("Weapon", new() { "'Sword'", "'Bow'", "'Claymore'", "'Catalyst'", "'Polearm'" });
         this._dictQueries.Add("Model", new() { "'Medium Male'","'Tall Male'","'Medium Female'","'Tall Female'","'Short Female'" });
-        this.UpdateQueryDisplay();
+        this.CallFilterByMultiple();
     }
 
-    public void UpdateQueryDisplay()
+    public void CallFilterByMultiple()
     {
         this.StartCoroutine(DoFilterCharacters());
-        this.StartCoroutine(DoFilterByMaterials());
     }
 
+    public void CallFilterByMaterial(string itemID)
+    {
+        this.StartCoroutine(DoFilterByMaterials(itemID));
+    }
 
-    private IEnumerator DoFilterByMaterials()
+    private IEnumerator DoFilterByMaterials(string itemID)
     {
         WWWForm form = new();
-        form.AddField("FIELD_ItemID", 100021);
+        form.AddField("FIELD_ItemID", itemID);
         
         using (UnityWebRequest handler = UnityWebRequest.Post("http://localhost/Retrieve/FilterByMaterials.php", form))
         {
             yield return handler.SendWebRequest();
-            //DeleteCurrentPanels();
+            DeleteCurrentPanels();
 
 
             string[][] results = JsonConvert.DeserializeObject<string[][]>(handler.downloadHandler.text);
             foreach (string[] character in results)
             {
-                Debug.LogWarning($"Name: {character[0]} Rarity: {character[1]}");
+                GameObject newCharPanel = Instantiate(this._characterPanelPrefab, this._characterPanelsContainer);
+                if (newCharPanel.TryGetComponent<CharacterPanel>(out CharacterPanel panel))
+                {
+                    panel.Initialize(character[0], int.Parse(character[1]));
+                }
             }
         }
     }
@@ -152,7 +159,7 @@ public class FilterCharacters : MonoBehaviour
                 this._dictQueries[key].Remove(value);
         }
 
-        this.UpdateQueryDisplay();
+        this.CallFilterByMultiple();
     }
 
     private string ExtractFilterString<T>(List<T> values)

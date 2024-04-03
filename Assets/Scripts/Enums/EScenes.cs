@@ -7,5 +7,6 @@ public enum EScenes
     START_SCREEN,
     MAIN_SCREEN,
     CHAR_VIEW_SCREEN,
-    CHAR_EDIT_SCREEN
+    CHAR_EDIT_SCREEN,
+    SUMMARY_SCREEN
 }

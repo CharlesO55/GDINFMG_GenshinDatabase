@@ -16,7 +16,8 @@ public class SceneLoader : MonoBehaviour
         { EScenes.LOADING_SCREEN, "LoadingScreen"},
         { EScenes.MAIN_SCREEN, "MainScreen"},
         { EScenes.CHAR_VIEW_SCREEN, "CharacterViewScreen"},
-        { EScenes.CHAR_EDIT_SCREEN, "CharacterEditScreen"}
+        { EScenes.CHAR_EDIT_SCREEN, "CharacterEditScreen"},
+        { EScenes.SUMMARY_SCREEN, "SummaryScreen"}
     };
 
     private LoadingParams _currLoadingParams;

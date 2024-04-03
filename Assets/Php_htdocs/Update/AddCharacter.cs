@@ -28,7 +28,7 @@ public class AddCharacter : MonoBehaviour, IPointerClickHandler
             Debug.Log(handler.downloadHandler.text);
 
             if (FilterCharacters.Instance) 
-                FilterCharacters.Instance.UpdateQueryDisplay();
+                FilterCharacters.Instance.CallFilterByMultiple();
         }
     }
 }
