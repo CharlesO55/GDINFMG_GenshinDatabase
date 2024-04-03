@@ -63,11 +63,17 @@ $sql4 = "UPDATE table_masterlist
 	        SET character_description = (SELECT character_description FROM import_descriptions WHERE character_name = 'Traveler') 
         WHERE character_name LIKE '%Traveler%';";
 
+$sql5 = "UPDATE `table_masterlist`SET total_revenue = 0 WHERE total_revenue IS NULL;";
+$sql6 = "ALTER TABLE `table_masterlist` MODIFY COLUMN `total_revenue` int(12) NOT NULL DEFAULT 0;";
+
+
 
 mysqli_query($CONNECTION, $sql1) or die("[1]: Masterlist drop duplicate failed");
 mysqli_query($CONNECTION, $sql2) or die("[2]: Masterlist copy imports failed");
 mysqli_query($CONNECTION, $sql3) or die("[3]: Masterlist drop cols failed");
 mysqli_query($CONNECTION, $sql4) or die("[4]: Masterlist copy traveler description failed");
+mysqli_query($CONNECTION, $sql5) or die("[5]: Masterlist failed to change total revenue");
+mysqli_query($CONNECTION, $sql6) or die("[5]: Masterlist failed to modify total revenue defaults");
 
 echo "[SUCCESS] MasterList Reloaded";
 ?>

@@ -6,7 +6,6 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Networking;
-using static UnityEditor.Progress;
 
 public class SelectCharacter : MonoBehaviour
 {

@@ -14,12 +14,13 @@ public class Aggregate : MonoBehaviour
     {
         public string SortingColValue;
         public string CharacterCounts;
-        public string MaxAtk;
-        public string MaxDef;
-        public string MaxHP;
+        public int MaxAtk;
+        public int MaxDef;
+        public int MaxHP;
         public string MaxAtkName;
         public string MaxDefName;
         public string MaxHPName;
+        public float TotalRevenue;
     }
     private string _columnName;    
 
@@ -70,7 +71,7 @@ public class Aggregate : MonoBehaviour
     {
         foreach(WrapperJSONResult result in results)
         {
-            string folderPath = this._columnName switch
+            string imgPath = this._columnName switch
             {
                 "region" => "Regions/" + result.SortingColValue + "_Emblem_Night",
                 "weapon_type" => "Weapons/UI_GachaTypeIcon_" + result.SortingColValue,
@@ -80,14 +81,17 @@ public class Aggregate : MonoBehaviour
                 _ => "Unknown"
             };
 
+            string revenue = (result.TotalRevenue == 0) ? "NO DATA" : "$" + result.TotalRevenue.ToString("#,#");
+
             GameObject newPanel = Instantiate(_summaryPanelPrefab, _summaryPanelContainer);
             newPanel.GetComponent<SummaryPanel>().SetValues(
                 result.SortingColValue,
-                result.MaxAtk + '\n' + result.MaxAtkName,
-                result.MaxDef + '\n' + result.MaxDefName,
-                result.MaxHP + '\n' + result.MaxHPName,
+                result.MaxAtk.ToString("#,#") + '\n' + result.MaxAtkName,
+                result.MaxDef.ToString("#,#") + '\n' + result.MaxDefName,
+                result.MaxHP.ToString("#,#") + '\n' + result.MaxHPName,
                 result.CharacterCounts,
-                folderPath
+                revenue,
+                imgPath
                 );
         }
     }

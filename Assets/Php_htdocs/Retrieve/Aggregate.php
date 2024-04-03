@@ -7,7 +7,8 @@ $sql = "SELECT (".$FIELD_SortingColumn.") AS sortingColValue,
 	COUNT('".$FIELD_SortingColumn."') AS `counts`, 
 	MAX(atk_90_90) AS `max_atk`,
 	MAX(def_90_90) AS `max_def`,
-	MAX(hp_90_90) AS `max_hp`
+	MAX(hp_90_90) AS `max_hp`,
+    SUM(total_revenue) AS `total_revenue`
 FROM table_masterlist GROUP BY (".$FIELD_SortingColumn.");";
 
 $query = mysqli_query($CONNECTION, $sql) or die("[1] Aggregation failed");
@@ -22,6 +23,7 @@ while($result = mysqli_fetch_assoc($query)){
     $newRes->MaxAtk = $result['max_atk'];
     $newRes->MaxDef = $result['max_def'];
     $newRes->MaxHP = $result['max_hp'];
+    $newRes->TotalRevenue = $result['total_revenue'];
 
 
     $atkQuery = mysqli_query($CONNECTION, "SELECT character_name FROM table_masterlist WHERE atk_90_90 = '".$newRes->MaxAtk."' AND (".$FIELD_SortingColumn.") = '".$newRes->SortingColValue."';") or die("[2]: Failed to query max atk name");

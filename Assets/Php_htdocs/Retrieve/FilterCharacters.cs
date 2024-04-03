@@ -3,8 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Networking;
+using UnityEngine.UI;
 
 public class FilterCharacters : MonoBehaviour
 {
@@ -16,7 +18,7 @@ public class FilterCharacters : MonoBehaviour
     [SerializeField] GameObject _characterPanelPrefab;
     [SerializeField] Transform _characterPanelsContainer;
 
-    [SerializeField] string _nameSearchField = "";
+    [SerializeField] TMP_InputField _nameSearchField;
 
     List<int> _rarities;
     Dictionary<string, List<string>> _dictQueries = new();
@@ -50,6 +52,7 @@ public class FilterCharacters : MonoBehaviour
         this.StartCoroutine(DoFilterByMaterials(itemID));
     }
 
+
     private IEnumerator DoFilterByMaterials(string itemID)
     {
         WWWForm form = new();
@@ -81,7 +84,7 @@ public class FilterCharacters : MonoBehaviour
         form.AddField("FIELD_Regions", this.ExtractFilterString(this._dictQueries["Region"]));
         form.AddField("FIELD_Weapons", this.ExtractFilterString(this._dictQueries["Weapon"]));
         form.AddField("FIELD_Models", this.ExtractFilterString(this._dictQueries["Model"]));
-        form.AddField("FIELD_CharacterName", CleanCharacterSearch(this._nameSearchField));
+        form.AddField("FIELD_CharacterName", CleanCharacterSearch(this._nameSearchField.text));
 
         using (UnityWebRequest handler = UnityWebRequest.Post("http://localhost/Retrieve/FilterCharacters.php", form))
         {

@@ -1112,7 +1112,8 @@ UPDATE table_masterlist
 	SET character_description = (SELECT character_description FROM import_descriptions WHERE character_name = 'Traveler') 
 WHERE character_name LIKE '%Traveler%';
 
-
+UPDATE `table_masterlist`SET total_revenue = 0 WHERE total_revenue IS NULL;
+ALTER TABLE `table_masterlist` MODIFY COLUMN `total_revenue` int(12) NOT NULL DEFAULT 0;
 
 /*************************
 * #3 Create Query View   *
