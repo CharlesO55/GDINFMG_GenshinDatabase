@@ -1,6 +1,12 @@
 # GDINFMG_GenshinDatabase
  Genshin database tool inside Unity
 
+# Members
+- ARQUILLO, Carlos Miguel
+- CORDERO, Vaughn Vincent
+- GALURA, Marc Lawrence
+- ONG, Charles Matthew
+
 ## Setting up MAMP/PhpMyAdmin...
 1. Open PhpMyAdmin and create a Database NAMED genshin_db.
 2. Import the sql file Setup/ImportSetup.sql.
