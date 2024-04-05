@@ -96,7 +96,8 @@ public class DistinctValues : MonoBehaviour
         WWWForm form = new();
         form.AddField("FIELD_ColName", colName);
 
-        using (UnityWebRequest handler = UnityWebRequest.Post("http://localhost/Retrieve/CountValues.php", form))
+        //using (UnityWebRequest handler = UnityWebRequest.Post("http://localhost/Retrieve/CountValues.php", form))
+        using (UnityWebRequest handler = UnityWebRequest.Post(ConnectionSettings.SERVER_ADDRESS + "Retrieve/CountValues.php", form))
         {
             yield return handler.SendWebRequest();
 
@@ -127,7 +128,8 @@ public class DistinctValues : MonoBehaviour
         WWWForm form = new();
         form.AddField("FIELD_ColName", colName);
 
-        using (UnityWebRequest handler = UnityWebRequest.Post("http://localhost/Retrieve/DistinctValues.php", form))
+        //using (UnityWebRequest handler = UnityWebRequest.Post("http://localhost/Retrieve/DistinctValues.php", form))
+        using (UnityWebRequest handler = UnityWebRequest.Post(ConnectionSettings.SERVER_ADDRESS + "Retrieve/DistinctValues.php", form))
         {
             yield return handler.SendWebRequest();
 

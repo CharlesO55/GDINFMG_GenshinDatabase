@@ -1024,7 +1024,11 @@ COMMIT;
 /***********************************
 * #1 CREATING REVENUE SUMMARY VIEW *
 ************************************/
-CREATE OR REPLACE VIEW view_revenue_summary AS SELECT 
+
+#CREATE OR REPLACE VIEW view_revenue_summary AS 
+DROP TABLE IF EXISTS view_revenue_summary;
+CREATE TABLE view_revenue_summary AS
+SELECT 
 	`5_star_characters` AS `character_name`, 
 	COUNT(`5_star_characters`) AS total_banner_runs,
     MAX(version) AS last_banner_appearance,
@@ -1118,27 +1122,35 @@ ALTER TABLE `table_masterlist` MODIFY COLUMN `total_revenue` int(12) NOT NULL DE
 /*************************
 * #3 Create Query View   *
 *************************/
-CREATE OR REPLACE VIEW view_character_queries AS
+#CREATE OR REPLACE VIEW view_character_queries AS
+DROP TABLE IF EXISTS view_character_queries;
+CREATE TABLE view_character_queries AS
 	SELECT character_id, character_name, rarity, vision, weapon_type, region, model FROM table_masterlist;
     
 /***********************************
 * #9 CREATING CHARACTER RELEASE VIEW*
 ************************************/
-CREATE OR REPLACE VIEW view_character_release AS
+#CREATE OR REPLACE VIEW view_character_release AS
+DROP TABLE IF EXISTS view_character_release;
+CREATE TABLE view_character_release  AS
 	SELECT character_id, character_name, release_date, limited, voice_en, voice_cn, voice_jp, voice_kr 
     FROM table_masterlist;
     
 /***********************************
 * #10 CREATING CHARACTER DATA VIEW *
 ************************************/
-CREATE OR REPLACE VIEW view_character_general AS
+#CREATE OR REPLACE VIEW view_character_general AS
+DROP TABLE IF EXISTS view_character_general;
+CREATE TABLE view_character_general AS
 	SELECT character_id, character_name, rarity, vision, weapon_type, region, model, arkhe, constellation, birthday, special_dish, affiliation, character_description
     FROM table_masterlist;
 
 /***********************************
 * #11 CREATING LEVELING REQS       *
 ************************************/
-CREATE OR REPLACE VIEW view_leveling_reqs AS
+#CREATE OR REPLACE VIEW view_leveling_reqs AS
+DROP TABLE IF EXISTS view_leveling_reqs;
+CREATE TABLE view_leveling_reqs AS
 	SELECT character_id, character_name, ascension_specialty, ascension_material, ascension_boss, ascension_gem,
     talent_material, `talent_book_1-2`, `talent_book_2-3`, `talent_book_3-4`, `talent_book_4-5`, `talent_book_5-6`, `talent_book_6-7`, `talent_book_7-8`, `talent_book_8-9`, `talent_book_9-10`, talent_weekly
     FROM table_masterlist;
@@ -1146,7 +1158,9 @@ CREATE OR REPLACE VIEW view_leveling_reqs AS
 /***********************************
 * #12 CREATING CHARACTER STATS     *
 ************************************/
-CREATE OR REPLACE VIEW view_character_stats AS
+#CREATE OR REPLACE VIEW view_character_stats AS
+DROP TABLE IF EXISTS view_character_stats;
+CREATE TABLE view_character_stats AS
 	SELECT character_id, character_name, atk_1_20, def_1_20, hp_1_20, atk_90_90, def_90_90, hp_90_90, ascension, special_0, special_6
 	FROM table_masterlist;
     

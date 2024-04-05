@@ -24,7 +24,8 @@ public class RefreshViews : MonoBehaviour
 
     private IEnumerator DoViewsRefresh()
     {
-        using (UnityWebRequest handler = UnityWebRequest.Get("http://localhost/Update/RefreshViews.php"))
+        //using (UnityWebRequest handler = UnityWebRequest.Get("http://localhost/Update/RefreshViews.php"))
+        using (UnityWebRequest handler = UnityWebRequest.Get(ConnectionSettings.SERVER_ADDRESS + "Update/RefreshViews.php"))
         {
             yield return handler.SendWebRequest();
 

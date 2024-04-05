@@ -59,7 +59,8 @@ public class CreateItemsTable : MonoBehaviour
         
         form.AddField("FIELD_Items", JsonUtility.ToJson(itemList));
 
-        using (UnityWebRequest handler = UnityWebRequest.Post("http://localhost/Update/UpdateItemTables.php", form))
+        //using (UnityWebRequest handler = UnityWebRequest.Post("http://localhost/Update/UpdateItemTables.php", form))
+        using (UnityWebRequest handler = UnityWebRequest.Post(ConnectionSettings.SERVER_ADDRESS + "Update/UpdateItemTables.php", form))
         {
             yield return handler.SendWebRequest();
 

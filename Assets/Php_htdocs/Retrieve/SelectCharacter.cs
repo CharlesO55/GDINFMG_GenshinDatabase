@@ -45,9 +45,13 @@ public class SelectCharacter : MonoBehaviour
         WWWForm form = new WWWForm();
         form.AddField("FIELD_character_name", characterName);
 
-        this.StartCoroutine(LoadData(form, "http://localhost/Retrieve/GetCharacterGeneral.php", EStoreType.GENERAL));
+        /*this.StartCoroutine(LoadData(form, "http://localhost/Retrieve/GetCharacterGeneral.php", EStoreType.GENERAL));
         this.StartCoroutine(LoadData(form, "http://localhost/Retrieve/GetCharacterStats.php", EStoreType.STATS));
-        this.StartCoroutine(LoadData(form, "http://localhost/Retrieve/GetCharacterLevelingReqs.php", EStoreType.LEVELING_REQS));
+        this.StartCoroutine(LoadData(form, "http://localhost/Retrieve/GetCharacterLevelingReqs.php", EStoreType.LEVELING_REQS));*/
+
+        this.StartCoroutine(LoadData(form, ConnectionSettings.SERVER_ADDRESS + "Retrieve/GetCharacterGeneral.php", EStoreType.GENERAL));
+        this.StartCoroutine(LoadData(form, ConnectionSettings.SERVER_ADDRESS + "Retrieve/GetCharacterStats.php", EStoreType.STATS));
+        this.StartCoroutine(LoadData(form, ConnectionSettings.SERVER_ADDRESS + "Retrieve/GetCharacterLevelingReqs.php", EStoreType.LEVELING_REQS));
     }
     IEnumerator LoadData(WWWForm form, string url, EStoreType EStore)
     {
@@ -121,7 +125,8 @@ public class SelectCharacter : MonoBehaviour
         //form.AddField("FIELD_Name", TextCleaner.ParseAlphanumeric(inName, true, "None"));
         form.AddField("FIELD_Id", inID);
 
-        using (UnityWebRequest handler = UnityWebRequest.Post("http://localhost/Retrieve/GetItemID.php", form))
+        //using (UnityWebRequest handler = UnityWebRequest.Post("http://localhost/Retrieve/GetItemID.php", form))
+        using (UnityWebRequest handler = UnityWebRequest.Post(ConnectionSettings.SERVER_ADDRESS + "Retrieve/GetItemID.php", form))
         {
             yield return handler.SendWebRequest();
 
@@ -183,7 +188,8 @@ public class SelectCharacter : MonoBehaviour
         form.AddField("JSON_LvlData", JsonUtility.ToJson(this.LevelingData));
 
 
-        using (UnityWebRequest handler = UnityWebRequest.Post("http://localhost/Update/UpdateCharacter.php", form))
+        //using (UnityWebRequest handler = UnityWebRequest.Post("http://localhost/Update/UpdateCharacter.php", form))
+        using (UnityWebRequest handler = UnityWebRequest.Post(ConnectionSettings.SERVER_ADDRESS + "Update/UpdateCharacter.php", form))
         {
             yield return handler.SendWebRequest();
 

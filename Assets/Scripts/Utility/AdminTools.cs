@@ -28,6 +28,7 @@ public class AdminTools : MonoBehaviour
 
     private void Start()
     {
+        Debug.Log(ConnectionSettings.SERVER_ADDRESS + "Update/CreateAdmins.php");
         this.StartCoroutine(CreateAdminTable());
 
         this.StartCoroutine(this.SearchAdminToggle());
@@ -59,7 +60,8 @@ public class AdminTools : MonoBehaviour
 
     IEnumerator CreateAdminTable()
     {
-        using (UnityWebRequest handler = UnityWebRequest.Get("http://localhost/Update/CreateAdmins.php"))
+        //using (UnityWebRequest handler = UnityWebRequest.Get("http://localhost/Update/CreateAdmins.php"))
+        using (UnityWebRequest handler = UnityWebRequest.Get(ConnectionSettings.SERVER_ADDRESS + "Update/CreateAdmins.php"))
         {
             yield return handler.SendWebRequest();
 
@@ -85,11 +87,12 @@ public class AdminTools : MonoBehaviour
         form.AddField("FIELD_Password", password);
 
 
-        using (UnityWebRequest handler = UnityWebRequest.Post("http://localhost/Retrieve/AdminLogin.php", form))
+        //using (UnityWebRequest handler = UnityWebRequest.Post("http://localhost/Retrieve/AdminLogin.php", form))
+        using (UnityWebRequest handler = UnityWebRequest.Post(ConnectionSettings.SERVER_ADDRESS + "Retrieve/AdminLogin.php", form))
         {
             yield return handler.SendWebRequest();
 
-            if (handler.error != null)
+            if (handler.isHttpError != null)
             {
                 Debug.LogError(handler.error);
             }

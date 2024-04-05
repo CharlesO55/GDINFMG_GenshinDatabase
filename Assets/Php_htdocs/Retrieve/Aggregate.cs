@@ -40,7 +40,8 @@ public class Aggregate : MonoBehaviour
         WWWForm form = new WWWForm();
         form.AddField("FIELD_SortingColumn", _columnName);
 
-        using (UnityWebRequest handler = UnityWebRequest.Post("http://localhost/Retrieve/Aggregate.php", form))
+        //using (UnityWebRequest handler = UnityWebRequest.Post("http://localhost/Retrieve/Aggregate.php", form))
+        using (UnityWebRequest handler = UnityWebRequest.Post(ConnectionSettings.SERVER_ADDRESS + "Retrieve/Aggregate.php", form))
         {
             yield return handler.SendWebRequest();
             EraseCurrSummaryPanels();
