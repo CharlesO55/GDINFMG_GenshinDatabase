@@ -27,7 +27,8 @@ public class ReloadMasterlist : MonoBehaviour
     {
         Debug.LogWarning("Restoring masterlist. This will delete all changes made.");
 
-        using (UnityWebRequest handler = UnityWebRequest.Get("http://localhost/Update/ReloadMasterlist.php"))
+        //using (UnityWebRequest handler = UnityWebRequest.Get("http://localhost/Update/ReloadMasterlist.php"))
+        using (UnityWebRequest handler = UnityWebRequest.Get(ConnectionSettings.SERVER_ADDRESS + "/Update/ReloadMasterlist.php"))
         {
             yield return handler.SendWebRequest();
 

@@ -58,7 +58,8 @@ public class FilterCharacters : MonoBehaviour
         WWWForm form = new();
         form.AddField("FIELD_ItemID", itemID);
         
-        using (UnityWebRequest handler = UnityWebRequest.Post("http://localhost/Retrieve/FilterByMaterials.php", form))
+        //using (UnityWebRequest handler = UnityWebRequest.Post("http://localhost/Retrieve/FilterByMaterials.php", form))
+        using (UnityWebRequest handler = UnityWebRequest.Post(ConnectionSettings.SERVER_ADDRESS + "/Retrieve/FilterByMaterials.php", form))
         {
             yield return handler.SendWebRequest();
             DeleteCurrentPanels();
@@ -86,7 +87,8 @@ public class FilterCharacters : MonoBehaviour
         form.AddField("FIELD_Models", this.ExtractFilterString(this._dictQueries["Model"]));
         form.AddField("FIELD_CharacterName", CleanCharacterSearch(this._nameSearchField.text));
 
-        using (UnityWebRequest handler = UnityWebRequest.Post("http://localhost/Retrieve/FilterCharacters.php", form))
+        //using (UnityWebRequest handler = UnityWebRequest.Post("http://localhost/Retrieve/FilterCharacters.php", form))
+        using (UnityWebRequest handler = UnityWebRequest.Post(ConnectionSettings.SERVER_ADDRESS + "/Retrieve/FilterCharacters.php", form))
         {
             yield return handler.SendWebRequest();
             DeleteCurrentPanels();

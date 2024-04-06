@@ -18,7 +18,8 @@ public class AddCharacter : MonoBehaviour, IPointerClickHandler
         string newCharName = "_" + System.DateTime.Now.ToString("HH:mm:ss tt");
         form.AddField("FIELD_Name", newCharName);
 
-        using (UnityWebRequest handler = UnityWebRequest.Post("http://localhost/Update/AddCharacter.php", form))
+        //using (UnityWebRequest handler = UnityWebRequest.Post("http://localhost/Update/AddCharacter.php", form))
+        using (UnityWebRequest handler = UnityWebRequest.Post(ConnectionSettings.SERVER_ADDRESS + "/Update/AddCharacter.php", form))
         {
             yield return handler.SendWebRequest();
 

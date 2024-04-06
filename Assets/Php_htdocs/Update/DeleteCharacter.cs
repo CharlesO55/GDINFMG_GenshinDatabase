@@ -28,7 +28,8 @@ public class DeleteCharacter : MonoBehaviour, IPointerClickHandler, IPointerEnte
 
         form.AddField("FIELD_Name", SelectCharacter.Instance.GeneralData.Character_name);
 
-        using (UnityWebRequest handler = UnityWebRequest.Post("http://localhost/Update/DeleteCharacter.php", form))
+        //using (UnityWebRequest handler = UnityWebRequest.Post("http://localhost/Update/DeleteCharacter.php", form))
+        using (UnityWebRequest handler = UnityWebRequest.Post(ConnectionSettings.SERVER_ADDRESS + "/Update/DeleteCharacter.php", form))
         {
             yield return handler.SendWebRequest();
 

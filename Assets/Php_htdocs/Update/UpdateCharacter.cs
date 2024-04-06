@@ -25,7 +25,8 @@ public class UpdateCharacter : MonoBehaviour
         FillForm(form);
         
 
-        using (UnityWebRequest handler = UnityWebRequest.Post("http://localhost/Update/UpdateCharacter.php", form)){
+        //using (UnityWebRequest handler = UnityWebRequest.Post("http://localhost/Update/UpdateCharacter.php", form)){
+        using (UnityWebRequest handler = UnityWebRequest.Post(ConnectionSettings.SERVER_ADDRESS + "/Update/UpdateCharacter.php", form)){
             yield return handler.SendWebRequest();
 
             if (handler.error == null)

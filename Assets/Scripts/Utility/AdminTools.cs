@@ -12,6 +12,7 @@ public class AdminTools : MonoBehaviour
 
     bool _isLoggedIn = false;
 
+
     [SerializeField] private Toggle m_AdminCheck;
     [SerializeField] private List<GameObject> m_AdminTools;
 
@@ -59,7 +60,8 @@ public class AdminTools : MonoBehaviour
 
     IEnumerator CreateAdminTable()
     {
-        using (UnityWebRequest handler = UnityWebRequest.Get("http://localhost/Update/CreateAdmins.php"))
+        //using (UnityWebRequest handler = UnityWebRequest.Get("http://localhost/Update/CreateAdmins.php"))
+        using (UnityWebRequest handler = UnityWebRequest.Get(ConnectionSettings.SERVER_ADDRESS + "/Update/CreateAdmins.php"))
         {
             yield return handler.SendWebRequest();
 
@@ -85,7 +87,8 @@ public class AdminTools : MonoBehaviour
         form.AddField("FIELD_Password", password);
 
 
-        using (UnityWebRequest handler = UnityWebRequest.Post("http://localhost/Retrieve/AdminLogin.php", form))
+        //using (UnityWebRequest handler = UnityWebRequest.Post("http://localhost/Retrieve/AdminLogin.php", form))
+        using (UnityWebRequest handler = UnityWebRequest.Post(ConnectionSettings.SERVER_ADDRESS + "/Retrieve/AdminLogin.php", form))
         {
             yield return handler.SendWebRequest();
 
